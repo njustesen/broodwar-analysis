@@ -1,15 +1,20 @@
 package crawler;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class BWCrawler {
@@ -17,13 +22,11 @@ public class BWCrawler {
 	// ROTW
 	static String URL = "http://bwreplays.com";
 	static String OUTPUT_FOLDER = "replays" + File.separator + "BW";
-	
-	// Member uploads
-	//static String URL = "http://www.gamereplays.org/starcraft2/replays.php?game=33&show=index&tab=upcoming&st=";
-	//static String OUTPUT_FOLDER = "replays" + File.separator + "members";
+	static String WINNER_FILE = "replays" + File.separator + "BW" + File.separator + "winners.csv";
 	
 	static int DELAY = 1000;
 	static boolean done = false;
+	private static Map<String, Integer> files;
 	static final int BUFFER_SIZE = 4096;
 	
 	/**
@@ -31,16 +34,18 @@ public class BWCrawler {
 	 */
 	public static void main(String[] args) {
 		
+		files = new HashMap<String, Integer>();
+		
 		int st = 1;
 		while(!done){
-			List<String> links = getLinks(st);
 			
-			for(int i = 0; i < links.size(); i++)
-				links.set(i, URL + links.get(i));
+			System.out.println("Page="+st);
+			
+			List<BWLink> links = getLinks(st);
 			
 			if (links.isEmpty())
 				break;
-				
+			
 			try {
 				downloadFiles(links);
 			} catch (IOException e) {
@@ -48,26 +53,103 @@ public class BWCrawler {
 				break;
 			}
 			
+			updateWinnerFile();
+			
 			st += 1;
 			
 		}
 			
 	}
 	
+	private static void updateWinnerFile() {
+		
+		File f = new File(WINNER_FILE);
+		if(!f.exists() && !f.isDirectory()) { 
+			FileWriter out = null;
+			try {
+				out = new FileWriter(WINNER_FILE);
+				out.write("replay;winner;\n");
+				out.close();
+				System.out.println(WINNER_FILE + " is created!");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			FileWriter out;
+			try {
+				out = new FileWriter(WINNER_FILE, true);
+				for(String rep : files.keySet()){
+					out.write(rep + ";" + files.get(rep) + ";\n");
+				}
+				files.clear();
+				out.close();
+				System.out.println(WINNER_FILE + " is updated!");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
-	private static List<String> getLinks(int st) {
-		List<String> links = new ArrayList<String>();
+
+	private static List<BWLink> getLinks(int st) {
+		List<BWLink> links = new ArrayList<BWLink>();
 		try {
+			// Get HTML
             URL replays = new URL(URL + "/p" + st);
             BufferedReader in = new BufferedReader(new InputStreamReader(replays.openStream()));
             String inputLine; 
- 
-            while ((inputLine = in.readLine()) != null) {
-                
-                String link = getLink(inputLine);
-                if (link != null)
-                	links.add(link);
+            String website = "";
+            while ((inputLine = in.readLine()) != null)
+            	website += inputLine;
+            website = website.trim();
+            
+            // Clean rows
+            String table = website.split("<table class=\"tableclass\">")[1].split("</table>")[0];
+            String[] rows = table.split("<tr class=");
+            List<String> cleaned = new ArrayList<String>();
+            for(String row : rows){
+            	String clean = "";
+            	if (row.contains("\"row1\">"))
+            		clean = row.split("\"row1\">")[1];
+            	else if (row.contains("\"row2\">"))
+            		clean = row.split("\"row2\">")[1];
+            	else
+            		continue;
+            	clean = clean.split("</tr>")[0];
+            	cleaned.add(clean);
             }
+            
+            // Parse link and winner
+            for(String rep : cleaned){
+            	
+            	int winner = -1;
+            	
+            	// Parse winner
+            	if(rep.contains("<span class=\"winner\"")){
+            		
+            		String first = rep.split("<td class=\"name race")[1];
+            		
+            		String second = rep.split("<td class=\"name race")[2];
+            		
+            		first = first.split("<td class=\"name racep\">")[0];
+            		
+            		if (first.contains("<span class=\"winner\""))
+            			winner = 0;
+            		else if (second.contains("<span class=\"winner\""))
+            			winner = 1;
+            	}
+            	
+            	// Parse replay if winner found
+            	if (winner != -1){
+            		String link = rep.split("<td class=\"dl\"><a href=\"")[1].split("\">download</a></td>")[0];
+            		
+            		links.add(new BWLink(URL + link, winner));
+            		
+            	}
+            	
+            }
+            
             in.close(); 
  
         } catch (MalformedURLException me) {
@@ -85,7 +167,7 @@ public class BWCrawler {
 		if(line.contains("download</a>")){
 			
 			String l = line.split("<a href=\"")[1].split("\">download")[0];
-			System.out.println("Link found: " + l);
+			//System.out.println("Link found: " + l);
 			return l;
 			
 		}
@@ -93,10 +175,10 @@ public class BWCrawler {
 		return null;
 	}
 
-	private static void downloadFiles(List<String> links) throws IOException {
+	private static void downloadFiles(List<BWLink> links) throws IOException {
 		
-		for(String link : links){
-			//link = link.replace("&amp;", "&");
+		for(BWLink link : links){
+			
 			downloadFile(link);
 			
 			try {
@@ -110,13 +192,13 @@ public class BWCrawler {
 	
 	/**
      * Downloads a file from a URL
-     * @param fileURL HTTP URL of the file to be downloaded
+     * @param link.getLink() HTTP URL of the file to be downloaded
      * @param saveDir path of the directory to save the file
      * @throws IOException
      */
-    public static void downloadFile(String fileURL)
+    public static void downloadFile(BWLink link)
             throws IOException {
-        URL url = new URL(fileURL);
+        URL url = new URL(link.getLink());
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         int responseCode = httpConn.getResponseCode();
  
@@ -136,15 +218,15 @@ public class BWCrawler {
                 }
             } else {
                 // extracts file name from URL
-                fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1,
-                        fileURL.length());
+                fileName = link.getLink().substring(link.getLink().lastIndexOf("/") + 1,
+                        link.getLink().length());
             }
  
-            System.out.println("Content-Type = " + contentType);
-            System.out.println("Content-Disposition = " + disposition);
-            System.out.println("Content-Length = " + contentLength);
-            System.out.println("fileName = " + fileName);
- 
+//            System.out.println("Content-Type = " + contentType);
+//            System.out.println("Content-Disposition = " + disposition);
+//            System.out.println("Content-Length = " + contentLength);
+//            System.out.println("fileName = " + fileName);
+
             // opens input stream from the HTTP connection
             InputStream inputStream = httpConn.getInputStream();
             String saveFilePath = OUTPUT_FOLDER + File.separator + fileName;
@@ -162,7 +244,10 @@ public class BWCrawler {
             outputStream.close();
             inputStream.close();
  
-            System.out.println("File downloaded");
+            System.out.println(fileName + " downloaded.");
+            
+            files.put(fileName, link.getWinnerIdx());
+            
         } else {
             System.out.println("No file to download. Server replied HTTP code: " + responseCode);
         }

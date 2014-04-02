@@ -38,8 +38,10 @@ public class BinRepParser {
 		
 		final String[] replayNames = new String[listOfFiles.length];
 		
-		for(int i = 0; i < listOfFiles.length; i++)
+		for(int i = 0; i < listOfFiles.length; i++){
 			replayNames[i] = listOfFiles[i].getCanonicalPath();
+			break;
+		}
 			
 		int x = 0;
 		int n = 0;
@@ -47,19 +49,21 @@ public class BinRepParser {
 			final Replay replay = parseReplay( new File( replayName ), true, false, true, false );
 			if ( replay != null ){
 				replay.replayHeader.printHeaderInformation( new PrintWriter( System.out ) );
-				x++;
-				//PlayerActions[] actions = replay.replayActions.players;
-				/*
-				for(Action action : actions[0].actions){
-					System.out.println(action.toString(actions[0].playerName, true));
+				//replay.replayHeader.
+				//x++;
+				
+				PlayerActions[] actions = replay.replayActions.players;
+				
+				
+				for(PlayerActions player : actions){
+					System.out.println(player.actions[player.actions.length-1].toString(player.playerName, true));
+					/*
+					for(Action action : player.actions){
+						System.out.println(action.toString(player.playerName, true));
+					}
+					*/
 				}
-				for(Action action : actions[1].actions){
-					System.out.println(action.toString(actions[1].playerName, true));
-				}
-				for(Action action : actions[1].actions){
-					System.out.println(action.toString(actions[1].playerName, true));
-				}
-				*/
+				
 			}else{
 				System.out.println( "Could not parse " + replayName + "!" );
 				n++;
