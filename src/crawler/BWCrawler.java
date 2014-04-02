@@ -69,6 +69,10 @@ public class BWCrawler {
 			try {
 				out = new FileWriter(WINNER_FILE);
 				out.write("replay;winner;\n");
+				for(String rep : files.keySet()){
+					out.write(rep + ";" + files.get(rep) + ";\n");
+				}
+				files.clear();
 				out.close();
 				System.out.println(WINNER_FILE + " is created!");
 			} catch (IOException e) {
@@ -213,13 +217,13 @@ public class BWCrawler {
                 // extracts file name from header field
                 int index = disposition.indexOf("filename=");
                 if (index > 0) {
-                    fileName = disposition.substring(index + 10,
-                            disposition.length() - 1);
+                    fileName = disposition.substring(index + 9,
+                            disposition.length());
                 }
             } else {
                 // extracts file name from URL
-                fileName = link.getLink().substring(link.getLink().lastIndexOf("/") + 1,
-                        link.getLink().length());
+                fileName = link.getLink().substring(link.getLink().lastIndexOf("/")-5,
+                        link.getLink().length()-3);
             }
  
 //            System.out.println("Content-Type = " + contentType);

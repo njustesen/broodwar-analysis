@@ -40,17 +40,19 @@ public class BinRepParser {
 		
 		for(int i = 0; i < listOfFiles.length; i++){
 			replayNames[i] = listOfFiles[i].getCanonicalPath();
-			break;
+			//break;
 		}
 			
 		int x = 0;
 		int n = 0;
 		for ( final String replayName : replayNames ) {
+			if (!replayName.contains(".re"))
+				continue;
 			final Replay replay = parseReplay( new File( replayName ), true, false, true, false );
 			if ( replay != null ){
 				replay.replayHeader.printHeaderInformation( new PrintWriter( System.out ) );
 				//replay.replayHeader.
-				//x++;
+				x++;
 				
 				PlayerActions[] actions = replay.replayActions.players;
 				
