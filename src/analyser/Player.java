@@ -1,5 +1,6 @@
-import parser.bwhf.model.Action;
+package analyser;
 
+import java.util.Date;
 import java.util.List;
 
 public class Player
@@ -24,7 +25,7 @@ public class Player
     this.race = Race.class.getEnumConstants()[race];
   }
 
-  public void addAction(parser.bwhf.model.Action action, Date time)
+  public void addAction(Date time, parser.bwhf.model.Action action)
   {
     actions.add(new Action(time, action));
   }

@@ -1,3 +1,5 @@
+package analyser;
+
 import parser.bwhf.model.MapData;
 
 public class Map
@@ -75,7 +77,7 @@ public class Map
     this.startingMinerals = 0;
     this.startingGeysers = 0;
 
-    int[] start = map.mineralFieldList.get(0);
+    short[] start = map.mineralFieldList.get(0);
     for (short[] mineral : map.mineralFieldList)
       if (Math.pow(mineral[0] - start[0], 2) + Math.pow(mineral[1] - start[1], 2) < 50)
         startingMinerals++;

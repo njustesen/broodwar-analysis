@@ -1,3 +1,5 @@
+package analyser;
+
 import parser.bwhf.model.MapData;
 import parser.bwhf.model.ReplayHeader;
 
