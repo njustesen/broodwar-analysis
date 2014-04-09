@@ -1,6 +1,5 @@
 package analyser;
 
-import parser.bwhf.model.ReplayHeader;
 import parser.bwhf.model.Replay;
 import parser.bwhf.control.BinRepParser;
 
@@ -24,10 +23,12 @@ public class Match
   {
     // TODO: get the winner
 
-    fileName = fileName.substring(0, fileName.lastIndexOf('.'));
+    //fileName = fileName.substring(0, fileName.lastIndexOf('.'));
     String[] parts = fileName.split("_");
-    for (String part : parts)
-      System.out.println(part);
+    for (int i = 0; i < parts.length-1; i++){
+    	parts[i] = parts[i].substring(0, parts[i].length()-1);
+    	System.out.println(parts[i]);
+    }
     this.id = parts[2];
     for (int i = 0, p = 0; i < replay.replayHeader.playerNames.length; i++)
       if (replay.replayHeader.playerNames[i] != null
@@ -49,7 +50,7 @@ public class Match
   public static void main(String[] argv)
   {
     List<Match> matches = new ArrayList<Match>();
-    File folder = new File(argv.length >= 20 ? argv[1] : "../replays/BW/");
+    File folder = new File(argv.length >= 20 ? argv[1] : "replays/BW/");
     File[] files = folder.listFiles();
 
     for (int i = 0; i < files.length; i++)
@@ -71,22 +72,24 @@ public class Match
     }
   }
 
-	public Player getPlayer1() {
-		return player1;
+  
+	
+	public String getId() {
+		return id;
 	}
 	
-	public void setPlayer1(Player player1) {
-		this.player1 = player1;
+	public void setId(String id) {
+		this.id = id;
 	}
 	
-	public Player getPlayer2() {
-		return player2;
+	public Player[] getPlayers() {
+		return players;
 	}
 	
-	public void setPlayer2(Player player2) {
-		this.player2 = player2;
+	public void setPlayers(Player[] players) {
+		this.players = players;
 	}
-	
+
 	public Date getDate() {
 		return date;
 	}

@@ -31,9 +31,7 @@ public class MatchEncoder {
 		 for(Match match : matches){
 			 String json = gson.toJson(match);
 			 System.out.println(json);
-			 
-			 // Get match id for filename
-			 saveToFile(json, "testfile.json");
+			 saveToFile(json, match.getId());
 		 }
 	     
 	}

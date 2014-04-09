@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import analyser.Match;
+
 import parser.bwhf.model.Action;
 import parser.bwhf.model.MapData;
 import parser.bwhf.model.PlayerActions;
@@ -45,17 +47,17 @@ public class BinRepParser {
 			
 		int x = 0;
 		int n = 0;
+		List<Match> matches = new ArrayList<Match>();
 		for ( final String replayName : replayNames ) {
-			if (!replayName.contains(".re"))
+			if (!replayName.contains(".rep"))
 				continue;
 			final Replay replay = parseReplay( new File( replayName ), true, false, true, false );
 			if ( replay != null ){
 				replay.replayHeader.printHeaderInformation( new PrintWriter( System.out ) );
 				//replay.replayHeader.
 				x++;
-				
+				/*
 				PlayerActions[] actions = replay.replayActions.players;
-				
 				
 				for(PlayerActions player : actions){
 					System.out.println(player.actions[player.actions.length-1].toString(player.playerName, true));
@@ -64,6 +66,8 @@ public class BinRepParser {
 						System.out.println(action.toString(player.playerName, true));
 					}
 				}
+				*/
+				//matches.add(new Match(replayName, replay));
 				
 			}else{
 				System.out.println( "Could not parse " + replayName + "!" );
