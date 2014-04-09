@@ -59,11 +59,10 @@ public class BinRepParser {
 				
 				for(PlayerActions player : actions){
 					System.out.println(player.actions[player.actions.length-1].toString(player.playerName, true));
-					/*
+					
 					for(Action action : player.actions){
 						System.out.println(action.toString(player.playerName, true));
 					}
-					*/
 				}
 				
 			}else{
