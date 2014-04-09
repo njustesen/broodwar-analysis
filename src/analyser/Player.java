@@ -27,11 +27,16 @@ public class Player
     this.actionNumber = actionNumber;
     this.actionsPerMin = actionsPerMin;
     this.actions = new ArrayList<Action>();
+
     for (parser.bwhf.model.Action action : actions)
     {
       switch (action.actionNameIndex)
       {
-        case 0x0c | 0x1f | 0x23 | 0x30 | 0x32 :
+        case 0x0c:
+        case 0x1f:
+        case 0x23:
+        case 0x30:
+        case 0x32:
           this.actions.add(new Action(action));
           break;
         default:
@@ -87,7 +92,7 @@ public int getActionsPerMin() {
 public void setActionsPerMin(int actionsPerMin) {
 	this.actionsPerMin = actionsPerMin;
 }
-  
-  
-  
+
+
+
 }
