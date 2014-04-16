@@ -1,7 +1,6 @@
 /parser
-/json
-/tests
-/test
-/clustering
-/kmedoids
+/ID3
 /analyser
+/clustering
+/crawler
+/json
