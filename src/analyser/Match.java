@@ -51,6 +51,8 @@ public class Match
       }
     }
     this.map = new Map(replay.replayHeader.mapName,
+                       replay.replayHeader.mapWidth,
+                       replay.replayHeader.mapHeight,
                        replay.mapData);
     this.date = replay.replayHeader.saveTime;
     this.gameLength = replay.replayHeader.convertFramesToSeconds(replay.replayHeader.gameFrames);
