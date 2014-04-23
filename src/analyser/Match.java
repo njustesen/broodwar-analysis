@@ -11,39 +11,31 @@ import java.util.ArrayList;
 
 public class Match
 {
-  String id;
-  Player[] players;
-  Date date;
-  int gameLength;
-  String mapName;
-  Map map;
-  String version;
+  public String id;
+  public Player[] players;
+  public Date date;
+  public int gameLength;
+  public String mapName;
+  public Map map;
+  public String version;
 
   public Match(String fileName, Replay replay, int winner)
   {
-    fileName = fileName.substring(0, fileName.lastIndexOf('.'));
-    String[] parts = fileName.split("_");
+    String[] parts = fileName.substring(0, fileName.lastIndexOf('.')).split("_");
     for (int i = 0; i < parts.length - 1; i++)
     	parts[i] = parts[i].substring(0, parts[i].length() - 1);
     this.id = parts[2];
     this.players = new Player[2];
     for (int i = 0, p = 0; i < replay.replayHeader.playerNames.length; i++)
-    {
       if (replay.replayHeader.playerNames[i] != null
-          && (replay.replayHeader.playerNames[i].contains(parts[0])
-              || replay.replayHeader.playerNames[i].contains(parts[1])
-              || replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[0])
+          && (replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[0])
               || replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[1])))
-      {
-        this.players[p] = new Player(replay.replayHeader.playerNames[i],
-                                     replay.replayHeader.playerNames[i].contains(parts[winner]),
-                                     replay.replayHeader.playerRaces[i],
-                                     replay.replayHeader.playerIdActionsCounts[replay.replayHeader.playerIds[i]],
-                                     replay.replayHeader.getPlayerApm(i),
-                                     replay.replayActions.playerNameActionListMap.get(replay.replayHeader.playerNames[i]));
-        p++;
-      }
-    }
+        this.players[p++] = new Player(replay.replayHeader.playerNames[i],
+                                       replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[winner]),
+                                       replay.replayHeader.playerRaces[i],
+                                       replay.replayHeader.playerIdActionsCounts[replay.replayHeader.playerIds[i]],
+                                       replay.replayHeader.getPlayerApm(i),
+                                       replay.replayActions.playerNameActionListMap.get(replay.replayHeader.playerNames[i]));
 
     this.map = new Map(replay.replayHeader.mapName,
                        replay.replayHeader.mapWidth,
@@ -77,61 +69,5 @@ public class Match
         continue;
       }
     }
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Player[] getPlayers() {
-    return players;
-  }
-
-  public void setPlayers(Player[] players) {
-    this.players = players;
-  }
-
-  public Date getDate() {
-    return date;
-  }
-
-  public void setDate(Date date) {
-    this.date = date;
-  }
-
-  public int getGameLength() {
-    return gameLength;
-  }
-
-  public void setGameLength(int gameLength) {
-    this.gameLength = gameLength;
-  }
-
-  public String getMapName() {
-    return mapName;
-  }
-
-  public void setMapName(String mapName) {
-    this.mapName = mapName;
-  }
-
-  public Map getMap() {
-    return map;
-  }
-
-  public void setMap(Map map) {
-    this.map = map;
-  }
-
-  public String getVersion() {
-    return version;
-  }
-
-  public void setVersion(String version) {
-    this.version = version;
   }
 }

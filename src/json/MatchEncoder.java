@@ -13,31 +13,31 @@ import analyser.Match;
 public class MatchEncoder {
 
 	static final String folder = "matches" + File.separator;
-	
+
 	public static void main(String[] args) {
-		
+
 		// Get matches
 		List<Match> matches = new ArrayList<Match>();
-		
+
 		// Encode
 		new MatchEncoder().encode(matches);
-		
+
 	}
-	
+
 	public void encode(List<Match> matches){
-		
+
 		 Gson gson = new Gson();
-	     
+
 		 for(Match match : matches){
 			 String json = gson.toJson(match);
 			 System.out.println(json);
-			 saveToFile(json, match.getId());
+			 saveToFile(json, match.id);
 		 }
-	     
+
 	}
-	
+
 	private void saveToFile(String text, String filename){
-		
+
 		FileWriter out = null;
 		try {
 			out = new FileWriter(folder + filename);
@@ -47,7 +47,7 @@ public class MatchEncoder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

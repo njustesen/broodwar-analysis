@@ -13,12 +13,12 @@ public class Player
     Protoss
   };
 
-  boolean win;
-  Race race;
-  String name;
-  List<Action> actions;
-  int actionNumber;
-  int actionsPerMin;
+  public boolean win;
+  public Race race;
+  public String name;
+  public List<Action> actions;
+  public int actionNumber;
+  public int actionsPerMin;
 
   public Player(String name, boolean win, byte race, int actionNumber, int actionsPerMin, List<parser.bwhf.model.Action> actions)
   {
@@ -45,55 +45,4 @@ public class Player
       }
     }
   }
-
-public boolean isWin() {
-	return win;
-}
-
-public void setWin(boolean win) {
-	this.win = win;
-}
-
-public Race getRace() {
-	return race;
-}
-
-public void setRace(Race race) {
-	this.race = race;
-}
-
-public String getName() {
-	return name;
-}
-
-public void setName(String name) {
-	this.name = name;
-}
-
-public List<Action> getActions() {
-	return actions;
-}
-
-public void setActions(List<Action> actions) {
-	this.actions = actions;
-}
-
-public int getActionNumber() {
-	return actionNumber;
-}
-
-public void setActionNumber(int actionNumber) {
-	this.actionNumber = actionNumber;
-}
-
-public int getActionsPerMin() {
-	return actionsPerMin;
-}
-
-public void setActionsPerMin(int actionsPerMin) {
-	this.actionsPerMin = actionsPerMin;
-}
-
-
-
 }
