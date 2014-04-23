@@ -6,7 +6,62 @@ import java.util.HashMap;
 
 public class Action
 {
+  private static final int UPGRADE_OFFSET = 0;
+  private static final Map<String, Integer> UPGRADE_MAP = new HashMap<String, Integer>();
+  static {
+    UPGRADE_MAP.put("Terran Infantry Armor", 0);
+    UPGRADE_MAP.put("Terran Vehicle Plating", 1);
+    UPGRADE_MAP.put("Terran Ship Plating", 2);
+    UPGRADE_MAP.put("Zerg Carapace", 3);
+    UPGRADE_MAP.put("Zerg Flyer Carapace", 4);
+    UPGRADE_MAP.put("Protoss Ground Armor", 5);
+    UPGRADE_MAP.put("Protoss Air Armor", 6);
+    UPGRADE_MAP.put("Terran Infantry Weapons", 7);
+    UPGRADE_MAP.put("Terran Vehicle Weapons", 8);
+    UPGRADE_MAP.put("Terran Ship Weapons", 9);
+    UPGRADE_MAP.put("Zerg Melee Attacks", 10);
+    UPGRADE_MAP.put("Zerg Missile Attacks", 11);
+    UPGRADE_MAP.put("Zerg Flyer Attacks", 12);
+    UPGRADE_MAP.put("Protoss Ground Weapons", 13);
+    UPGRADE_MAP.put("Protoss Air Weapons", 14);
+    UPGRADE_MAP.put("Protoss Plasma Shields", 15);
+    UPGRADE_MAP.put("U-238 Shells (Marine Range)", 16);
+    UPGRADE_MAP.put("Ion Thrusters (Vulture Speed)", 17);
+    UPGRADE_MAP.put("Titan Reactor (Science Vessel Energy)", 18);
+    UPGRADE_MAP.put("Ocular Implants (Ghost Sight)", 19);
+    UPGRADE_MAP.put("Moebius Reactor (Ghost Energy)", 20);
+    UPGRADE_MAP.put("Apollo Reactor (Wraith Energy)", 21);
+    UPGRADE_MAP.put("Colossus Reactor (Battle Cruiser Energy)", 22);
+    UPGRADE_MAP.put("Ventral Sacs (Overlord Transport)", 23);
+    UPGRADE_MAP.put("Antennae (Overlord Sight)", 24);
+    UPGRADE_MAP.put("Pneumatized Carapace (Overlord Speed)", 25);
+    UPGRADE_MAP.put("Metabolic Boost (Zergling Speed)", 26);
+    UPGRADE_MAP.put("Adrenal Glands (Zergling Attack)", 27);
+    UPGRADE_MAP.put("Muscular Augments (Hydralisk Speed)", 28);
+    UPGRADE_MAP.put("Grooved Spines (Hydralisk Range)", 29);
+    UPGRADE_MAP.put("Gamete Meiosis (Queen Energy)", 30);
+    UPGRADE_MAP.put("Defiler Energy", 31);
+    UPGRADE_MAP.put("Singularity Charge (Dragoon Range)", 32);
+    UPGRADE_MAP.put("Leg Enhancement (Zealot Speed)", 33);
+    UPGRADE_MAP.put("Scarab Damage", 34);
+    UPGRADE_MAP.put("Reaver Capacity", 35);
+    UPGRADE_MAP.put("Gravitic Drive (Shuttle Speed)", 36);
+    UPGRADE_MAP.put("Sensor Array (Observer Sight)", 37);
+    UPGRADE_MAP.put("Gravitic Booster (Observer Speed)", 38);
+    UPGRADE_MAP.put("Khaydarin Amulet (Templar Energy)", 39);
+    UPGRADE_MAP.put("Apial Sensors (Scout Sight)", 40);
+    UPGRADE_MAP.put("Gravitic Thrusters (Scout Speed)", 41);
+    UPGRADE_MAP.put("Carrier Capacity", 42);
+    UPGRADE_MAP.put("Khaydarin Core (Arbiter Energy)", 43);
+    UPGRADE_MAP.put("Argus Jewel (Corsair Energy)", 44);
+    UPGRADE_MAP.put("Argus Talisman (Dark Archon Energy)", 45);
+    UPGRADE_MAP.put("Caduceus Reactor (Medic Energy)", 46);
+    UPGRADE_MAP.put("Chitinous Plating (Ultralisk Armor)", 47);
+    UPGRADE_MAP.put("Anabolic Synthesis (Ultralisk Speed)", 48);
+    UPGRADE_MAP.put("Charon Boosters (Goliath Range)", 49);
+  }
 
+  private static final int RESEARCH_OFFSET = 50;
   private static final Map<String, Integer> RESEARCH_MAP = new HashMap<String, Integer>();
   static {
     RESEARCH_MAP.put("Stim Pack", 0);
@@ -35,61 +90,8 @@ public class Action
     RESEARCH_MAP.put("Lurker Aspect", 23);
   }
 
-  private static final Map<String, Integer> UPGRADE_MAP = new HashMap<String, Integer>();
-  static {
-    UPGRADE_MAP.put("Terran Infantry Armor", 1);
-    UPGRADE_MAP.put("Terran Vehicle Plating", 2);
-    UPGRADE_MAP.put("Terran Ship Plating", 3);
-    UPGRADE_MAP.put("Zerg Carapace", 4);
-    UPGRADE_MAP.put("Zerg Flyer Carapace", 5);
-    UPGRADE_MAP.put("Protoss Ground Armor", 6);
-    UPGRADE_MAP.put("Protoss Air Armor", 7);
-    UPGRADE_MAP.put("Terran Infantry Weapons", 8);
-    UPGRADE_MAP.put("Terran Vehicle Weapons", 9);
-    UPGRADE_MAP.put("Terran Ship Weapons", 10);
-    UPGRADE_MAP.put("Zerg Melee Attacks", 11);
-    UPGRADE_MAP.put("Zerg Missile Attacks", 12);
-    UPGRADE_MAP.put("Zerg Flyer Attacks", 13);
-    UPGRADE_MAP.put("Protoss Ground Weapons", 14);
-    UPGRADE_MAP.put("Protoss Air Weapons", 15);
-    UPGRADE_MAP.put("Protoss Plasma Shields", 16);
-    UPGRADE_MAP.put("U-238 Shells (Marine Range)", 17);
-    UPGRADE_MAP.put("Ion Thrusters (Vulture Speed)", 18);
-    UPGRADE_MAP.put("Titan Reactor (Science Vessel Energy)", 19);
-    UPGRADE_MAP.put("Ocular Implants (Ghost Sight)", 20);
-    UPGRADE_MAP.put("Moebius Reactor (Ghost Energy)", 21);
-    UPGRADE_MAP.put("Apollo Reactor (Wraith Energy)", 22);
-    UPGRADE_MAP.put("Colossus Reactor (Battle Cruiser Energy)", 23);
-    UPGRADE_MAP.put("Ventral Sacs (Overlord Transport)", 24);
-    UPGRADE_MAP.put("Antennae (Overlord Sight)", 25);
-    UPGRADE_MAP.put("Pneumatized Carapace (Overlord Speed)", 26);
-    UPGRADE_MAP.put("Metabolic Boost (Zergling Speed)", 27);
-    UPGRADE_MAP.put("Adrenal Glands (Zergling Attack)", 28);
-    UPGRADE_MAP.put("Muscular Augments (Hydralisk Speed)", 29);
-    UPGRADE_MAP.put("Grooved Spines (Hydralisk Range)", 30);
-    UPGRADE_MAP.put("Gamete Meiosis (Queen Energy)", 31);
-    UPGRADE_MAP.put("Defiler Energy", 32);
-    UPGRADE_MAP.put("Singularity Charge (Dragoon Range)", 33);
-    UPGRADE_MAP.put("Leg Enhancement (Zealot Speed)", 34);
-    UPGRADE_MAP.put("Scarab Damage", 35);
-    UPGRADE_MAP.put("Reaver Capacity", 36);
-    UPGRADE_MAP.put("Gravitic Drive (Shuttle Speed)", 37);
-    UPGRADE_MAP.put("Sensor Array (Observer Sight)", 38);
-    UPGRADE_MAP.put("Gravitic Booster (Observer Speed)", 39);
-    UPGRADE_MAP.put("Khaydarin Amulet (Templar Energy)", 40);
-    UPGRADE_MAP.put("Apial Sensors (Scout Sight)", 41);
-    UPGRADE_MAP.put("Gravitic Thrusters (Scout Speed)", 42);
-    UPGRADE_MAP.put("Carrier Capacity", 43);
-    UPGRADE_MAP.put("Khaydarin Core (Arbiter Energy)", 44);
-    UPGRADE_MAP.put("Argus Jewel (Corsair Energy)", 45);
-    UPGRADE_MAP.put("Argus Talisman (Dark Archon Energy)", 46);
-    UPGRADE_MAP.put("Caduceus Reactor (Medic Energy)", 47);
-    UPGRADE_MAP.put("Chitinous Plating (Ultralisk Armor)", 48);
-    UPGRADE_MAP.put("Anabolic Synthesis (Ultralisk Speed)", 49);
-    UPGRADE_MAP.put("Charon Boosters (Goliath Range)", 50);
-  }
-
-  public enum Type
+  private static final int UNIT_OFFSET = 74;
+  public enum ActionType
   {
     // upgardes
     TerranInfantryArmor,
@@ -143,7 +145,7 @@ public class Action
     AnabolicSynthesis,
     CharonBoosters,
 
-    // researches 0x36
+    // researches - 50
     StimPack,
     Lockdown,
     EMPShockwave,
@@ -169,7 +171,7 @@ public class Action
     Maelstorm,
     LurkerAspect,
 
-    // units and buildings 0x56
+    // units - 74
     Marine,
     Ghost,
     Vulture,
@@ -398,25 +400,45 @@ public class Action
     TerranVespeneGasTankType2,
   }
 
-  public int frames;
-  public Type type;
-
-  public Action(parser.bwhf.model.Action action)
+  public enum Type
   {
-    this.frames = action.iteration;
-
-    if (action.actionNameIndex == 0x0c) // build
-      type = Type.class.getEnumConstants()[0x56 + action.parameterBuildingNameIndex];
-
-    if (action.actionNameIndex == 0x1f || action.actionNameIndex == 0x23) // train
-      type = Type.class.getEnumConstants()[0x56 + action.parameterUnitNameIndex];
-
-    if (action.actionNameIndex == 0x30) // reserch
-      type = Type.class.getEnumConstants()[0x36 + RESEARCH_MAP.get(action.parameters)];
-
-    if (action.actionNameIndex == 0x32) // upgrade
-      type = Type.class.getEnumConstants()[UPGRADE_MAP.get(action.parameters)];
+    Building,
+    Unit,
+    Research,
+    Upgrade
   }
 
+  public int frames;
+  public ActionType actionType;
+  public Type type;
+  public byte race;
 
+  public Action(parser.bwhf.model.Action action, int race)
+  {
+    frames = action.iteration;
+    race = race;
+
+    if (action.actionNameIndex == 0x0c) // build
+    {
+      actionType = ActionType.class.getEnumConstants()[UNIT_OFFSET + action.parameterBuildingNameIndex];
+      type = Type.Building;
+    }
+
+    if (action.actionNameIndex == 0x1f || action.actionNameIndex == 0x23) // train
+    {
+      actionType = ActionType.class.getEnumConstants()[UNIT_OFFSET + action.parameterUnitNameIndex];
+      type = Type.Unit;
+    }
+    if (action.actionNameIndex == 0x30) // reserch
+    {
+      actionType = ActionType.class.getEnumConstants()[RESEARCH_OFFSET + RESEARCH_MAP.get(action.parameters)];
+      type = Type.Research;
+    }
+
+    if (action.actionNameIndex == 0x32) // upgrade
+    {
+      actionType = ActionType.class.getEnumConstants()[UPGRADE_OFFSET + UPGRADE_MAP.get(action.parameters)];
+      type = Type.Upgrade;
+    }
+  }
 }

@@ -2,12 +2,15 @@ package analyser;
 
 import parser.bwhf.model.MapData;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class Map
 {
   public enum Type
   {
     Andromedal,
-    ChupungRyeung,
+    Chupung_Ryeung,
     Colosseum,
     Hunters,
     Archon,
@@ -16,7 +19,7 @@ public class Map
     Detonation,
     Boat,
     Requiem,
-    PlainToHill,
+    Plain_To_Hill,
     Nostalgia,
     Parallellines,
     Python,
@@ -25,8 +28,8 @@ public class Map
     Longinus,
     Medusa,
     Othello,
-    ParanoidAnd,
-    ReturnOfTheKing,
+    Paranoid_And,
+    Return_Of_The_King,
     Tiamat,
     Byzantium,
     Athena,
@@ -36,25 +39,25 @@ public class Map
     Outsider,
     TauCross,
     Zodiac,
-    MatchPoint,
-    TearsOfTheMoon,
-    MoonGlaive,
-    HolyWorld,
-    EnterTheDragon,
+    Match_Point,
+    Tears_Of_The_Moon,
+    Moon_Glaive,
+    Holy_World,
+    Enter_The_Dragon,
     Gaia,
     GodsGarden,
     Andromeda,
     Yellow,
-    HeartBreakRidge,
-    FightingSpirit,
+    Heart_Break_Ridge,
+    Fighting_Spirit,
     RushHour,
     Luna,
     Pelennor,
     JRMemory,
     Incubus,
-    BladeStorm,
-    LostTemple,
-    BigGameHunters
+    Blade_Storm,
+    Lost_Temple,
+    Big_Game_Hunters
   };
 
   String name;
@@ -67,27 +70,33 @@ public class Map
   int startingMinerals;
 
 
-  public Map(String name, MapData map)
+  public Map(String name, short x, short y, MapData map)
   {
     this.name = name;
-    if (map != null){
-    	this.size = map.tiles;
-        this.starts = map.startLocationList.size();
-        this.geysers = map.geyserList.size();
-        this.minerals = map.mineralFieldList.size();
-        this.startingMinerals = 0;
-        this.startingGeysers = 0;
+    this.size = new short[]{x, y};
+    if (map != null)
+    {
+      this.starts = map.startLocationList.size();
+      this.geysers = map.geyserList.size();
+      this.minerals = map.mineralFieldList.size();
+      this.startingMinerals = 0;
+      this.startingGeysers = 0;
 
-        short[] start = map.mineralFieldList.get(0);
-        for (short[] mineral : map.mineralFieldList)
-          if (Math.pow(mineral[0] - start[0], 2) + Math.pow(mineral[1] - start[1], 2) < 50)
-            startingMinerals++;
-        for (short[] geyser : map.geyserList)
-          if (Math.pow(geyser[0] - start[0], 2) + Math.pow(geyser[1] - start[1], 2) < 50)
-            startingGeysers++;
+      short[] start = map.mineralFieldList.get(0);
+      for (short[] mineral : map.mineralFieldList)
+        if (Math.pow(mineral[0] - start[0], 2) + Math.pow(mineral[1] - start[1], 2) < 50000)
+          startingMinerals++;
+      for (short[] geyser : map.geyserList)
+        if (Math.pow(geyser[0] - start[0], 2) + Math.pow(geyser[1] - start[1], 2) < 50000)
+          startingGeysers++;
 
-        // TODO: Set the type (regexp on the name maybe ?);
+      for (Type type : Type.class.getEnumConstants())
+        if (Pattern.compile(type.name(), Pattern.CASE_INSENSITIVE).matcher(name).find())
+          this.type = type;
+        else if (Pattern.compile(type.name().replaceAll("_", ""), Pattern.CASE_INSENSITIVE).matcher(name).find())
+          this.type = type;
+        else if (Pattern.compile(type.name().replaceAll("_", " "), Pattern.CASE_INSENSITIVE).matcher(name).find())
+          this.type = type;
     }
-    
   }
 }
