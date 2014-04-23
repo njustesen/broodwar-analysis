@@ -1,18 +1,28 @@
 package ID3;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+
+import analyser.Action;
+import analyser.Action.ActionType;
+import analyser.Match;
 
 import parser.bwhf.model.Replay;
 
 public class ID3Tree {
 
 	private ID3Node root;
+	private final int analyzeLength = 10;
+	ArrayList <String> attributes = new ArrayList<String>();
 	
-	public ID3Tree(List<Replay> examples){
+	public ID3Tree(List<String[]> examples){
 		this.root = new ID3Node(null, 0);
-		List <Object> attributes = Replay.getAttributeList();
+		for(int i = 0; i < analyzeLength; i++){
+			attributes.add(((Integer)i).toString());
+		}
 		generateTree(examples, attributes, root);
 	}
 
@@ -21,17 +31,19 @@ public class ID3Tree {
 		
 	}
 */	
-	public static void generateTree(List<Replay> examples, List <Object> attributes, ID3Node thisNode){
+	public static void generateTree(List<String[]> examples, List <String> attributes, ID3Node thisNode){
 		System.out.println("examples.size = " + examples.size());
 		//Check if all shrooms are poisonous/edible
 		//All samples for a given node belong to the same class
-		boolean allEdible = true;
-		boolean allPoisonous = true;
-		for(Replay r: examples){
-			if(r.m_Class  == Class_Label.edible){
-				allPoisonous = false;
+		boolean allWinners = true;
+		boolean allLosers = true;
+		for(String[] s: examples){
+			if(s[s.length] == "win"){
+				allLosers = false;
+			}else if(s[s.length] == "loss"){
+				allWinners = false;
 			}else{
-				allEdible = false;
+				System.out.println("wrong index - s[s.length] is neither win or loss");
 			}
 		}
 				
@@ -39,34 +51,36 @@ public class ID3Tree {
 		//There are no remaining attributes for further partitoning
 		if(attributes.isEmpty()){
 			thisNode.setReasonForCutoff("'ATTRIBUTES EMPTY'");
-			int edibleCount = 0;
-			for(Replay r : examples){
-				if(r.m_Class  == Class_Label.edible){
-					edibleCount++;
+			int winCount = 0;
+			for(String[] s: examples){
+				if(s[s.length] == "win"){
+					winCount++;
+				}else if(s[s.length] == "loss"){
+					winCount--;
 				}else{
-					edibleCount--;
+					System.out.println("wrong index - s[s.length] is neither win or loss");
 				}
 			}			
-			if(edibleCount < 0 ){
-				thisNode.nodeIsNotEdible();
+			if(winCount < 0 ){
+				thisNode.nodeIsNotWin();
 			}else{
-				thisNode.nodeIsEdible();
+				thisNode.nodeIsWin();
 			}
 		}
 	
-		//all mushrooms are edible
-		if(allEdible){
-			thisNode.setReasonForCutoff("ALL EDIBLE");
+		//all players are winners
+		if(allWinners){
+			thisNode.setReasonForCutoff("ALL WINNERS");
 			//System.out.println("all edible");
-			thisNode.nodeIsEdible();
+			thisNode.nodeIsWin();
 			return;
 		}
 		
-		//all mushrooms are poisonous
-		if(allPoisonous){
-			thisNode.setReasonForCutoff("ALL POISONOUS");
+		//all players are losers
+		if(allLosers){
+			thisNode.setReasonForCutoff("ALL LOSERS");
 			//System.out.println("all poisonous");
-			thisNode.nodeIsNotEdible();
+			thisNode.nodeIsNotWin();
 			return;
 		}
 		
@@ -74,9 +88,9 @@ public class ID3Tree {
 		//Random  r = new Random();
 		//int index = r.nextInt(attributes.size());
 		//Object selectedAttribute = attributes.get(index);
-		Object selectedAttribute = null;
+		String selectedAttribute = null;
 		double highestGain = Integer.MIN_VALUE;
-		for(Object att: attributes){
+		for(String att: attributes){
 			double gain = getInfoGain(att, examples);
 			System.out.println("GAIN="+gain);
 			if(gain > highestGain){
@@ -86,15 +100,15 @@ public class ID3Tree {
 			}
 		}
 		
-		thisNode.setAttribute((Class)selectedAttribute);
+		thisNode.setAttribute(selectedAttribute);
 		
-		for(Object obj : ((Class)selectedAttribute).getEnumConstants()){
+		for(ActionType at : ActionType.values()){
 			//make sublists
-			List subExamples = getSubset(examples, selectedAttribute, obj);
+			List <String[]> subExamples = getSubset(examples, selectedAttribute, at.toString());
 			List subAttributes = getSubset(attributes, selectedAttribute);
 			//create new node
 			ID3Node child = new ID3Node(thisNode, thisNode.getLevel()+1);
-			thisNode.addChild(obj, child);
+			thisNode.addChild(at, child);
 			thisNode.notLeaf();
 			//recursive call
 			generateTree(subExamples, subAttributes, child);
@@ -110,20 +124,7 @@ public class ID3Tree {
 		System.out.println("- -- --- ---- ----- ------ FINAL TREE END ------ ----- ---- --- -- -");
 	}
 	
-	private static List<Object> getSubset(List<Object> attributes, Object attribute){
-		
-		System.out.println("attributes="+attributes);
-		System.out.println("size="+attributes.size());
-		System.out.println("attribute="+attribute);
-		
-		List<Object> subset = new ArrayList<Object>(attributes);
-		
-		subset.remove(attribute);
-		
-		return subset;
-	}
-	
-	public static double getInfoGain(Object att, List<Replay> examples){
+	public static double getInfoGain(String att, List<String[]> examples){
 		double info = getInfo(examples);
 		double infoA = getInfoA(att, examples);
 		double infoGain = info - infoA;
@@ -131,7 +132,7 @@ public class ID3Tree {
 		return infoGain;
 	}
 	
-	public static double getInfo(List<Replay> examples){
+	public static double getInfo(List<String[]> examples){
 		System.out.println("print TEST "+testInfo());
 		if(examples.isEmpty()){
 			return 1;
@@ -139,27 +140,27 @@ public class ID3Tree {
 		double info = 0;
 	//	System.out.println("examples="+examples);
 		double D = examples.size();
-		double DjEdible = 0;
-		double DjPoison = 0;
+		double DjWin = 0;
+		double DjLoss = 0;
 			
-		for(Replay r: examples){
-			if(r.m_Class  == Class_Label.edible){
-				DjEdible++;
+		for(String[] s: examples){
+			if(s[s.length].equals("win")){
+				DjWin++;
 			}else{
-				DjPoison++;
+				DjLoss++;
 			}	
 		}
 		
 		//(Math.log(pi)/Math.log(2)); ??
-		double infoEdible = ((DjEdible/D) * (Math.log(DjEdible/D)/Math.log(2)));
-		double infoPoison = ((DjPoison/D) * (Math.log(DjPoison/D)/Math.log(2)));
+		double infoWin = ((DjWin/D) * (Math.log(DjWin/D)/Math.log(2)));
+		double infoLoss = ((DjLoss/D) * (Math.log(DjLoss/D)/Math.log(2)));
 		
-		if (DjEdible == 0)
-			infoEdible = 0;
-		if (DjPoison == 0)
-			infoPoison = 0;
+		if (DjWin == 0)
+			infoWin = 0;
+		if (DjLoss == 0)
+			infoLoss = 0;
 
-		info = -infoEdible-infoPoison;
+		info = -infoWin-infoLoss;
 
 		return info;
 /*		
@@ -173,48 +174,71 @@ public class ID3Tree {
 */
 	}
 	
-	public static double getInfoA(Object att, List<Replay> examples){
+	public static double getInfoA(String att, List<String[]> examples){
 		
 		if(examples.isEmpty()){
 			return 1;
 		}
 		
 		double infoA = 0;
-		List<Replay> subExamples = new ArrayList<Replay>();
-		System.out.println();
-		System.out.println("- -- --- ---- ----- GET INFO A ----- ---- --- -- -");
-		for(Object obj : ((Class)att).getEnumConstants()){
+		List<String[]> subExamples = new ArrayList<String[]>();
+
+		//for each (unique) attribute value
+		String[] unique = getUniqueEntries(att, examples);
+		
+		for(ActionType at : ActionType.values()){
 			
 			double D = examples.size();
 			double Dj = 0;
-			for(Replay r: examples){
-	//			System.out.println("obj="+obj.toString()+"  m.getAttributeValue(att)="+m.getAttributeValue(att));
-				if(r.getAttributeValue(att) == obj){
+			for(String[] s: examples){
+				if(s[Integer.parseInt(att)].equals(at)){
 					Dj++;
-					subExamples.add(r);
+					subExamples.add(s);
 				}
 			}
-	//		System.out.println("SUB");
-			System.out.println();
+
 			double division = (Dj/D);
 			double subEx = getInfo(subExamples);
 			double result = division * subEx;
 			infoA = infoA + result;
-			System.out.println("getInfoA  Dj="+Dj+"  D="+D+"  division="+division+"  subEx="+subEx+"  result="+result+"  infoA="+infoA);
 		}
-		System.out.println("getInfoA  infoA="+infoA);
+
 		return infoA;
 	}
 
-	private static List<Replay> getSubset(List<Replay> mushrooms, Object attribute, Object value) {
+	private static String[] getUniqueEntries(String att, List<String[]> examples){
+		
+		Set<String> unique = new HashSet<String>();
+		
+		for(int i = 0; i < examples.size(); i++){
+			unique.add(examples.get(i)[Integer.parseInt(att)]);
+		}
+		
+		return (String[]) unique.toArray();
+	}
+	
+	private static List<String[]> getSubset(List<String[]> examples, String attribute, String value) {
 
-		ArrayList<Replay> subset = new ArrayList<Replay>();
+		ArrayList<String[]> subset = new ArrayList<String[]>();
 
-		for(Replay r : mushrooms){
-			if (r.getAttributeValue(attribute).equals(value))
-				subset.add(r);
+		for(String[] s : examples){
+			if (s[Integer.parseInt(attribute)].equals(value))
+				subset.add(s);
 		}
 
+		return subset;
+	}
+	
+	private static List<String> getSubset(List<String> attributes, Object attribute){
+		
+		System.out.println("attributes="+attributes);
+		System.out.println("size="+attributes.size());
+		System.out.println("attribute="+attribute);
+		
+		List<String> subset = new ArrayList<String>(attributes);
+		
+		subset.remove(attribute);
+		
 		return subset;
 	}
 	

@@ -10,9 +10,9 @@ public class ID3Node {
 	private ID3Node parent;
 	private int level;
 	private boolean leaf = true;
-	private Boolean edible;
+	private Boolean win;
 	private String reasonForCutoff;
-	private Class attribute;
+	private String attribute;
 	
 	private HashMap <Object, ID3Node> children = new HashMap <Object, ID3Node>();
 	
@@ -35,9 +35,9 @@ public class ID3Node {
 		System.out.print(" resonForCutoff="+reasonForCutoff);
 			
 		if(!leaf){
-			System.out.print(" att="+attribute.getName());
+			System.out.print(" att="+attribute);
 		}else{
-			System.out.print(" edible="+edible);
+			System.out.print(" win="+win);
 		}
 		
 		System.out.println();
@@ -69,16 +69,16 @@ public class ID3Node {
 		this.leaf = false;
 	}
 	
-	public boolean isEdible(){
-		return edible;
+	public boolean isWin(){
+		return win;
 	}
 	
-	public void nodeIsEdible(){
-		edible = true;
+	public void nodeIsWin(){
+		win = true;
 	}
 	
-	public void nodeIsNotEdible(){
-		edible = false;
+	public void nodeIsNotWin(){
+		win = false;
 	}
 	
 	public int getLevel(){
@@ -93,11 +93,11 @@ public class ID3Node {
 		reasonForCutoff = reason;
 	}
 	
-	public void setAttribute(Class selectedAttribute){
+	public void setAttribute(String selectedAttribute){
 		this.attribute = selectedAttribute;
 	}
 	
-	public Class getAttribute(){
+	public String getAttribute(){
 		return attribute;
 	}
 	
