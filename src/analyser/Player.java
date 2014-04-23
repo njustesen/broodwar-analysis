@@ -45,6 +45,16 @@ public class Player
       }
     }
   }
+  
+  public Player(String name, boolean win, Race race, int actionNumber, int actionsPerMin, List<Action> actions)
+  {
+    this.name = name;
+    this.win = win;
+    this.race = race;
+    this.actionNumber = actionNumber;
+    this.actionsPerMin = actionsPerMin;
+    this.actions = actions;
+  }
 
 public boolean isWin() {
 	return win;

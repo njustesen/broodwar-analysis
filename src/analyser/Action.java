@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 
+import analyser.Player.Race;
+
 public class Action
 {
   private static final int UPGRADE_OFFSET = 0;
@@ -440,5 +442,13 @@ public class Action
       actionType = ActionType.class.getEnumConstants()[UPGRADE_OFFSET + UPGRADE_MAP.get(action.parameters)];
       type = Type.Upgrade;
     }
+  }
+  
+  public Action(Race race, int frames, ActionType actionType, Type type)
+  {
+	this.race = (byte) race.ordinal();
+	this.frames = frames;
+    this.actionType = actionType;
+    this.type = type;
   }
 }
