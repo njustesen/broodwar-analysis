@@ -19,27 +19,24 @@ public class Match
   Map map;
   String version;
 
-  public Match(String fileName, Replay replay)
+  public Match(String fileName, Replay replay, int winner)
   {
     // TODO: get the winner
 
     fileName = fileName.substring(0, fileName.lastIndexOf('.'));
     String[] parts = fileName.split("_");
     for (int i = 0; i < parts.length - 1; i++)
-    {
     	parts[i] = parts[i].substring(0, parts[i].length() - 1);
-    	System.out.println(parts[i]);
-    }
     this.id = parts[2];
     this.players = new Player[2];
     for (int i = 0, p = 0; i < replay.replayHeader.playerNames.length; i++)
     {
       if (replay.replayHeader.playerNames[i] != null
-          && (replay.replayHeader.playerNames[i].equals(parts[0])
+          && (replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[0])
               || replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[1])))
       {
-        System.out.println("Player: " +  replay.replayHeader.playerNames[i]);
         this.players[p] = new Player(replay.replayHeader.playerNames[i],
+                                     replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[winner]),
                                      replay.replayHeader.playerRaces[i],
                                      replay.replayHeader.playerIdActionsCounts[replay.replayHeader.playerIds[i]],
                                      replay.replayHeader.getPlayerApm(i),
@@ -72,7 +69,7 @@ public class Match
 
         Replay replay = BinRepParser.parseReplay(new File(replayName), true, false, true, true);
         if (replay != null)
-          matches.add(new Match(files[i].getName(), replay));
+          matches.add(new Match(files[i].getName(), replay, 0));
       }
       catch (IOException e)
       {

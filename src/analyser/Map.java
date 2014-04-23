@@ -2,6 +2,9 @@ package analyser;
 
 import parser.bwhf.model.MapData;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class Map
 {
   public enum Type
@@ -88,6 +91,9 @@ public class Map
           startingGeysers++;
 
       // TODO: Set the type (regexp on the name maybe ?);
+      for (Type type : Type.class.getEnumConstants())
+        if (Pattern.compile(type.name(), Pattern.CASE_INSENSITIVE).matcher(name).find())
+          this.type = type;
     }
   }
 }

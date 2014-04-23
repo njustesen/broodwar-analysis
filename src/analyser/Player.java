@@ -20,9 +20,10 @@ public class Player
   int actionNumber;
   int actionsPerMin;
 
-  public Player(String name, byte race, int actionNumber, int actionsPerMin, List<parser.bwhf.model.Action> actions)
+  public Player(String name, boolean win, byte race, int actionNumber, int actionsPerMin, List<parser.bwhf.model.Action> actions)
   {
     this.name = name;
+    this.win = win;
     this.race = Race.class.getEnumConstants()[race];
     this.actionNumber = actionNumber;
     this.actionsPerMin = actionsPerMin;
