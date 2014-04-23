@@ -30,7 +30,7 @@ public class MatchEncoder {
 
 		 for(Match match : matches){
 			 String json = gson.toJson(match);
-			 System.out.println(json);
+			 // System.out.println(json);
 			 saveToFile(json, match.id);
 		 }
 

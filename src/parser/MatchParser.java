@@ -52,6 +52,7 @@ public class MatchParser {
 
                 List<Match> matches = new ArrayList<Match>();
                 int failed = 0;
+                int notPresent = 0;
                 for (int i = 0; i < files.length; i++) {
                         String replayName = files[i].getCanonicalPath();
                         if (! replayName.contains(".rep"))
@@ -60,15 +61,27 @@ public class MatchParser {
                         Replay replay = BinRepParser.parseReplay(new File(replayName), true, false, true, true);
                         if (replay != null) {
                                 if (winnerMap.get(files[i].getName()) == null)
+                                {
+                                        notPresent++;
                                         continue; // not present in the winner file
+                                }
                                 // replay.replayHeader.printHeaderInformation(new PrintWriter(System.out));
-                                matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+
+                                try {
+                                        matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+                                } catch (Exception e){
+                                        System.out.println(e.getMessage());
+                                        e.printStackTrace();
+                                        failed++;
+                                        System.out.println( "Could not parse " + replayName + "!" );
+                                }
                         } else {
                                 failed++;
                                 System.out.println( "Could not parse " + replayName + "!" );
                         }
                 }
                 System.out.println("Replays parsed: " + matches.size());
+                System.out.println("Replays no present in winner file: " + notPresent);
                 System.out.println("Replays not parsed: " + failed);
 
                 return matches;
