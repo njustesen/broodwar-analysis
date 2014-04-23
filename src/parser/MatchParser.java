@@ -24,13 +24,13 @@ public class MatchParser {
 		try {
 			List<Match> matches = new MatchParser().parse();
 
-			new MatchEncoder().encode(matches);
+			// new MatchEncoder().encode(matches);
 
-			List<Match> decodedMatches = new MatchDecoder().decode();
+			// List<Match> decodedMatches = new MatchDecoder().decode();
 
-			for(Match match : decodedMatches){
-				System.out.println(match.getId());
-			}
+			// for(Match match : decodedMatches){
+			// 	System.out.println(match.getId());
+			// }
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -61,7 +61,7 @@ public class MatchParser {
                         if (replay != null) {
                                 if (winnerMap.get(files[i].getName()) == null)
                                         continue; // not present in the winner file
-                                replay.replayHeader.printHeaderInformation(new PrintWriter(System.out));
+                                // replay.replayHeader.printHeaderInformation(new PrintWriter(System.out));
                                 matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
                         } else {
                                 failed++;

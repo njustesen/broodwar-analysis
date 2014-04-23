@@ -21,8 +21,6 @@ public class Match
 
   public Match(String fileName, Replay replay, int winner)
   {
-    // TODO: get the winner
-
     fileName = fileName.substring(0, fileName.lastIndexOf('.'));
     String[] parts = fileName.split("_");
     for (int i = 0; i < parts.length - 1; i++)
@@ -32,11 +30,13 @@ public class Match
     for (int i = 0, p = 0; i < replay.replayHeader.playerNames.length; i++)
     {
       if (replay.replayHeader.playerNames[i] != null
-          && (replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[0])
-              || replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[1])))
+          && (replay.replayHeader.playerNames[i].contains(parts[0])
+              || replay.replayHeader.playerNames[i].contains(parts[1])
+              || replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[0])
+              || replay.replayHeader.playerNames[i].replaceAll(" ", "").replaceAll("[^\\x00-\\x7F]", "").contains(parts[1])))
       {
         this.players[p] = new Player(replay.replayHeader.playerNames[i],
-                                     replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[winner]),
+                                     replay.replayHeader.playerNames[i].contains(parts[winner]),
                                      replay.replayHeader.playerRaces[i],
                                      replay.replayHeader.playerIdActionsCounts[replay.replayHeader.playerIds[i]],
                                      replay.replayHeader.getPlayerApm(i),
@@ -44,6 +44,7 @@ public class Match
         p++;
       }
     }
+
     this.map = new Map(replay.replayHeader.mapName,
                        replay.replayHeader.mapWidth,
                        replay.replayHeader.mapHeight,
