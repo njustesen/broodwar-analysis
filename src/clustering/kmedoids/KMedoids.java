@@ -28,18 +28,23 @@ public class KMedoids {
 		List<KMedoidCluster> clusters = null;
 		while(true){
 		
-			// Assigne to clusters
+			// Assign to clusters
 			clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(points, medoids));
 			
 			// Test new configurations
-			List<KMedoidPoint> bestConfig = medoids;
-			double lowestCost = cost(clusters, medoids);
+			List<KMedoidPoint> bestConfig = new ArrayList<KMedoidPoint>();
+			medoids.clear();
+			for(KMedoidCluster cluster : clusters)
+				medoids.add(cluster.getMedoid());
+			bestConfig = medoids;
+			double lowestCost = cost(clusters);
 			for(KMedoidPoint medoid : medoids){
-				for(KMedoidPoint KMedoidPoint : medoids){
-					if (KMedoidPoint == medoid)
+				for(KMedoidPoint point : points){
+					if (medoids.contains(point))
 						continue;
-					List<KMedoidPoint> swap = swap(medoids, medoid, KMedoidPoint);
-					double cost = cost(clusters, swap);
+					List<KMedoidPoint> swap = swap(medoids, medoid, point);
+					clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(points, swap));
+					double cost = cost(clusters);
 					if (cost < lowestCost){
 						lowestCost = cost;
 						bestConfig = swap;
@@ -50,11 +55,12 @@ public class KMedoids {
 			// 5	Repeat steps 2 to 4 until there is no change in the medoid.
 			if (!same(medoids, bestConfig)){
 				medoids = bestConfig;
+				System.out.println("\tlowest cost: " + lowestCost);
 			} else {
+				clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(points, medoids));
 				break;
 			}
 		}
-		
 		return clusters;
 		
 	}
@@ -70,14 +76,12 @@ public class KMedoids {
 		return true;
 	}
 
-	private double cost(List<KMedoidCluster> clusters, List<KMedoidPoint> medoids) {
+	private double cost(List<KMedoidCluster> clusters) {
 		
 		double cost = 0;
-		int i = 0;
 		for(KMedoidCluster cluster : clusters){
-			KMedoidPoint standInMedoid = medoids.get(i);
-			for(KMedoidPoint KMedoidPoint : cluster.members){
-				cost += KMedoidPoint.distance(standInMedoid);
+			for(KMedoidPoint point : cluster.getMembers()){
+				cost += point.distance(cluster.getMedoid());
 			}
 		}
 		
@@ -85,34 +89,38 @@ public class KMedoids {
 	}
 
 
-	private List<KMedoidPoint> swap(List<KMedoidPoint> medoids, KMedoidPoint medoid, KMedoidPoint KMedoidPoint) {
+	private List<KMedoidPoint> swap(List<KMedoidPoint> medoids, KMedoidPoint medoid, KMedoidPoint point) {
 		List<KMedoidPoint> newMedoids = new ArrayList<KMedoidPoint>();
-		newMedoids.add(KMedoidPoint);
 		for(KMedoidPoint m : medoids){
 			if (m != medoid)
 				newMedoids.add(m);
+			else
+				newMedoids.add(point);
 		}
 		return newMedoids;
 	}
 
-	private Collection<KMedoidCluster> clusterToMedoids(List<KMedoidPoint> KMedoidPoints, List<KMedoidPoint> medoids) {
+	private Collection<KMedoidCluster> clusterToMedoids(List<KMedoidPoint> points, List<KMedoidPoint> medoids) {
 		
 		// Create clusters with medoids
 		Map<KMedoidPoint, KMedoidCluster> medoidClusters = new HashMap<KMedoidPoint, KMedoidCluster>();
 		for(KMedoidPoint medoid : medoids){
 			medoidClusters.put(medoid, new KMedoidCluster(medoid));
+			//medoidClusters.get(medoid).getMembers().add(medoid);
 		}
 
 		// Assign to clusters
-		for(KMedoidPoint KMedoidPoint : KMedoidPoints){
+		for(KMedoidPoint point : points){
 			KMedoidPoint closestMedoid = null;
 			double closestDistance = Double.MAX_VALUE;
 			for(KMedoidPoint medoid : medoids){
-				if (KMedoidPoint.distance(medoid) < closestDistance){
+				double distance = point.distance(medoid);
+				if (distance < closestDistance){
 					closestMedoid = medoid; 
+					closestDistance = distance;
 				}
 			}
-			medoidClusters.get(closestMedoid).getMembers().add(KMedoidPoint);
+			medoidClusters.get(closestMedoid).getMembers().add(point);
 		}
 		
 		return medoidClusters.values();

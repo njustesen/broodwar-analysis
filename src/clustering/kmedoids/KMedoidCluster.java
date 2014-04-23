@@ -5,8 +5,8 @@ import java.util.List;
 
 public class KMedoidCluster {
 
-	KMedoidPoint medoid;
-	List<KMedoidPoint> members;
+	private KMedoidPoint medoid;
+	private List<KMedoidPoint> members;
 	
 	public KMedoidCluster(KMedoidPoint medoid, List<KMedoidPoint> members) {
 		super();
