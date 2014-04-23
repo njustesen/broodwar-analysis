@@ -1,7 +1,3 @@
-/parser
-/ID3
-/analyser
 /clustering
-/crawler
-/json
 /kmedoids
+/upgma

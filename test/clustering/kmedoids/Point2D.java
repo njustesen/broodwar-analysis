@@ -1,8 +1,9 @@
-package kmedoids;
+package clustering.kmedoids;
 
-import clustering.kmedoids.KMedoidPoint;
+import clustering.ClusterPoint;
 
-public class Point2D implements KMedoidPoint {
+
+public class Point2D implements ClusterPoint {
 
 	private double x;
 	private double y;
@@ -14,7 +15,7 @@ public class Point2D implements KMedoidPoint {
 	}
 
 	@Override
-	public double distance(KMedoidPoint other) {
+	public double distance(ClusterPoint other) {
 		
 		if (!(other instanceof Point2D))
 			return Double.MAX_VALUE;

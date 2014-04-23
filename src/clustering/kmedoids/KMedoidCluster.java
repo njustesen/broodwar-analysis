@@ -3,36 +3,38 @@ package clustering.kmedoids;
 import java.util.ArrayList;
 import java.util.List;
 
+import clustering.ClusterPoint;
+
 public class KMedoidCluster {
 
-	private KMedoidPoint medoid;
-	private List<KMedoidPoint> members;
+	private ClusterPoint medoid;
+	private List<ClusterPoint> members;
 	
-	public KMedoidCluster(KMedoidPoint medoid, List<KMedoidPoint> members) {
+	public KMedoidCluster(ClusterPoint medoid, List<ClusterPoint> members) {
 		super();
 		this.medoid = medoid;
 		this.members = members;
 	}
 	
-	public KMedoidCluster(KMedoidPoint medoid) {
+	public KMedoidCluster(ClusterPoint medoid) {
 		super();
 		this.medoid = medoid;
-		this.members = new ArrayList<KMedoidPoint>();
+		this.members = new ArrayList<ClusterPoint>();
 	}
 
-	public KMedoidPoint getMedoid() {
+	public ClusterPoint getMedoid() {
 		return medoid;
 	}
 
-	public void setMedoid(KMedoidPoint medoid) {
+	public void setMedoid(ClusterPoint medoid) {
 		this.medoid = medoid;
 	}
 
-	public List<KMedoidPoint> getMembers() {
+	public List<ClusterPoint> getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<KMedoidPoint> members) {
+	public void setMembers(List<ClusterPoint> members) {
 		this.members = members;
 	}
 	

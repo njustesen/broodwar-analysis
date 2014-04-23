@@ -1,18 +1,19 @@
-package kmedoids;
+package clustering.upgma;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import clustering.ClusterPoint;
 import clustering.kmedoids.KMedoidCluster;
-import clustering.kmedoids.KMedoidPoint;
 import clustering.kmedoids.KMedoids;
+import clustering.kmedoids.Point2D;
 
-public class KMedoidsTest {
+public class UpgmaTest {
 
 	
 	public static void main(String[] args) {
 		
-		List<KMedoidPoint> points = new ArrayList<KMedoidPoint>();
+		List<ClusterPoint> points = new ArrayList<ClusterPoint>();
 		points.add(new Point2D(0,0));
 		points.add(new Point2D(1,0));
 		points.add(new Point2D(2,0));
@@ -240,11 +241,14 @@ public class KMedoidsTest {
 		points.add(new Point2D(23,4));
 		points.add(new Point2D(22,3));
 		 
-		List<KMedoidCluster> clusters = new KMedoids(3).cluster(points);
+		UPGMA upgma = new UPGMA();
+		upgma.init(points);
 		
-		for(KMedoidCluster cluster : clusters){
+		List<List<ClusterPoint>> clusters = upgma.getClusters(3);
+		
+		for(List<ClusterPoint> cluster : clusters){
 			System.out.println("Cluster");
-			for(KMedoidPoint point : cluster.getMembers()){
+			for(ClusterPoint point : cluster){
 				System.out.println(((Point2D)point));
 			}
 		}
