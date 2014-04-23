@@ -45,7 +45,6 @@ public class Player
       }
     }
   }
-<<<<<<< HEAD
   
   public Player(String name, boolean win, Race race, int actionNumber, int actionsPerMin, List<Action> actions)
   {
@@ -105,8 +104,4 @@ public void setActionsPerMin(int actionsPerMin) {
 	this.actionsPerMin = actionsPerMin;
 }
 
-
-
-=======
->>>>>>> b46bcbda54f776f266023b3cdfbf58ddef3163c7
 }
