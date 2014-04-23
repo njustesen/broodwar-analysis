@@ -38,27 +38,27 @@ public class BuildOrderDistance {
 		int n = t.size();
 		
 		//declare int d[0..m, 0..n]
-		int[][] d = new int[m+1][n+1];		
+		double[][] d = new double[m+1][n+1];		
 	  
 		//for i from 0 to m
-		for(int i = 0; i < m; i++){
+		for(int i = 0; i <= m; i++){
 			//d[i, 0] := i // the distance of any first string to an empty second string
 			d[i][0] = i;
 		}
 		
 		//for j from 0 to n
-		for(int j = 0; j < m; j++){
+		for(int j = 0; j <= m; j++){
 			//d[0, j] := j // the distance of any second string to an empty first string
 			d[0][j] = j;
 		}
 		
 		//for j from 1 to n
-		for(int j = 1; j < n; j++){
+		for(int j = 1; j <= n; j++){
 		    //for i from 1 to m
-			for(int i = 1; i < m; i++){
+			for(int i = 1; i <= m; i++){
 		    	
 				//if s[i] = t[j] then  
-				if (s.get(i).actionType == t.get(j).actionType){
+				if (s.get(i-1).actionType == t.get(j-1).actionType){
 					// d[i, j] := d[i-1, j-1]       // no operation required
 					d[i][j] = d[i-1][j-1];
 				} else {
@@ -69,14 +69,17 @@ public class BuildOrderDistance {
                     //d[i, j-1] + 1,  // an insertion
                     //d[i-1, j-1] + 1 // a substitution
 					//)
-					int deletion = d[i-1][j] + 1;
-					int insertion = d[i][j-1] + 1;
-					int substitution = d[i-1][j] + 1;
+					double deletion = d[i-1][j] + 1;
+					double insertion = d[i][j-1] + 1;
+					double substitution = d[i-1][j-1] + 1;
 					d[i][j] = deletion;
 					if (insertion < d[i][j])
 						d[i][j] = insertion;
 					if (substitution < d[i][j])
 						d[i][j] = substitution;
+					
+					// Add discount
+					d[i][j] = d[i][j] * (discountRate * n/j);
 				}
 			}
 		}
