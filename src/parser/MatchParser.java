@@ -24,7 +24,7 @@ public class MatchParser {
 		try {
 			List<Match> matches = new MatchParser().parse();
 
-			// new MatchEncoder().encode(matches);
+			new MatchEncoder().encode(matches);
 
 			// List<Match> decodedMatches = new MatchDecoder().decode();
 
@@ -40,10 +40,8 @@ public class MatchParser {
 	}
 
 	public List<Match> parse() throws IOException {
-                List<Match> matches = new ArrayList<Match>();
                 File folder = new File("replays/BW/");
                 File[] files = folder.listFiles();
-                int failed = 0;
 
                 Map<String, Integer> winnerMap = new HashMap<String, Integer>(files.length);
                 BufferedReader winnerReader = new BufferedReader(new FileReader(("replays/winners.csv")));
@@ -52,6 +50,9 @@ public class MatchParser {
                         winnerMap.put(line.substring(0, line.substring(0, line.length() -1).lastIndexOf(";")),
                                       Integer.parseInt(line.substring(line.substring(0, line.length() -1).lastIndexOf(";") + 1, line.length() -1)));
 
+                List<Match> matches = new ArrayList<Match>();
+                int failed = 0;
+                int notPresent = 0;
                 for (int i = 0; i < files.length; i++) {
                         String replayName = files[i].getCanonicalPath();
                         if (! replayName.contains(".rep"))
@@ -60,15 +61,27 @@ public class MatchParser {
                         Replay replay = BinRepParser.parseReplay(new File(replayName), true, false, true, true);
                         if (replay != null) {
                                 if (winnerMap.get(files[i].getName()) == null)
+                                {
+                                        notPresent++;
                                         continue; // not present in the winner file
+                                }
                                 // replay.replayHeader.printHeaderInformation(new PrintWriter(System.out));
-                                matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+
+                                try {
+                                        matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+                                } catch (Exception e){
+                                        System.out.println(e.getMessage());
+                                        e.printStackTrace();
+                                        failed++;
+                                        System.out.println( "Could not parse " + replayName + "!" );
+                                }
                         } else {
                                 failed++;
                                 System.out.println( "Could not parse " + replayName + "!" );
                         }
                 }
                 System.out.println("Replays parsed: " + matches.size());
+                System.out.println("Replays no present in winner file: " + notPresent);
                 System.out.println("Replays not parsed: " + failed);
 
                 return matches;

@@ -8,7 +8,6 @@ import analyser.Player.Race;
 
 public class Action
 {
-  private static final int UPGRADE_OFFSET = 0;
   private static final Map<String, Integer> UPGRADE_MAP = new HashMap<String, Integer>();
   static {
     UPGRADE_MAP.put("Terran Infantry Armor", 0);
@@ -63,7 +62,6 @@ public class Action
     UPGRADE_MAP.put("Charon Boosters (Goliath Range)", 49);
   }
 
-  private static final int RESEARCH_OFFSET = 50;
   private static final Map<String, Integer> RESEARCH_MAP = new HashMap<String, Integer>();
   static {
     RESEARCH_MAP.put("Stim Pack", 0);
@@ -92,7 +90,10 @@ public class Action
     RESEARCH_MAP.put("Lurker Aspect", 23);
   }
 
+  private static final int UPGRADE_OFFSET = 0;
+  private static final int RESEARCH_OFFSET = 50;
   private static final int UNIT_OFFSET = 74;
+
   public enum ActionType
   {
     // upgardes
@@ -147,7 +148,7 @@ public class Action
     AnabolicSynthesis,
     CharonBoosters,
 
-    // researches - 50
+    // researches - offset: 50
     StimPack,
     Lockdown,
     EMPShockwave,
@@ -173,39 +174,39 @@ public class Action
     Maelstorm,
     LurkerAspect,
 
-    // units - 74
+    // units - offset: 74
     Marine,
     Ghost,
     Vulture,
     Goliath,
     GoliathTurret,
-    SiegeTank,
-    SiegeTankTurret1,
+    SiegeTank_TankMode,
+    SiegeTankTurret_TankMode,
     SCV,
     Wraith,
     ScienceVessel,
-    GuiMotang,
+    GuiMotang_FireBat,
     Dropship,
     Battlecruiser,
     SpiderMine,
     NuclearMissile,
     TerranCivilian,
-    SarahKerrigan,
-    AlanSchezar,
+    SarahKerrigan_Ghost,
+    AlanSchezar_Goliath,
     AlanSchezarTurret,
-    JimRaynor1,
-    JimRaynor2,
-    TomKazansky,
-    Magellan,
-    EdmundDuke1,
-    EdmundDukeTurret1,
-    EdmundDuke2,
-    EdmundDukeTurret2,
-    ArcturusMengsk,
-    Hyperion,
-    NoradII1,
-    TerranSiegeTank,
-    SiegeTankTurret2,
+    JimRaynor_Vulture,
+    JimRaynor_Marine,
+    TomKazansky_Wraist,
+    Magellan_ScienceVessel,
+    EdmundDuke_TankMode,
+    EdmundDukeTurret_TankMode,
+    EdmundDuke_SiegeMode,
+    EdmundDukeTurret_SiegeMode,
+    ArcturusMengsk_BattleCruiser,
+    Hyperion_BattleCruiser,
+    NoradII_BattleCruiser,
+    TerranSiegeTank_SiegeMode,
+    SiegeTankTurret_SiegeMode,
     Firebat,
     ScannerSweep,
     Medic,
@@ -221,16 +222,16 @@ public class Action
     Queen,
     Defiler,
     Scourge,
-    Torrasque,
-    Matriarch,
+    Torrasque_Ultralisk,
+    Matriarch_Queen,
     InfestedTerran,
-    InfestedKerrigan,
-    UncleanOne,
-    HunterKiller,
-    DevouringOne,
-    Kukulza1,
-    Kukulza2,
-    Yggdrasill,
+    InfestedKerrigan_InfestedTerran,
+    UncleanOne_Defiler,
+    HunterKiller_Hydralisk,
+    DevouringOne_Zergling,
+    Kukulza_Mutalisk,
+    Kukulza_Guardian,
+    Yggdrasill_Overlord,
     Valkyrie,
     MutaliskCocoon,
     Corsair,
@@ -247,37 +248,37 @@ public class Action
     Arbiter,
     Carrier,
     Interceptor,
-    ProtossDarkTemplar,
-    Zeratul,
-    TassadarZeratul,
-    Fenix1,
-    Fenix2,
-    Tassadar,
-    Mojo,
-    Warbringer,
-    Gantrithor,
+    ProtossDarkTemplar_Hero,
+    Zeratul_DarkTemplar,
+    TassadarZeratul_Archon,
+    Fenix_Zealot,
+    Fenix_Dragoon,
+    Tassadar_Templar,
+    Mojo_Scout,
+    Warbringer_Reaver,
+    Gantrithor_Carrier,
     Reaver,
     Observer,
     Scarab,
-    Danimoth,
-    Aldaris,
-    Artanis,
-    Rhynadon,
-    Bengalaas,
-    CargoShip,
-    MercenaryGunship,
-    Scantid,
-    Kakaru,
-    Ragnasaur,
-    Ursadon,
+    Danimoth_Arbiter,
+    Aldaris_Templar,
+    Artanis_Scout,
+    Rhynadon_BadlandsCritter,
+    Bengalaas_JungleCritter,
+    CargoShip_Unused,
+    MercenaryGunship_Unused,
+    Scantid_DesertCritter,
+    Kakaru_TwilightCritter,
+    Ragnasaur_AshworldCritter,
+    Ursadon_IceWorldCritter,
     LurkerEgg,
-    Raszagal,
-    SamirDuran,
-    AlexeiStukov,
+    Raszagal_Corsair,
+    SamirDuran_Ghost,
+    AlexeiStukov_Ghost,
     MapRevealer,
-    GerardDuGalle,
+    GerardDuGalle_BattleCruiser,
     Lurker,
-    InfestedDuran,
+    InfestedDuran_InfestedTerran,
     DisruptionWeb,
     CommandCenter,
     ComSat,
@@ -293,7 +294,7 @@ public class Action
     CovertOps,
     PhysicsLab,
     MachineShop,
-    RepairBay,
+    RepairBay_Unused,
     EngineeringBay,
     Armory,
     MissileTurret,
@@ -319,7 +320,7 @@ public class Action
     SporeColony,
     UnusedZergBuilding1,
     SunkenColony,
-    ZergOvermind,
+    ZergOvermind_WithShell,
     Overmind,
     Extractor,
     MatureChrysalis,
@@ -348,18 +349,18 @@ public class Action
     KhaydarinCrystalFormation1,
     ProtossTemple,
     XelNagaTemple,
-    MineralField1,
-    MineralField2,
-    MineralField3,
-    Cave,
-    CaveIn,
-    Cantina,
-    MiningPlatform,
-    IndependentCommandCenter,
-    IndependentStarport,
-    IndependentJumpGate,
-    Ruins,
-    KhaydarinCrystalFormation2,
+    MineralField_Type1,
+    MineralField_Type2,
+    MineralField_Type3,
+    Cave_Unused,
+    CaveIn_Unused,
+    Cantina_Unused,
+    MiningPlatform_Unused,
+    IndependentCommandCenter_Unused,
+    IndependentStarport_Unused,
+    IndependentJumpGate_Unused,
+    Ruins_Unused,
+    KhaydarinCrystalFormation_Unused,
     VespeneGeyser,
     WarpGate,
     PsiDisrupter,
@@ -376,7 +377,7 @@ public class Action
     OvermindCocoon,
     DarkSwarm,
     FloorMissileTrap,
-    FloorHatch,
+    FloorHatch_Unused,
     LeftUpperLevelDoor,
     RightUpperLevelDoor,
     LeftPitDoor,
@@ -425,19 +426,17 @@ public class Action
       actionType = ActionType.class.getEnumConstants()[UNIT_OFFSET + action.parameterBuildingNameIndex];
       type = Type.Building;
     }
-
-    if (action.actionNameIndex == 0x1f || action.actionNameIndex == 0x23) // train
+    else if (action.actionNameIndex == 0x1f || action.actionNameIndex == 0x23) // train
     {
       actionType = ActionType.class.getEnumConstants()[UNIT_OFFSET + action.parameterUnitNameIndex];
       type = Type.Unit;
     }
-    if (action.actionNameIndex == 0x30) // reserch
+    else if (action.actionNameIndex == 0x30) // reserch
     {
       actionType = ActionType.class.getEnumConstants()[RESEARCH_OFFSET + RESEARCH_MAP.get(action.parameters)];
       type = Type.Research;
     }
-
-    if (action.actionNameIndex == 0x32) // upgrade
+    else if (action.actionNameIndex == 0x32) // upgrade
     {
       actionType = ActionType.class.getEnumConstants()[UPGRADE_OFFSET + UPGRADE_MAP.get(action.parameters)];
       type = Type.Upgrade;

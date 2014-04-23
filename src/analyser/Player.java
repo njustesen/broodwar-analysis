@@ -13,12 +13,12 @@ public class Player
     Protoss
   };
 
-  boolean win;
-  Race race;
-  String name;
-  List<Action> actions;
-  int actionNumber;
-  int actionsPerMin;
+  public boolean win;
+  public Race race;
+  public String name;
+  public List<Action> actions;
+  public int actionNumber;
+  public int actionsPerMin;
 
   public Player(String name, boolean win, byte race, int actionNumber, int actionsPerMin, List<parser.bwhf.model.Action> actions)
   {
@@ -45,6 +45,7 @@ public class Player
       }
     }
   }
+<<<<<<< HEAD
   
   public Player(String name, boolean win, Race race, int actionNumber, int actionsPerMin, List<Action> actions)
   {
@@ -106,4 +107,6 @@ public void setActionsPerMin(int actionsPerMin) {
 
 
 
+=======
+>>>>>>> b46bcbda54f776f266023b3cdfbf58ddef3163c7
 }
