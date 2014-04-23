@@ -34,19 +34,16 @@ public class Match
     this.players = new Player[2];
     for (int i = 0, p = 0; i < replay.replayHeader.playerNames.length; i++)
     {
-      System.out.print("Player: ");
-      System.out.println(replay.replayHeader.playerNames[i]);
       if (replay.replayHeader.playerNames[i] != null
           && (replay.replayHeader.playerNames[i].equals(parts[0])
-              || replay.replayHeader.playerNames[i].equals(parts[1])))
+              || replay.replayHeader.playerNames[i].substring(0, Math.min(replay.replayHeader.playerNames[i].length(), 10)).equals(parts[1])))
       {
-        System.out.print("Player found: ");
-        System.out.println(replay.replayHeader.playerNames[p]);
+        System.out.println("Player: " +  replay.replayHeader.playerNames[i]);
         this.players[p] = new Player(replay.replayHeader.playerNames[i],
-                                       replay.replayHeader.playerRaces[i],
-                                       replay.replayHeader.playerIdActionsCounts[p],
-                                       replay.replayHeader.getPlayerApm(i),
-                                       replay.replayActions.players[p].actions);
+                                     replay.replayHeader.playerRaces[i],
+                                     replay.replayHeader.playerIdActionsCounts[replay.replayHeader.playerIds[i]],
+                                     replay.replayHeader.getPlayerApm(i),
+                                     replay.replayActions.playerNameActionListMap.get(replay.replayHeader.playerNames[i]));
         p++;
       }
     }
