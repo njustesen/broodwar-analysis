@@ -1,10 +1,20 @@
 package clustering.editdistance;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import domain.cost.CostMap;
+
 import analyser.Action;
+import analyser.Action.Type;
 import analyser.Player;
 
+/**
+ * Wagner–Fisher algorithm for calculating the edit distance for two build orders.
+ * 
+ * @author Niels
+ *
+ */
 public class BuildOrderDistance {
 
 	double discountRate;
@@ -25,13 +35,16 @@ public class BuildOrderDistance {
 	
 	public double distance(Player a, Player b){
 		
+		List<Action> buildOrderA = buildOrder(a);
+		List<Action> buildOrderB = buildOrder(b);
+		
 		// for all i and j, d[i,j] will hold the Levenshtein distance between
 		// the first i characters of s and the first j characters of t;
 		// note that d has (m+1)x(n+1) values
 		
 		// s and t
-		List<Action> s = a.getActions();
-		List<Action> t = b.getActions();
+		List<Action> s = buildOrderA;
+		List<Action> t = buildOrderB;
 		
 		// m and n
 		int m = s.size();
@@ -69,9 +82,14 @@ public class BuildOrderDistance {
                     //d[i, j-1] + 1,  // an insertion
                     //d[i-1, j-1] + 1 // a substitution
 					//)
+					double costA = cost(s.get(i-1));
+					double costB = cost(t.get(j-1));
 					double deletion = d[i-1][j] + 1;
+					deletion = deletion + costA-1;
 					double insertion = d[i][j-1] + 1;
+					insertion = insertion + costB -1;
 					double substitution = d[i-1][j-1] + 1;
+					substitution = substitution + avg(costA,costB) -1;
 					d[i][j] = deletion;
 					if (insertion < d[i][j])
 						d[i][j] = insertion;
@@ -87,6 +105,34 @@ public class BuildOrderDistance {
 		//return d[m,n]
 		return d[m][n];
 		
+	}
+
+	private double avg(double a, double b) {
+		return (a + b) / 2;
+	}
+
+	private double cost(Action action) {
+		if (CostMap.costs.containsKey(action.actionType))
+			return  CostMap.costs.get(action.actionType).getMinerals() + 
+					CostMap.costs.get(action.actionType).getGas();
+		return -1;
+	}
+
+	private List<Action> buildOrder(Player a) {
+		List<Action> actions = new ArrayList<Action>();
+		
+		for(Action action : a.getActions()){
+			if (action.type == Type.Building && buildings)
+				actions.add(action);	
+			if (action.type == Type.Unit && units)
+				actions.add(action);	
+			if (action.type == Type.Research && research)
+				actions.add(action);	
+			if (action.type == Type.Upgrade && upgrades)
+				actions.add(action);	
+		}
+		
+		return actions;
 	}
 
 	public double getDiscountRate() {

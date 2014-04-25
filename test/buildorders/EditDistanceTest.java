@@ -9,6 +9,7 @@ import analyser.Player;
 import analyser.Action.ActionType;
 import analyser.Player.Race;
 import clustering.editdistance.BuildOrderDistance;
+import domain.naming.BuildOrderNamer;
 
 public class EditDistanceTest {
 
@@ -23,6 +24,8 @@ public class EditDistanceTest {
 		testOneOff3();
 		
 		testOneOff6();
+		
+		testTwosOff();
 		
 		testFiveOff();
 		
@@ -54,7 +57,13 @@ public class EditDistanceTest {
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 
 	private static void testOneOff() {
@@ -83,7 +92,13 @@ public class EditDistanceTest {
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 	
 	private static void testOneOff2() {
@@ -112,7 +127,13 @@ public class EditDistanceTest {
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 	
 	private static void testOneOff3() {
@@ -141,7 +162,13 @@ public class EditDistanceTest {
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 	
 	private static void testOneOff6() {
@@ -162,7 +189,7 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 5, ActionType.Gateway, Type.Unit));
-		actionsB.add(new Action(Race.Protoss, 6, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 6, ActionType.Pylon, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 7, ActionType.Pylon, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 8, ActionType.Probe, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
@@ -170,7 +197,48 @@ public class EditDistanceTest {
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
+	}
+	
+	private static void testTwosOff() {
+		List<Action> actionsA = new ArrayList<Action>();
+		actionsA.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 2, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 5, ActionType.Gateway, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 6, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 7, ActionType.Zealot, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 8, ActionType.Zealot, Type.Unit));
+		Player a = new Player("Player a", true, Race.Protoss,actionsA.size(),111,actionsA);
+		
+		List<Action> actionsB = new ArrayList<Action>();
+		actionsB.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 2, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 5, ActionType.Gateway, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 6, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 7, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 8, ActionType.Dragoon, Type.Unit));
+		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
+		
+		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
+		double distance = bod.distance(a, b);
+		
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 	
 	private static void testFiveOff() {
@@ -181,25 +249,33 @@ public class EditDistanceTest {
 		actionsA.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 5, ActionType.Gateway, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 6, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 7, ActionType.Probe, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 7, ActionType.Pylon, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 8, ActionType.Zealot, Type.Unit));
 		Player a = new Player("Player a", true, Race.Protoss,actionsA.size(),111,actionsA);
 		
 		List<Action> actionsB = new ArrayList<Action>();
-		actionsB.add(new Action(Race.Protoss, 1, ActionType.Dragoon, Type.Unit));
-		actionsB.add(new Action(Race.Protoss, 2, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 2, ActionType.Probe, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
-		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 5, ActionType.Gateway, Type.Unit));
-		actionsB.add(new Action(Race.Protoss, 6, ActionType.Dragoon, Type.Unit));
-		actionsB.add(new Action(Race.Protoss, 7, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 6, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 7, ActionType.Pylon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 7, ActionType.Probe, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 8, ActionType.Zealot, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
 		BuildOrderDistance bod = new BuildOrderDistance(0.9, true, true, true, true);
 		double distance = bod.distance(a, b);
 		
-		System.out.println(distance);
+		System.out.println("------------------------");
+		System.out.println(BuildOrderNamer.name(actionsA, "\n"));
+		System.out.println("------");
+		System.out.println(BuildOrderNamer.name(actionsB, "\n"));
+		System.out.println("------");
+		System.out.println("Distance: " + distance);
+		System.out.println("------");
 	}
 	
 }
