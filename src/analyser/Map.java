@@ -60,14 +60,14 @@ public class Map
     Big_Game_Hunters
   };
 
-  String name;
-  Type type;
-  short[] size;
-  int starts;
-  int geysers;
-  int minerals;
-  int startingGeysers;
-  int startingMinerals;
+  public String name;
+  public Type type;
+  public short[] size;
+  public int starts;
+  public int geysers;
+  public int minerals;
+  public int startingGeysers;
+  public int startingMinerals;
 
 
   public Map(String name, short x, short y, MapData map)

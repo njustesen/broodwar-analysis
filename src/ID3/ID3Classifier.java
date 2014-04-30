@@ -11,6 +11,8 @@ import json.MatchDecoder;
 import analyser.Action;
 import analyser.Match;
 import analyser.Player;
+import analyser.Map.Type;
+import analyser.Player.Race;
 
 import parser.bwhf.model.Replay;
 
@@ -22,7 +24,7 @@ public class ID3Classifier {
 	public static void main(String[] args){
 		
 		try {
-			List<Match> matches = new MatchDecoder().decode();
+			List<Match> matches = new MatchDecoder().decode(1000, Race.Terran, Type.Andromeda);
 			ID3Classifier id3c = new ID3Classifier(matches);
 		}
 		catch (IOException e) {e.printStackTrace();}

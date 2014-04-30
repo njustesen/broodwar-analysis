@@ -136,7 +136,7 @@ private List<Action> selectActions(boolean units, boolean buildings, boolean res
 @Override
 public double distance(ClusterPoint other) {
 	
-	return new BuildOrderDistance(false, true, true, true, false, 10).distance((Player)other,this,10);
+	return new BuildOrderDistance(true, true, true, true, false, 10).distance((Player)other,this,30);
 }
 
 }

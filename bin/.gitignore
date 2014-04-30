@@ -1,8 +1,5 @@
-/ID3
-/analyser
-/buildorders
 /clustering
-/json
-/parser
-/apriori
 /analysis
+/json
+/ID3
+/domain

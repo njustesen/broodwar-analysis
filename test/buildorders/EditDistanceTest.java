@@ -28,6 +28,12 @@ public class EditDistanceTest {
 		actionsA.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
 		actionsA.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsA.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
 		Player a = new Player("Player a", true, Race.Protoss,actionsA.size(),111,actionsA);
 		
 		List<Action> actionsB = new ArrayList<Action>();
@@ -35,11 +41,21 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
 		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 3, ActionType.Pylon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 1, ActionType.Probe, Type.Unit));
+		actionsB.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
 		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, true, 0);
-		double distance = bod.distance(a, b, 10);
 		
+		Long start = System.nanoTime();
+		Long startMs = System.currentTimeMillis();
+		double distance = bod.distance(a, b, 10);
+		System.out.println(System.nanoTime() - start);
+		System.out.println(System.currentTimeMillis() - startMs);
 		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
 		
 		assertTrue(distance == 0.0);

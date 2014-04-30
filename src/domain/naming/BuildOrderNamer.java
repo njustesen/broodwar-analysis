@@ -5,92 +5,69 @@ import java.util.List;
 
 import analyser.Action;
 import analyser.Action.ActionType;
+import analyser.Action.Type;
 import analyser.Player.Race;
 
 public class BuildOrderNamer {
-
-	public static String name(List<Action> actions, String sep){
+	
+	public String name(List<Action> actions, String sep){
 		
 		if (actions.isEmpty())
 			return "None";
 		
-		if (actions.get(0).race == Race.Protoss.ordinal())
-			return protossName(actions, sep);
-		if (actions.get(0).race == Race.Terran.ordinal())
-			return terranName(actions, sep);
-		if (actions.get(0).race == Race.Zerg.ordinal())
-			return zergName(actions, sep);
-		
-		return null;
-		
-	}
-
-	private static String zergName(List<Action> actions, String sep) {
-		
 		List<String> lines = new ArrayList<String>();
 		
 		int workers = 0;
 		for(Action action : actions){
-			if (action.actionType == ActionType.Drone)
+			if (action.actionType == ActionType.Drone || 
+					action.actionType == ActionType.Probe ||
+					action.actionType == ActionType.SCV )
 				workers++;
 			else
 				lines.add(workers + " " + action.actionType.name());
+				
 		}
 		
 		String all = "";
+		boolean started = false;
 		for(String line : lines){
-			all += line;
-			if (lines.indexOf(line) != lines.size()-1){
+			if (started)
 				all += sep;
-			}
-		}
-		
-		return all;
-	}
-
-	private static String terranName(List<Action> actions, String sep) {
-		
-		List<String> lines = new ArrayList<String>();
-		
-		int workers = 0;
-		for(Action action : actions){
-			if (action.actionType == ActionType.SCV)
-				workers++;
-			else
-				lines.add(workers + " " + action.actionType.name());
-		}
-		
-		String all = "";
-		for(String line : lines){
+			else 
+				started = true;
 			all += line;
-			if (lines.indexOf(line) != lines.size()-1){
-				all += sep;
-			}
-		}
-		return all;
-	}
-
-	private static String protossName(List<Action> actions, String sep) {
-		
-		List<String> lines = new ArrayList<String>();
-		
-		int workers = 0;
-		for(Action action : actions){
-			if (action.actionType == ActionType.Probe)
-				workers++;
-			else
-				lines.add(workers + " " + action.actionType.name());
 		}
 		
-		String all = "";
-		for(String line : lines){
-			all += line;
-			if (lines.indexOf(line) != lines.size()-1){
-				all += sep;
-			}
-		}
 		return all;
 		
 	}
 	
+	public String buildings(List<Action> actions, String sep, int n){
+		
+		if (actions.isEmpty())
+			return "None";
+		
+		List<String> lines = new ArrayList<String>();
+
+		for(Action action : actions){
+			if (action.type == Type.Building)
+				lines.add(action.actionType.name());
+			if (lines.size() >= n)
+				break;
+		}
+		
+		String all = "";
+		boolean started = false;
+		for(String line : lines){
+			if (started)
+				all += sep;
+			else 
+				started = true;
+			all += line;
+		}
+		
+		return all;
+		
+	}
+
 }

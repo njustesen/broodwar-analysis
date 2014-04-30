@@ -36,37 +36,37 @@ public class KMedoids {
         boolean again = true;
 
 		while (again) {
-                        again = false;
+            again = false;
 
-                        // Set the current best options
-                        List<KMedoidPoint> bestMedoids = medoids;
-                        List<KMedoidCluster> bestClusters = clusters;
+            // Set the current best options
+            List<KMedoidPoint> bestMedoids = medoids;
+            List<KMedoidCluster> bestClusters = clusters;
 			double lowestCost = cost(bestClusters);
 
 			for (KMedoidPoint medoid : medoids) {
 				for (KMedoidPoint point : kPoints) {
-                                        // Already in the current medoids, so skip it
+                    // Already in the current medoids, so skip it
 					if (medoids.contains(point))
 						continue;
-                                        // Swap current medoid and the current point
+                    // Swap current medoid and the current point
 					List<KMedoidPoint> newMedoids = swap(medoids, medoid, point);
-                                        // Generate the new clusters
+                    // Generate the new clusters
 					List<KMedoidCluster> newClusters = new ArrayList<KMedoidCluster>(clusterToMedoids(kPoints, newMedoids));
-                                        // Compute the cost of the new clusters
+                    // Compute the cost of the new clusters
 					double cost = cost(newClusters);
-                                        // Keep it if its cost the lowest
+                    // Keep it if its cost the lowest
 					if (cost < lowestCost) {
 						lowestCost = cost;
 						bestMedoids = newMedoids;
-                                                bestClusters = newClusters;
-                                                // Have change so keep going
-                                                again = true;
+                        bestClusters = newClusters;
+                        // Have change so keep going
+                        again = true;
 					}
 				}
 			}
 
-                        clusters = bestClusters;
-                        medoids = bestMedoids;
+            clusters = bestClusters;
+            medoids = bestMedoids;
 		}
 
 		return clusters;
