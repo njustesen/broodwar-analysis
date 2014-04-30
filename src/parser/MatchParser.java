@@ -22,9 +22,7 @@ public class MatchParser {
 	public static void main(String[] args) {
 
 		try {
-			List<Match> matches = new MatchParser().parse();
-
-			new MatchEncoder().encode(matches);
+			parse();
 
 			// List<Match> decodedMatches = new MatchDecoder().decode();
 
@@ -39,19 +37,19 @@ public class MatchParser {
 
 	}
 
-	public List<Match> parse() throws IOException {
-                File folder = new File("replays/BW/");
+	public static void parse() throws IOException {
+                File folder = new File("/mnt/SC/BW/");
                 File[] files = folder.listFiles();
 
                 Map<String, Integer> winnerMap = new HashMap<String, Integer>(files.length);
-                BufferedReader winnerReader = new BufferedReader(new FileReader(("replays/winners.csv")));
+                BufferedReader winnerReader = new BufferedReader(new FileReader("winners.csv"));
                 String line = winnerReader.readLine();
                 while ((line = winnerReader.readLine()) != null)
                         winnerMap.put(line.substring(0, line.substring(0, line.length() -1).lastIndexOf(";")),
                                       Integer.parseInt(line.substring(line.substring(0, line.length() -1).lastIndexOf(";") + 1, line.length() -1)));
 
-                List<Match> matches = new ArrayList<Match>();
                 int failed = 0;
+                int parsed = 0;
                 int notPresent = 0;
                 for (int i = 0; i < files.length; i++) {
                         String replayName = files[i].getCanonicalPath();
@@ -68,7 +66,8 @@ public class MatchParser {
                                 // replay.replayHeader.printHeaderInformation(new PrintWriter(System.out));
 
                                 try {
-                                        matches.add(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+                                        new MatchEncoder().encode(new Match(files[i].getName(), replay, winnerMap.get(files[i].getName())));
+                                        parsed++;
                                 } catch (Exception e){
                                         System.out.println(e.getMessage());
                                         e.printStackTrace();
@@ -80,10 +79,8 @@ public class MatchParser {
                                 System.out.println( "Could not parse " + replayName + "!" );
                         }
                 }
-                System.out.println("Replays parsed: " + matches.size());
+                System.out.println("Replays parsed: " + parsed);
                 System.out.println("Replays no present in winner file: " + notPresent);
                 System.out.println("Replays not parsed: " + failed);
-
-                return matches;
         }
 }
