@@ -25,7 +25,7 @@ public class MatchParser {
                         if (args.length < 1)
                                 parse("replays/BW/");
                         else
-                                parse(args[1]);
+                                parse(args[0]);
 
 			// List<Match> decodedMatches = new MatchDecoder().decode();
 			// for(Match match : decodedMatches){
