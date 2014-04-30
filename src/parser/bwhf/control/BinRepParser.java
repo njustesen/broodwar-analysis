@@ -49,14 +49,14 @@ public class BinRepParser {
 		int n = 0;
 		List<Match> matches = new ArrayList<Match>();
 		for ( final String replayName : replayNames ) {
-			if (!replayName.contains(".rep"))
+			if (!replayName.contains("ProbeSpam.rep"))
 				continue;
 			final Replay replay = parseReplay( new File( replayName ), true, false, true, false );
 			if ( replay != null ){
 				replay.replayHeader.printHeaderInformation( new PrintWriter( System.out ) );
 				//replay.replayHeader.
 				x++;
-				/*
+				
 				PlayerActions[] actions = replay.replayActions.players;
 				
 				for(PlayerActions player : actions){
@@ -66,7 +66,7 @@ public class BinRepParser {
 						System.out.println(action.toString(player.playerName, true));
 					}
 				}
-				*/
+				
 				//matches.add(new Match(replayName, replay));
 				
 			}else{

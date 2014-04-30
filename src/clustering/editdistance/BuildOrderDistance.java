@@ -17,20 +17,22 @@ import analyser.Player;
  */
 public class BuildOrderDistance {
 
-	double discountRate;
+	int discount;
 	boolean units;
 	boolean buildings;
 	boolean upgrades;
 	boolean research;
+	private boolean cost;
 	
-	public BuildOrderDistance(double discountRate, boolean units,
-			boolean buildings, boolean upgrades, boolean research) {
+	public BuildOrderDistance(boolean units,
+			boolean buildings, boolean upgrades, boolean research, boolean cost, int discount) {
 		super();
-		this.discountRate = discountRate;
+		this.discount = discount;
 		this.units = units;
 		this.buildings = buildings;
 		this.upgrades = upgrades;
 		this.research = research;
+		this.cost = cost;
 	}
 	
 	public double distance(Player a, Player b){
@@ -52,17 +54,20 @@ public class BuildOrderDistance {
 		
 		//declare int d[0..m, 0..n]
 		double[][] d = new double[m+1][n+1];		
-	  
+		d[0][0] = 0;
+		
 		//for i from 0 to m
-		for(int i = 0; i <= m; i++){
+		for(int i = 1; i <= m; i++){
 			//d[i, 0] := i // the distance of any first string to an empty second string
-			d[i][0] = i;
+			//d[i][0] = i;
+			d[i][0] = d[i - 1][0] +  cost(s.get(i-1));	// + cost of deletion
 		}
 		
 		//for j from 0 to n
-		for(int j = 0; j <= m; j++){
+		for(int j = 1; j <= n; j++){
 			//d[0, j] := j // the distance of any second string to an empty first string
-			d[0][j] = j;
+			//d[0][j] = j;
+			d[0][j] = d[0][j - 1] + cost(t.get(j-1));	// + cost of insertion
 		}
 		
 		//for j from 1 to n
@@ -75,21 +80,14 @@ public class BuildOrderDistance {
 					// d[i, j] := d[i-1, j-1]       // no operation required
 					d[i][j] = d[i-1][j-1];
 				} else {
-					//else
-					//d[i, j] := minimum
-					//(
-					//d[i-1, j] + 1,  // a deletion
-                    //d[i, j-1] + 1,  // an insertion
-                    //d[i-1, j-1] + 1 // a substitution
-					//)
-					double costA = cost(s.get(i-1));
-					double costB = cost(t.get(j-1));
-					double deletion = d[i-1][j] + 1;
-					deletion = deletion + costA-1;
-					double insertion = d[i][j-1] + 1;
-					insertion = insertion + costB -1;
-					double substitution = d[i-1][j-1] + 1;
-					substitution = substitution + avg(costA,costB) -1;
+					//double costA = cost(s.get(i-1));
+					//double costB = cost(t.get(j-1));
+					double deletion = d[i-1][j] + cost(s.get(i-1)); // + cost of deletion
+					//deletion = deletion + costA;
+					double insertion = d[i][j-1] + cost(t.get(j-1)); // + cost of insertion
+					//insertion = insertion + costB;
+					double substitution = d[i-1][j-1] + cost(s.get(i-1)) + cost(t.get(j-1)); // + cost of deletion and insertion
+					//substitution = substitution + avg(costA, costB);
 					d[i][j] = deletion;
 					if (insertion < d[i][j])
 						d[i][j] = insertion;
@@ -97,7 +95,8 @@ public class BuildOrderDistance {
 						d[i][j] = substitution;
 					
 					// Add discount
-					d[i][j] = d[i][j] * (discountRate * n/j);
+					if (discount != 0)
+						d[i][j] = d[i][j] * (discount/j);
 				}
 			}
 		}
@@ -112,6 +111,9 @@ public class BuildOrderDistance {
 	}
 
 	private double cost(Action action) {
+		if (!cost){
+			return 1;
+		}
 		if (CostMap.costs.containsKey(action.actionType))
 			return  CostMap.costs.get(action.actionType).getMinerals() + 
 					CostMap.costs.get(action.actionType).getGas();
@@ -135,12 +137,12 @@ public class BuildOrderDistance {
 		return actions;
 	}
 
-	public double getDiscountRate() {
-		return discountRate;
+	public int getDiscount() {
+		return discount;
 	}
 
-	public void setDiscountRate(double discountRate) {
-		this.discountRate = discountRate;
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
 	public boolean isUnits() {

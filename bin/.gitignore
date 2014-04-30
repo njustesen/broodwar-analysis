@@ -1,10 +1,6 @@
-/clustering
-/kmedoids
-/upgma
-/editdistance
-/buildorders
-/analyser
 /ID3
+/analyser
+/buildorders
+/clustering
 /json
 /parser
-/domain
