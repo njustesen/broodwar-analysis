@@ -64,6 +64,8 @@ public class BinRepParser {
 					
 					for(Action action : player.actions){
 						System.out.println(action.toString(player.playerName, true));
+						System.out.println(action.parameters);
+						
 					}
 				}
 				

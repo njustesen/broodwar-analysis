@@ -241,13 +241,7 @@ public class KMedoidsTest {
 		points.add(new Point2D(22,3));
 		 
 		List<KMedoidCluster> clusters = new KMedoids(3).cluster(points);
-		
-		for(KMedoidCluster cluster : clusters){
-			System.out.println("Cluster");
-			for(ClusterPoint point : cluster.getMembers()){
-				System.out.println(((Point2D)point));
-			}
-		}
+		System.out.println(clusters);
 		
 	}
 

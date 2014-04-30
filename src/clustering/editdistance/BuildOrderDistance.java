@@ -35,7 +35,7 @@ public class BuildOrderDistance {
 		this.cost = cost;
 	}
 	
-	public double distance(Player a, Player b){
+	public double distance(Player a, Player b, int max){
 		
 		List<Action> buildOrderA = buildOrder(a);
 		List<Action> buildOrderB = buildOrder(b);
@@ -49,8 +49,8 @@ public class BuildOrderDistance {
 		List<Action> t = buildOrderB;
 		
 		// m and n
-		int m = s.size();
-		int n = t.size();
+		int m = Math.min(max, s.size());
+		int n = Math.min(max, t.size());
 		
 		//declare int d[0..m, 0..n]
 		double[][] d = new double[m+1][n+1];		
@@ -96,7 +96,7 @@ public class BuildOrderDistance {
 					
 					// Add discount
 					if (discount != 0)
-						d[i][j] = d[i][j] * (discount/j);
+						d[i][j] = d[i][j] * (double)((double)discount/(double)j);
 				}
 			}
 		}

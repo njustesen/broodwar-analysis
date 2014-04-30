@@ -22,32 +22,36 @@ public class KMedoids {
 	}
 
 	public List<KMedoidCluster> cluster(List<ClusterPoint> points){
+		
+		List<KMedoidPoint> kPoints = new ArrayList<KMedoidPoint>();
+		for(ClusterPoint p : points)
+			kPoints.add(new KMedoidPoint(p));
 
 		// Initialize: randomly select k of the n data points as the medoids
-		List<ClusterPoint> medoids = selectKRandom(points);
+		List<KMedoidPoint> medoids = selectKRandom(kPoints);
 
 		// Associate each data point to the closest medoid. ("closest" here is defined using any valid distance metric, most commonly Euclidean distance, Manhattan distance or Minkowski distance)
-                List<KMedoidCluster> clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(points, medoids));
+        List<KMedoidCluster> clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(kPoints, medoids));
 
-                boolean again = true;
+        boolean again = true;
 
 		while (again) {
                         again = false;
 
                         // Set the current best options
-                        List<ClusterPoint> bestMedoids = medoids;
+                        List<KMedoidPoint> bestMedoids = medoids;
                         List<KMedoidCluster> bestClusters = clusters;
 			double lowestCost = cost(bestClusters);
 
-			for (ClusterPoint medoid : medoids) {
-				for (ClusterPoint point : points) {
+			for (KMedoidPoint medoid : medoids) {
+				for (KMedoidPoint point : kPoints) {
                                         // Already in the current medoids, so skip it
 					if (medoids.contains(point))
 						continue;
                                         // Swap current medoid and the current point
-					List<ClusterPoint> newMedoids = swap(medoids, medoid, point);
+					List<KMedoidPoint> newMedoids = swap(medoids, medoid, point);
                                         // Generate the new clusters
-					List<KMedoidCluster> newClusters = new ArrayList<KMedoidCluster>(clusterToMedoids(points, newMedoids));
+					List<KMedoidCluster> newClusters = new ArrayList<KMedoidCluster>(clusterToMedoids(kPoints, newMedoids));
                                         // Compute the cost of the new clusters
 					double cost = cost(newClusters);
                                         // Keep it if its cost the lowest
@@ -73,7 +77,7 @@ public class KMedoids {
 
 		double cost = 0;
 		for(KMedoidCluster cluster : clusters){
-			for(ClusterPoint point : cluster.getMembers()){
+			for(KMedoidPoint point : cluster.getMembers()){
 				cost += point.distance(cluster.getMedoid());
 			}
 		}
@@ -82,27 +86,27 @@ public class KMedoids {
 	}
 
 
-	private List<ClusterPoint> swap(List<ClusterPoint> medoids, ClusterPoint medoid, ClusterPoint point) {
-		List<ClusterPoint> newMedoids = new ArrayList<ClusterPoint>(medoids);
+	private List<KMedoidPoint> swap(List<KMedoidPoint> medoids, KMedoidPoint medoid, KMedoidPoint point) {
+		List<KMedoidPoint> newMedoids = new ArrayList<KMedoidPoint>(medoids);
                 newMedoids.set(newMedoids.indexOf(medoid), point);
 
 		return newMedoids;
 	}
 
-	private Collection<KMedoidCluster> clusterToMedoids(List<ClusterPoint> points, List<ClusterPoint> medoids) {
+	private Collection<KMedoidCluster> clusterToMedoids(List<KMedoidPoint> points, List<KMedoidPoint> medoids) {
 
 		// Create clusters with medoids
-		Map<ClusterPoint, KMedoidCluster> medoidClusters = new HashMap<ClusterPoint, KMedoidCluster>();
-		for(ClusterPoint medoid : medoids){
+		Map<KMedoidPoint, KMedoidCluster> medoidClusters = new HashMap<KMedoidPoint, KMedoidCluster>();
+		for(KMedoidPoint medoid : medoids){
 			medoidClusters.put(medoid, new KMedoidCluster(medoid));
 			//medoidClusters.get(medoid).getMembers().add(medoid);
 		}
 
 		// Assign to clusters
-		for(ClusterPoint point : points){
-			ClusterPoint closestMedoid = null;
+		for(KMedoidPoint point : points){
+			KMedoidPoint closestMedoid = null;
 			double closestDistance = Double.MAX_VALUE;
-			for(ClusterPoint medoid : medoids){
+			for(KMedoidPoint medoid : medoids){
 				double distance = point.distance(medoid);
 				if (distance < closestDistance){
 					closestMedoid = medoid;
@@ -111,13 +115,15 @@ public class KMedoids {
 			}
 			medoidClusters.get(closestMedoid).getMembers().add(point);
 		}
+		
+		
 
 		return medoidClusters.values();
 
 	}
 
-	private List<ClusterPoint> selectKRandom(List<ClusterPoint> ClusterPoints) {
-		List<ClusterPoint> medoids = new ArrayList<ClusterPoint>();
+	private List<KMedoidPoint> selectKRandom(List<KMedoidPoint> ClusterPoints) {
+		List<KMedoidPoint> medoids = new ArrayList<KMedoidPoint>();
 		while(medoids.size() < k){
 			int idx = (int) (Math.random() * ClusterPoints.size());
 			if(!medoids.contains(ClusterPoints.get(idx)))

@@ -4,7 +4,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Player
+import analyser.Action.Type;
+
+import clustering.ClusterPoint;
+import clustering.editdistance.BuildOrderDistance;
+
+public class Player implements ClusterPoint
 {
   public enum Race
   {
@@ -102,6 +107,36 @@ public int getActionsPerMin() {
 
 public void setActionsPerMin(int actionsPerMin) {
 	this.actionsPerMin = actionsPerMin;
+}
+
+@Override
+public String toString() {
+	
+	return "Player [win=" + win + ", race=" + race + ", actions=" + selectActions(false, true,true,true)
+			+ "]";
+}
+
+private List<Action> selectActions(boolean units, boolean buildings, boolean research, boolean upgrades) {
+	List<Action> actions = new ArrayList<Action>();
+	
+	for(Action action : this.actions){
+		if (action.type == Type.Building && buildings)
+			actions.add(action);	
+		if (action.type == Type.Unit && units)
+			actions.add(action);	
+		if (action.type == Type.Research && research)
+			actions.add(action);	
+		if (action.type == Type.Upgrade && upgrades)
+			actions.add(action);	
+	}
+	
+	return actions;
+}
+
+@Override
+public double distance(ClusterPoint other) {
+	
+	return new BuildOrderDistance(false, true, true, true, false, 10).distance((Player)other,this,10);
 }
 
 }
