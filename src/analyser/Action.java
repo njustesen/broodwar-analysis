@@ -215,6 +215,7 @@ public class Action
     Zergling,
     Hydralisk,
     Ultralisk,
+    Broodling,
     Drone,
     Overlord,
     Mutalisk,
@@ -442,12 +443,18 @@ public class Action
       type = Type.Upgrade;
     }
   }
-  
+
   public Action(Race race, int frames, ActionType actionType, Type type)
   {
 	this.race = (byte) race.ordinal();
 	this.frames = frames;
     this.actionType = actionType;
     this.type = type;
+  }
+
+  @Override
+  public String toString()
+  {
+    return frames + ": " + type.toString() + ": " + actionType.toString() + " (" + race + ")";
   }
 }

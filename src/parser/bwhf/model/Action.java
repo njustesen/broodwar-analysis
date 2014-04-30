@@ -11,11 +11,11 @@ import java.util.Map.Entry;
 
 /**
  * Class modeling an action.
- * 
+ *
  * @author Andras Belicza
  */
 public class Action implements Comparable< Action > {
-	
+
 	/**
 	 * Class to describe the size of a building.
 	 * @author Andras Belicza
@@ -44,14 +44,14 @@ public class Action implements Comparable< Action > {
 		/** Constant for size of 2x2. */
 		public static final Size SIZE2X2 = new Size( 2, 2 );
 	}
-	
+
 	// These are my own constants reserved for special commands
 	public static final byte ACTION_NAME_INDEX_UNKNOWN           = (byte) 0xff;
 	public static final byte ACTION_NAME_INDEX_BWCHART_HACK      = (byte) 0xfe;
 	public static final byte ACTION_NAME_INDEX_ATTACK_MOVE       = (byte) 0xfd;
 	public static final byte ACTION_NAME_INDEX_GATHER            = (byte) 0xfc;
 	public static final byte ACTION_NAME_INDEX_SET_RALLY         = (byte) 0xfb;
-	
+
 	public static final byte ACTION_NAME_INDEX_CANCEL            = (byte) 0x18;
 	public static final byte ACTION_NAME_INDEX_CANCEL_TRAIN      = (byte) 0x20;
 	public static final byte ACTION_NAME_INDEX_0X33              = (byte) 0x33;
@@ -81,18 +81,18 @@ public class Action implements Comparable< Action > {
 	public static final byte ACTION_NAME_INDEX_MERGE_ARCHON      = (byte) 0x2a;
 	public static final byte ACTION_NAME_INDEX_MERGE_DARK_ARCHON = (byte) 0x5a;
 	public static final byte ACTION_NAME_INDEX_LIFT              = (byte) 0x2f;
-	
+
 	public static final byte SUBACTION_NAME_INDEX_UNKNOWN     = (byte) 0xff;
 	public static final byte SUBACTION_NAME_INDEX_UNLOAD      = (byte) 0x70;
 	public static final byte SUBACTION_NAME_INDEX_LAUNCH_NUKE = (byte) 0x7e;
 	public static final byte SUBACTION_NAME_INDEX_RECALL      = (byte) 0x8f;
-	
+
 	/** Set of actions that have an exact point target. */
 	public static final Set< Byte > ACTION_NAME_INDICES_WITH_POINT_TARGET_SET = new HashSet< Byte >(
 			Arrays.asList( ACTION_NAME_INDEX_ATTACK_MOVE, ACTION_NAME_INDEX_GATHER, ACTION_NAME_INDEX_SET_RALLY, ACTION_NAME_INDEX_MOVE,
 					SUBACTION_NAME_INDEX_LAUNCH_NUKE, SUBACTION_NAME_INDEX_RECALL, (byte) 0x15 /* All subactions. */ )
 	);
-	
+
 	/** Action IDs we're interested in when parsing exported text by BWChart.<br>
 	 *  Parsing from exported BWChart text is no longer a goal. This might be inaccurate. */
 	public static final byte[] ACTION_IDS = {
@@ -111,7 +111,7 @@ public class Action implements Comparable< Action > {
 		ACTION_NAME_INDEX_ALLY,
 		ACTION_NAME_INDEX_VISION
 	};
-	
+
 	/** Map of action IDs and their names. */
 	public static final Map< Byte, String > ACTION_ID_NAME_MAP = new HashMap< Byte, String >();
 	static {
@@ -155,11 +155,11 @@ public class Action implements Comparable< Action > {
 		ACTION_ID_NAME_MAP.put( (byte) 0x58, "Minimap Ping" );
 		ACTION_ID_NAME_MAP.put( (byte) 0x5a, "Merge Dark Archon" );
 		ACTION_ID_NAME_MAP.put( (byte) 0x5c, "Game Chat" );
-		
+
 		ACTION_ID_NAME_MAP.put( ACTION_NAME_INDEX_ATTACK_MOVE, "Attack Move" );
 		ACTION_ID_NAME_MAP.put( ACTION_NAME_INDEX_GATHER, "Gather" );
 	}
-	
+
 	/** Subactions of action 0x15 */
 	public static final Map< Byte, String > SUBACTION_ID_NAME_MAP = new HashMap< Byte, String >();
 	static {
@@ -203,7 +203,7 @@ public class Action implements Comparable< Action > {
 		SUBACTION_ID_NAME_MAP.put( (byte) 0xba, "Maelstorm" );
 		SUBACTION_ID_NAME_MAP.put( (byte) 0xc0, "Irradiate" );
 	}
-	
+
 	/** Researches (parameters of action 0x30). */
 	public static final Map< Byte, String > RESEARCH_ID_NAME_MAP = new HashMap< Byte, String >();
 	static {
@@ -232,7 +232,7 @@ public class Action implements Comparable< Action > {
 		RESEARCH_ID_NAME_MAP.put( (byte) 0x1f, "Maelstorm" );
 		RESEARCH_ID_NAME_MAP.put( (byte) 0x20, "Lurker Aspect" );
 	}
-	
+
 	/** Upgrades (parameters of action 0x32). */
 	public static final Map< Byte, String > UPGRADE_ID_NAME_MAP = new HashMap< Byte, String >();
 	static {
@@ -287,7 +287,7 @@ public class Action implements Comparable< Action > {
 		UPGRADE_ID_NAME_MAP.put( (byte) 0x35, "Anabolic Synthesis (Ultralisk Speed)" );
 		UPGRADE_ID_NAME_MAP.put( (byte) 0x36, "Charon Boosters (Goliath Range)" );
 	}
-	
+
 	public static final short UNIT_NAME_INDEX_UNKNOWN   = (short) -1;
 	public static final short UNIT_NAME_INDEX_SCV       = (short) 0x07;
 	public static final short UNIT_NAME_INDEX_DRONE     = (short) 0x29;
@@ -297,15 +297,15 @@ public class Action implements Comparable< Action > {
 	public static final short UNIT_NAME_MINERAL_FIELD_3 = (short) 0xB2;
 	public static final short UNIT_NAME_VESPENE_GEYSER  = (short) 0xBC;
 	public static final short UNIT_NAME_START_LOCATION  = (short) 0xD6;
-	
+
 	/** Unit IDs we're interested in when parsing exported text by BWChart. */
 	public static final short[] UNIT_IDS = {
 		UNIT_NAME_INDEX_SCV,
 		UNIT_NAME_INDEX_DRONE,
 		UNIT_NAME_INDEX_PROBE
 	};
-	
-	
+
+
 	public static final short BUILDING_NAME_INDEX_NON_BUILDING        = (short) -1;
 	public static final short BUILDING_NAME_INDEX_COMSAT              = (short) 0x6b;
 	public static final short BUILDING_NAME_INDEX_CONTROL_TOWER       = (short) 0x73;
@@ -321,7 +321,7 @@ public class Action implements Comparable< Action > {
 	public static final short BUILDING_NAME_INDEX_NYDUS_CANAL         = (short) 0x86;
 	public static final short BUILDING_NAME_INDEX_FIRST_ZERG_BUILDING = (short) 0x83;
 	public static final short BUILDING_NAME_INDEX_LAST_ZERG_BUILDING  = (short) 0x95;
-	
+
 	/** Map of unit IDs and their names. */
 	public static final Map< Short, String > UNIT_ID_NAME_MAP = new HashMap< Short, String >();
 	static {
@@ -365,6 +365,7 @@ public class Action implements Comparable< Action > {
 		UNIT_ID_NAME_MAP.put( (short) 0x25, "Zergling" );
 		UNIT_ID_NAME_MAP.put( (short) 0x26, "Hydralisk" );
 		UNIT_ID_NAME_MAP.put( (short) 0x27, "Ultralisk" );
+                UNIT_ID_NAME_MAP.put( (short) 0x28, "Broodling" );
 		UNIT_ID_NAME_MAP.put( (short) 0x29, "Drone" );
 		UNIT_ID_NAME_MAP.put( (short) 0x2A, "Overlord" );
 		UNIT_ID_NAME_MAP.put( (short) 0x2B, "Mutalisk" );
@@ -552,7 +553,7 @@ public class Action implements Comparable< Action > {
 		UNIT_ID_NAME_MAP.put( (short) 0xE2, "Terran Vespene Gas Tank Type 1" );
 		UNIT_ID_NAME_MAP.put( (short) 0xE3, "Terran Vespene Gas Tank Type 2" );
 	}
-	
+
 	/** Map of building IDs and their sizes in matrices. */
 	public static final Map< Short, Size > BUILDING_ID_SIZE_MAP = new HashMap< Short, Size >();
 	static {
@@ -608,7 +609,7 @@ public class Action implements Comparable< Action > {
 		BUILDING_ID_SIZE_MAP.put( (short) 0xAB, Size.SIZE3X2 ); // Robotics Support Bay
 		BUILDING_ID_SIZE_MAP.put( (short) 0xAC, Size.SIZE3X2 ); // Shield Battery
 	}
-	
+
 	/** Map of building IDs and their sizes in matrices. */
 	public static final Map< Byte, String > GAME_SPEED_MAP = new HashMap< Byte, String >();
 	static {
@@ -620,11 +621,11 @@ public class Action implements Comparable< Action > {
 		GAME_SPEED_MAP.put( (byte) 0x05, "Faster" );
 		GAME_SPEED_MAP.put( (byte) 0x06, "Fastest" );
 	}
-	
+
 	public static final String HOTKEY_ACTION_PARAM_NAME_SELECT = "Select";
 	public static final String HOTKEY_ACTION_PARAM_NAME_ADD    = "Add";
 	public static final String HOTKEY_ACTION_PARAM_NAME_ASSIGN = "Assign";
-	
+
 	/** Iteration when this action was given. */
 	public final int     iteration;
 	/** Name of the action.                   */
@@ -633,7 +634,7 @@ public class Action implements Comparable< Action > {
 	public final String  parameters;
 	/** Unit ids string of the action.        */
 	public final String  unitIds;
-	
+
 	/** Constant for identifying the action name.       */
 	public final byte    actionNameIndex;
 	/** Constant for identifying the subaction name.    */
@@ -642,8 +643,8 @@ public class Action implements Comparable< Action > {
 	public final short   parameterUnitNameIndex;
 	/** Constant for identifying the action's building. */
 	public final short   parameterBuildingNameIndex;
-	
-	
+
+
 	/**
 	 * Creates a new Action.
 	 * @param iteration  iteration of the action
@@ -656,7 +657,7 @@ public class Action implements Comparable< Action > {
 		this.name       = name;
 		this.parameters = parameters;
 		this.unitIds    = unitIds;
-		
+
 		byte actionNameIndex_ = ACTION_NAME_INDEX_UNKNOWN;
 		for ( final byte actionId : ACTION_IDS )
 			if ( name.equals( ACTION_ID_NAME_MAP.get( actionId ) ) ) {
@@ -666,7 +667,7 @@ public class Action implements Comparable< Action > {
 		actionNameIndex = actionNameIndex_;
 		// Warning! This is not parsed since I don't initialize from BWChart anymore!
 		subactionNameIndex = SUBACTION_NAME_INDEX_UNKNOWN;
-		
+
 		short parameterBuildingNameIndex_ = BUILDING_NAME_INDEX_NON_BUILDING;
 		if ( actionNameIndex == ACTION_NAME_INDEX_SELECT || actionNameIndex == ACTION_NAME_INDEX_BWCHART_HACK || actionNameIndex == ACTION_NAME_INDEX_TRAIN )
 			for ( final Entry< Short, String > entry : UNIT_ID_NAME_MAP.entrySet() )
@@ -675,7 +676,7 @@ public class Action implements Comparable< Action > {
 					break;
 				}
 		parameterBuildingNameIndex = parameterBuildingNameIndex_;
-		
+
 		short parameterUnitNameIndex_ = UNIT_NAME_INDEX_UNKNOWN;
 		if ( actionNameIndex == ACTION_NAME_INDEX_SELECT && parameterBuildingNameIndex == BUILDING_NAME_INDEX_NON_BUILDING )
 			for ( final short unitId : UNIT_IDS )
@@ -685,11 +686,11 @@ public class Action implements Comparable< Action > {
 				}
 		parameterUnitNameIndex = parameterUnitNameIndex_;
 	}
-	
+
 	/**
 	 * Creates a new Action with pre-identified indices.<br>
 	 * Subaction, unit and building name indices are unknown.
-	 * 
+	 *
 	 * @param iteration                  iteration of the action
 	 * @param parameters                 parameter string of the action
 	 * @param actionNameIndex            index determining the action name
@@ -697,10 +698,10 @@ public class Action implements Comparable< Action > {
 	public Action( final int iteration, final String parameters, final byte actionNameIndex ) {
 		this( iteration, parameters, actionNameIndex, SUBACTION_NAME_INDEX_UNKNOWN, UNIT_NAME_INDEX_UNKNOWN, BUILDING_NAME_INDEX_NON_BUILDING );
 	}
-	
+
 	/**
 	 * Creates a new Action with pre-identified indices.
-	 * 
+	 *
 	 * @param iteration                  iteration of the action
 	 * @param parameters                 parameter string of the action
 	 * @param actionNameIndex            index determining the action name
@@ -710,10 +711,10 @@ public class Action implements Comparable< Action > {
 	public Action( final int iteration, final String parameters, final byte actionNameIndex, final short parameterUnitNameIndex, final short parameterBuildingNameIndex ) {
 		this( iteration, parameters, actionNameIndex, SUBACTION_NAME_INDEX_UNKNOWN, parameterUnitNameIndex, parameterBuildingNameIndex );
 	}
-	
+
 	/**
 	 * Creates a new Action with pre-identified indices.
-	 * 
+	 *
 	 * @param iteration                  iteration of the action
 	 * @param parameters                 parameter string of the action
 	 * @param actionNameIndex            index determining the action name
@@ -721,30 +722,30 @@ public class Action implements Comparable< Action > {
 	 * @param parameterUnitNameIndex     index determining the unit name
 	 * @param parameterBuildingNameIndex index determining the building name
 	 */
-	public Action( final int iteration, final String parameters, final byte actionNameIndex, final byte subactionNameIndex, final short parameterUnitNameIndex, final short parameterBuildingNameIndex ) { 
+	public Action( final int iteration, final String parameters, final byte actionNameIndex, final byte subactionNameIndex, final short parameterUnitNameIndex, final short parameterBuildingNameIndex ) {
 		this.iteration  = iteration;
 		this.name       = null;
 		this.parameters = parameters;
 		this.unitIds    = null;
-		
+
 		this.actionNameIndex            = actionNameIndex;
 		this.subactionNameIndex         = subactionNameIndex;
 		this.parameterUnitNameIndex     = parameterUnitNameIndex;
 		this.parameterBuildingNameIndex = parameterBuildingNameIndex;
 	}
-	
+
 
 	@Override
 	public String toString() {
 		return toString( null, false );
 	}
-	
-	
+
+
 	/** Attribute to cache the value returned by the <code>toString()</code> method. */
 	private String toStringValue;
 	/** Attribute to cache the value returned by the <code>toString()</code> method with seconds. */
 	private String toStringValueSeconds;
-	
+
 	/**
 	 * Returns the string representation of this action owned by the specified player.
 	 * @param playerName    name of player owning this action
@@ -754,7 +755,7 @@ public class Action implements Comparable< Action > {
 	public String toString( final String playerName, final boolean timeInSeconds ) {
 		if ( timeInSeconds && toStringValueSeconds == null || !timeInSeconds && toStringValue == null ) {
 			String actionName = null;
-			
+
 			if ( subactionNameIndex != SUBACTION_NAME_INDEX_UNKNOWN )
 				actionName = SUBACTION_ID_NAME_MAP.get( subactionNameIndex );
 			if ( actionName == null && actionNameIndex != ACTION_NAME_INDEX_UNKNOWN ) {
@@ -765,11 +766,11 @@ public class Action implements Comparable< Action > {
 			if ( actionName == null ) {
 				actionName = "<not parsed>";
 			}
-			
+
 			final StringBuilder actionStringBuilder = new StringBuilder();
 			if ( timeInSeconds )
 				ReplayHeader.formatFrames( iteration, actionStringBuilder, true );
-			
+
 			final Formatter actionStringFormatter = new Formatter( actionStringBuilder );
 			if ( playerName == null ) {
 				if ( timeInSeconds )
@@ -783,16 +784,16 @@ public class Action implements Comparable< Action > {
 				else
 					actionStringFormatter.format( "%6d %-25s %-17s %s", iteration, playerName, actionName, parameters );
 			}
-			
+
 			if ( timeInSeconds )
 				toStringValueSeconds = actionStringBuilder.toString();
 			else
 				toStringValue = actionStringBuilder.toString();
 		}
-		
+
 		return timeInSeconds ? toStringValueSeconds : toStringValue;
 	}
-	
+
 	/**
 	 * Compares this action to another based on their iteration.
 	 * @param anotherAction another action to compare to
@@ -801,5 +802,5 @@ public class Action implements Comparable< Action > {
 	public int compareTo( final Action anotherAction ) {
 		return iteration - anotherAction.iteration;
 	}
-	
+
 }

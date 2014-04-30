@@ -24,6 +24,11 @@ public class MatchEncoder {
 
 	}
 
+        public void encode(Match match)
+        {
+                saveToFile(new Gson().toJson(match), match.id);
+        }
+
 	public void encode(List<Match> matches){
 
 		 Gson gson = new Gson();
