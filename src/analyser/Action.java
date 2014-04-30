@@ -451,4 +451,10 @@ public class Action
     this.actionType = actionType;
     this.type = type;
   }
+
+  @Override
+  public String toString()
+  {
+    return frames + ": " + type.toString() + ": " + actionType.toString() + " (" + race + ")";
+  }
 }
