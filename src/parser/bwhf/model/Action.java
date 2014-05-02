@@ -444,6 +444,8 @@ public class Action implements Comparable< Action > {
 		UNIT_ID_NAME_MAP.put( (short) 0x74, "Science Facility" );
 		UNIT_ID_NAME_MAP.put( (short) 0x75, "Covert Ops" );
 		UNIT_ID_NAME_MAP.put( (short) 0x76, "Physics Lab" );
+                UNIT_ID_NAME_MAP.put( (short) 0x76, "Physics Lab" );
+		UNIT_ID_NAME_MAP.put( (short) 0x77, "Starbase (Unused)");
 		UNIT_ID_NAME_MAP.put( (short) 0x78, "Machine Shop" );
 		UNIT_ID_NAME_MAP.put( (short) 0x79, "Repair Bay (Unused)" );
 		UNIT_ID_NAME_MAP.put( (short) 0x7A, "Engineering Bay" );

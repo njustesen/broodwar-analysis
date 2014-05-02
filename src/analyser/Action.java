@@ -294,6 +294,7 @@ public class Action
     ScienceFacility,
     CovertOps,
     PhysicsLab,
+    Starbase_Unused,
     MachineShop,
     RepairBay_Unused,
     EngineeringBay,
@@ -417,10 +418,10 @@ public class Action
   public Type type;
   public byte race;
 
-  public Action(parser.bwhf.model.Action action, int race)
+  public Action(parser.bwhf.model.Action action, byte race)
   {
     frames = action.iteration;
-    race = race;
+    this.race = race;
 
     if (action.actionNameIndex == 0x0c) // build
     {
