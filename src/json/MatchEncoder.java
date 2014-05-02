@@ -26,7 +26,8 @@ public class MatchEncoder {
 
         public void encode(Match match)
         {
-                saveToFile(new Gson().toJson(match), match.id);
+                new File(folder + match.map.type.toString()).mkdirs();
+                saveToFile(new Gson().toJson(match), match.map.type + File.separator + match.id);
         }
 
 	public void encode(List<Match> matches){

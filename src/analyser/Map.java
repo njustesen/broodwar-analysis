@@ -9,6 +9,7 @@ public class Map
 {
   public enum Type
   {
+    None,
     Andromedal,
     Chupung_Ryeung,
     Colosseum,
@@ -72,6 +73,7 @@ public class Map
 
   public Map(String name, short x, short y, MapData map)
   {
+    this.type = Type.None;
     this.name = name;
     this.size = new short[]{x, y};
     if (map != null)
