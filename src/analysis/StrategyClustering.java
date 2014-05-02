@@ -9,7 +9,12 @@ import com.google.gson.internal.bind.MapTypeAdapterFactory;
 import json.MatchDecoder;
 
 import clustering.ClusterPoint;
+import clustering.distance.DISTANCE_FUNCTION;
+import clustering.distance.DistanceManager;
+import clustering.distance.EditDistance;
+import clustering.distance.FirstDistance;
 import clustering.kmedoids.KMedoidCluster;
+import clustering.kmedoids.KMedoidPoint;
 import clustering.kmedoids.KMedoids;
 import clustering.upgma.UPGMA;
 import domain.naming.BuildOrderNamer;
@@ -25,18 +30,42 @@ public class StrategyClustering {
 		List<Match> decodedMatches = null;
 		try {
 			MatchDecoder.folder = "D:/matches/";
-			decodedMatches = new MatchDecoder().decode(200, Race.Terran, Type.Python);
+			decodedMatches = new MatchDecoder().decode(20000000, Race.Terran, Type.Python);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//List<KMedoidCluster> clusters = new StrategyClustering(Race.Terran, Type.Python).findStrategies(decodedMatches);
-		List<List<ClusterPoint>> clusters = new StrategyClustering(Race.Terran, Type.Python).upgma(decodedMatches);
+		if (1==1)
+			return;
+		// Distance Manager
+		boolean units = true;
+		boolean buildings = true;
+		boolean upgrades = true;
+		boolean research = true;
+		boolean cost = true;
+		int discount = 5;
+		int max = 5;
+		int base = 10;
+		DistanceManager.editDistance = new EditDistance(units, buildings, upgrades, research, cost, discount, max);
+		//DistanceManager.firstDistance = new FirstDistance(units, buildings, upgrades, research, base);
+		//DistanceManager.distanceFunction = DISTANCE_FUNCTION.FIRST_DISTANCE;
+		DistanceManager.distanceFunction = DISTANCE_FUNCTION.EDIT_DISTANCE;
+		
+		//List<KMedoidCluster> clusters = new StrategyClustering(Race.Terran, Type.Python).kmedoids(decodedMatches);
+		List<List<ClusterPoint>> clusters = new StrategyClustering(Race.Protoss, Type.Python).upgma(decodedMatches);
+		/*
+		for(KMedoidCluster cluster : clusters){
+			System.out.println("-- Cluster -- ");
+			for(KMedoidPoint point : cluster.getMembers())
+				System.out.println(new BuildOrderNamer().buildings(((Player)point.getPoint()).actions, ", ", 30));
+		}
+		*/
+		
 		for(List<ClusterPoint> cluster : clusters){
 			System.out.println("-- Cluster -- ");
 			for(ClusterPoint point : cluster)
-				System.out.println(new BuildOrderNamer().buildings(((Player)point).actions, ", ", 16));
+				System.out.println(new BuildOrderNamer().buildings(((Player)point).actions, ", ", 30));
 		}
-			
+		
 		//System.out.println(clusters);
 	}
 
@@ -62,7 +91,7 @@ public class StrategyClustering {
 			}
 		}
 		
-		return new KMedoids(6).cluster(points);
+		return new KMedoids(18).cluster(points);
 		
 	}
 	

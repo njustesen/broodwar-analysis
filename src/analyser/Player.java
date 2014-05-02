@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import analyser.Action.Type;
 
 import clustering.ClusterPoint;
-import clustering.editdistance.BuildOrderDistance;
+import clustering.distance.DistanceManager;
+import clustering.distance.EditDistance;
+import clustering.distance.FirstDistance;
 
 public class Player implements ClusterPoint
 {
@@ -136,7 +138,9 @@ private List<Action> selectActions(boolean units, boolean buildings, boolean res
 @Override
 public double distance(ClusterPoint other) {
 	
-	return new BuildOrderDistance(true, true, true, true, false, 10).distance((Player)other,this,30);
+	//return new EditDistance(true, true, true, true, false, 10).distance((Player)other,this,30);
+	return DistanceManager.distance(this, ((Player)other));
+	
 }
 
 }

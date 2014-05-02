@@ -8,10 +8,8 @@ import analyser.Action.Type;
 import analyser.Player;
 import analyser.Action.ActionType;
 import analyser.Player.Race;
-import clustering.editdistance.BuildOrderDistance;
-import domain.naming.BuildOrderNamer;
+import clustering.distance.EditDistance;
 import org.junit.Test;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -49,14 +47,14 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 2, ActionType.Zealot, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, true, 0);
+		EditDistance bod = new EditDistance(true, true, true, true, true, 0, 10);
 		
 		Long start = System.nanoTime();
 		Long startMs = System.currentTimeMillis();
-		double distance = bod.distance(a, b, 10);
+		double distance = bod.distance(a, b);
 		System.out.println(System.nanoTime() - start);
 		System.out.println(System.currentTimeMillis() - startMs);
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distance == 0.0);
 		
@@ -79,10 +77,10 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, false, 0);
-		double distance = bod.distance(a, b, 10);
+		EditDistance bod = new EditDistance(true, true, true, true, false, 0, 10);
+		double distance = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distance == 2.0);
 		
@@ -106,10 +104,10 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, false, 0);
-		double distance = bod.distance(a, b, 10);
+		EditDistance bod = new EditDistance(true, true, true, true, false, 0, 10);
+		double distance = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distance == 4.0);
 		
@@ -132,10 +130,10 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 4, ActionType.Dragoon, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, false, 0);
-		double distance = bod.distance(a, b, 10);
+		EditDistance bod = new EditDistance(true, true, true, true, false, 0, 10);
+		double distance = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distance == 8.0);
 		
@@ -164,10 +162,10 @@ public class EditDistanceTest {
 		actionsB.add(new Action(Race.Protoss, 7, ActionType.Probe, Type.Unit));
 		Player b = new Player("Player b", true, Race.Protoss,actionsB.size(),111,actionsB);
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, false, 0);
-		double distance = bod.distance(a, b, 10);
+		EditDistance bod = new EditDistance(true, true, true, true, false, 0, 10);
+		double distance = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distance == 2.0);
 		
@@ -178,7 +176,7 @@ public class EditDistanceTest {
 		
 		int discount = 5;
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, false, discount);
+		EditDistance bod = new EditDistance(true, true, true, true, false, discount, 10);
 		
 		List<Action> actionsAA = new ArrayList<Action>();
 		actionsAA.add(new Action(Race.Protoss, 1, ActionType.Zealot, Type.Unit));
@@ -211,18 +209,18 @@ public class EditDistanceTest {
 		actionsBB.add(new Action(Race.Protoss, 5, ActionType.Dragoon, Type.Unit));
 		//Player b = new Player("Player b", true, Race.Protoss,actionsBB.size(),111,actionsBB);
 
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
-		double distanceBeginning = bod.distance(a, b, 10);
+		double distanceBeginning = bod.distance(a, b);
 		
 		a.setActionNumber(actionsAB.size());
 		a.setActions(actionsAB);
 		b.setActionNumber(actionsBB.size());
 		b.setActions(actionsBB);
 		
-		double distanceEnd = bod.distance(a, b, 10);
+		double distanceEnd = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		//assertTrue(distanceBeginning == discount);
 		
@@ -235,7 +233,7 @@ public class EditDistanceTest {
 	@Test
     public void cost() {
 		
-		BuildOrderDistance bod = new BuildOrderDistance(true, true, true, true, true, 0);
+		EditDistance bod = new EditDistance(true, true, true, true, true, 0, 10);
 		
 		List<Action> actionsAA = new ArrayList<Action>();
 		actionsAA.add(new Action(Race.Protoss, 1, ActionType.Zealot, Type.Unit));
@@ -260,16 +258,16 @@ public class EditDistanceTest {
 		//actionsBB.add(new Action(Race.Protoss, 4, ActionType.Probe, Type.Unit));
 		//actionsBB.add(new Action(Race.Protoss, 5, ActionType.Probe, Type.Unit));
 
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
-		double distanceZealotDragoon = bod.distance(a, b, 10);
+		double distanceZealotDragoon = bod.distance(a, b);
 		
 		b.setActionNumber(actionsBB.size());
 		b.setActions(actionsBB);
 		
-		double distanceZealotNexus = bod.distance(a, b, 10);
+		double distanceZealotNexus = bod.distance(a, b);
 		
-		assertTrue(bod.distance(a, b, 10) == bod.distance(b, a, 10));
+		assertTrue(bod.distance(a, b) == bod.distance(b, a));
 		
 		assertTrue(distanceZealotDragoon < distanceZealotNexus);
 		

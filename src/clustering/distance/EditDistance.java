@@ -1,4 +1,4 @@
-package clustering.editdistance;
+package clustering.distance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import analyser.Player;
  * @author Niels
  *
  */
-public class BuildOrderDistance {
+public class EditDistance {
 
 	int discount;
 	boolean units;
@@ -23,9 +23,10 @@ public class BuildOrderDistance {
 	boolean upgrades;
 	boolean research;
 	private boolean cost;
+	private int max;
 	
-	public BuildOrderDistance(boolean units,
-			boolean buildings, boolean upgrades, boolean research, boolean cost, int discount) {
+	public EditDistance(boolean units,
+			boolean buildings, boolean upgrades, boolean research, boolean cost, int discount, int max) {
 		super();
 		this.discount = discount;
 		this.units = units;
@@ -33,9 +34,10 @@ public class BuildOrderDistance {
 		this.upgrades = upgrades;
 		this.research = research;
 		this.cost = cost;
+		this.max = max;
 	}
 	
-	public double distance(Player a, Player b, int max){
+	public double distance(Player a, Player b){
 		
 		List<Action> buildOrderA = buildOrder(a);
 		List<Action> buildOrderB = buildOrder(b);
