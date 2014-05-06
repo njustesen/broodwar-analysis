@@ -30,8 +30,6 @@ public class MatchDecoder {
 		File folderFile = new File(folder);
 		File[] listOfFiles = folderFile.listFiles();
 		
-		String[] filenames = new String[listOfFiles.length];
-
 		List<Match> matches = new ArrayList<Match>();
 		int i = 0;
 		for ( File file : listOfFiles ) {
@@ -44,7 +42,7 @@ public class MatchDecoder {
 		        
 				Match match = gson.fromJson(json, matchType);
 				//System.out.print("-");
-				if (match.map.type == mapType){
+				if (mapType == null || match.map.type == mapType){
 					for(Player player : match.players){
 						if (player.race == race){
 							matches.add(match);
