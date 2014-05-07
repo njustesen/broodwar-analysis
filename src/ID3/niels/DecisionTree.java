@@ -1,5 +1,16 @@
 package ID3.niels;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import domain.cost.CostMap;
+
+import analyser.Action;
+import analyser.Action.ActionType;
+import analyser.Player;
+
 public class DecisionTree {
 
 	ID3Node root;
@@ -21,6 +32,32 @@ public class DecisionTree {
 
 	public void print() {
 		root.print(0, null);
+	}
+
+	public void saveToFile(String filename) {
+		
+		try{
+			// Create file 
+			FileWriter fstream = new FileWriter(filename);
+			BufferedWriter out = new BufferedWriter(fstream);
+			out.write(root.toString(0, null));
+			//Close the output stream
+			out.close();
+		} catch (Exception e){//Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+		
+	}
+
+	public boolean wins(int maxDepth, Player player) {
+		
+		List<ActionType> actions = new ArrayList<ActionType>();
+		
+		for(Action action : player.actions)
+			actions.add(action.actionType);
+		
+		return root.wins(0, maxDepth, actions);
+		
 	}
 
 }

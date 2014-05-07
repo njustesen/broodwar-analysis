@@ -116,4 +116,58 @@ public class ID3Node {
 
 	}
 
+	public String toString(int level, Object value) {
+		String str = "\n";
+		for(int i = 0; i < level; i++)
+			str += "\t";
+
+		String m = String.valueOf((players == null ? "null" : players.size()));
+		String v = value == null ? "null" : ((Enum)value).name();
+		if (won != null){
+			str += "<node value='" + v + "' players='" + players.size() + "' win='" + won + "'>";
+		} else {
+			DecimalFormat df = new DecimalFormat();
+			df.setMaximumFractionDigits(4);
+			str += "<node action='" + v + "' players='" + players.size() + "' win='" + df.format(recursiveValue()) + "'>";
+		}
+		
+		if (children != null){
+			for(Object obj : children.keySet()){
+				//str += "\t" + obj.getClass().getName();
+				str += children.get(obj).toString(level+1, obj);
+			}
+		}
+
+		str += "\n";
+		for(int i = 0; i < level; i++){
+			str += "\t";
+		}
+		str += "</node>";
+		
+		return str;
+		
+	}
+
+	public boolean wins(int depth, int maxDepth, List<ActionType> actions) {
+		
+		if (won != null){
+			ID3Stats.depth+=depth;
+			return won;
+		}
+		
+		ActionType type = null;
+		if (depth < actions.size() && depth < maxDepth)
+			type = actions.get(depth);
+		
+		// Go deeper
+		if (type != null && children.containsKey(type)){
+			return children.get(type).wins(depth+1, maxDepth, actions);
+		}
+		
+		// Return average
+		ID3Stats.depth+=depth;
+		return recursiveValue() >= 0.5;
+		
+	}
+
 }

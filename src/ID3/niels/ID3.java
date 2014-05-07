@@ -112,5 +112,13 @@ public class ID3 {
 	public void setTree(DecisionTree tree) {
 		this.tree = tree;
 	}
+
+	public boolean wins(int depth, Player player) {
+		
+		ID3Stats.searches++;
+		
+		return tree.wins(depth, player);
+		
+	}
 	
 }
