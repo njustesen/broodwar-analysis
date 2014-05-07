@@ -15,20 +15,26 @@ public class KMedoids {
 
 	}
 
-	private int k;
+	private boolean useDistanceMatrix;
+	private KMedoidMatrix ds;
 
-	public KMedoids(int k){
-		this.k = k;
+	public KMedoids(boolean useDistanceMatrix){
+		this.useDistanceMatrix = useDistanceMatrix;
 	}
 
-	public List<KMedoidCluster> cluster(List<ClusterPoint> points){
+	public List<KMedoidCluster> cluster(List<ClusterPoint> points, int k){
 		
+		// Instantiate KMedoidPoints
 		List<KMedoidPoint> kPoints = new ArrayList<KMedoidPoint>();
-		for(ClusterPoint p : points)
-			kPoints.add(new KMedoidPoint(p));
+		for(int i = 0; i < points.size(); i++)
+			kPoints.add(new KMedoidPoint(points.get(i), i));
+		
+		// Create distance Matrix
+		if (useDistanceMatrix)
+			ds = new KMedoidMatrix(kPoints);
 
 		// Initialize: randomly select k of the n data points as the medoids
-		List<KMedoidPoint> medoids = selectKRandom(kPoints);
+		List<KMedoidPoint> medoids = selectKRandom(kPoints, k);
 
 		// Associate each data point to the closest medoid. ("closest" here is defined using any valid distance metric, most commonly Euclidean distance, Manhattan distance or Minkowski distance)
         List<KMedoidCluster> clusters = new ArrayList<KMedoidCluster>(clusterToMedoids(kPoints, medoids));
@@ -78,7 +84,10 @@ public class KMedoids {
 		double cost = 0;
 		for(KMedoidCluster cluster : clusters){
 			for(KMedoidPoint point : cluster.getMembers()){
-				cost += point.distance(cluster.getMedoid());
+				if (useDistanceMatrix)
+					cost += ds.distance(point, cluster.getMedoid());
+				else
+					cost += point.distance(cluster.getMedoid());
 			}
 		}
 
@@ -88,7 +97,7 @@ public class KMedoids {
 
 	private List<KMedoidPoint> swap(List<KMedoidPoint> medoids, KMedoidPoint medoid, KMedoidPoint point) {
 		List<KMedoidPoint> newMedoids = new ArrayList<KMedoidPoint>(medoids);
-                newMedoids.set(newMedoids.indexOf(medoid), point);
+        newMedoids.set(newMedoids.indexOf(medoid), point);
 
 		return newMedoids;
 	}
@@ -107,7 +116,12 @@ public class KMedoids {
 			KMedoidPoint closestMedoid = null;
 			double closestDistance = Double.MAX_VALUE;
 			for(KMedoidPoint medoid : medoids){
-				double distance = point.distance(medoid);
+				double distance = 0;
+				if (useDistanceMatrix)
+					distance = ds.distance(point, medoid);
+				else
+					distance = point.distance(medoid);
+				
 				if (distance < closestDistance){
 					closestMedoid = medoid;
 					closestDistance = distance;
@@ -122,7 +136,7 @@ public class KMedoids {
 
 	}
 
-	private List<KMedoidPoint> selectKRandom(List<KMedoidPoint> ClusterPoints) {
+	private List<KMedoidPoint> selectKRandom(List<KMedoidPoint> ClusterPoints, int k) {
 		List<KMedoidPoint> medoids = new ArrayList<KMedoidPoint>();
 		while(medoids.size() < k){
 			int idx = (int) (Math.random() * ClusterPoints.size());

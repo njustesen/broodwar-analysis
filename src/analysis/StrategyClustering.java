@@ -91,7 +91,7 @@ public class StrategyClustering {
 			}
 		}
 		
-		return new KMedoids(18).cluster(points);
+		return new KMedoids(true).cluster(points, 18);
 		
 	}
 	

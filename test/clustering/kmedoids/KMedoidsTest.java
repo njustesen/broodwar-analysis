@@ -240,7 +240,7 @@ public class KMedoidsTest {
 		points.add(new Point2D(23,4));
 		points.add(new Point2D(22,3));
 		 
-		List<KMedoidCluster> clusters = new KMedoids(3).cluster(points);
+		List<KMedoidCluster> clusters = new KMedoids(true).cluster(points, 3);
 		System.out.println(clusters);
 		
 	}
