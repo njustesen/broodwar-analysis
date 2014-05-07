@@ -13,33 +13,128 @@ import com.google.gson.reflect.TypeToken;
 
 import analyser.Match;
 import analyser.Player;
+import analyser.Map;
 import analyser.Player.Race;
 
 public class MatchDecoder {
-	
+
 	public static String folder = "matches" + File.separator;
 
 	public static void main(String[] args) throws IOException {
-		
+
 		//List<Match> matches = new MatchDecoder().decode(1000);
-		
+
 	}
 
+        private File[] folders;
+        private File[] files;
+        private int folderIndex;
+        private int fileIndex;
+        private Map.Type map;
+        private Race race;
+        private int limit;
+        private static Type type = new TypeToken<Match>(){}.getType();
+        private static Gson jsonReader = new Gson();
+
+        public MatchDecoder(String root, Map.Type map, Race race, int limit)
+        {
+                if ((folders = new File(root).listFiles()) == null)
+                {
+                        System.out.println("error: Cannot read match files.");
+                }
+
+                this.limit = limit;
+                this.race = race;
+                this.map = map;
+                this.folderIndex = -1;
+                this.fileIndex = -1;
+        }
+
+        public Match getMatch()
+        {
+                if (limit < 0 || folderIndex >= folders.length)
+                {
+                        System.out.println("error: No more match file.");
+                        return null;
+                }
+
+                if (folderIndex == -1)
+                {
+                        if (map != null)
+                        {
+                                for (int index = 0; index < folders.length; index++)
+                                        if (folders[index].getName().equals(map.toString()))
+                                                folderIndex = index;
+
+                                if (folderIndex == -1)
+                                {
+                                        System.out.println("error: Cannot read match files for the given map.");
+                                        return null;
+                                }
+                        }
+                        else
+                                folderIndex = 0;
+
+                        files = folders[folderIndex].listFiles();
+                }
+
+                if (++fileIndex >= files.length)
+                {
+                        if (map != null)
+                        {
+                                System.out.println("error: No more match on the given map.");
+                                return null;
+                        }
+                        if (++folderIndex >= folders.length)
+                        {
+                                System.out.println("error: No more match file.");
+                                return null;
+                        }
+
+                        fileIndex = 0;
+                        files = folders[folderIndex].listFiles();
+                }
+
+                try
+                {
+                        Match match = jsonReader.fromJson(readFile(files[fileIndex].getCanonicalPath()), type);
+                        for (Player player : match.players)
+                        {
+                                if (race == null || player.race == race)
+                                {
+                                        limit--;
+                                        return match;
+                                }
+                        }
+                }
+
+                catch (IOException exception)
+                {
+                        System.out.println("error: Failed to read match file.");
+                        return null;
+                }
+                return getMatch();
+        }
+
+        public MatchDecoder()
+        {
+        }
+
 	public List<Match> decode(int n, Race race, analyser.Map.Type mapType) throws IOException{
-		
+
 		File folderFile = new File(folder);
 		File[] listOfFiles = folderFile.listFiles();
-		
+
 		List<Match> matches = new ArrayList<Match>();
 		int i = 0;
 		for ( File file : listOfFiles ) {
 			String json;
 			try {
 				json = readFile(file.getCanonicalPath());
-				
+
 				Gson gson = new Gson();
 				Type matchType = new TypeToken<Match>(){}.getType();
-		        
+
 				Match match = gson.fromJson(json, matchType);
 				//System.out.print("-");
 				if (mapType == null || match.map.type == mapType){
@@ -49,9 +144,9 @@ public class MatchDecoder {
 							break;
 						}
 					}
-					
+
 				}
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -62,13 +157,13 @@ public class MatchDecoder {
 				System.out.println(i + "/" + listOfFiles.length + " matches parsed \t " + matches.size() + " added. ");
 			}
 		}
-		
+
 		return matches;
-		
+
 	}
 
 	private String readFile(String filename) throws IOException {
-		
+
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 	    try {
 	        StringBuilder sb = new StringBuilder();
@@ -78,12 +173,12 @@ public class MatchDecoder {
 	            sb.append(line);
 	            line = br.readLine();
 	        }
-	        
+
 	        return sb.toString();
 	    } finally {
 	        br.close();
 	    }
-		
+
 	}
-	
+
 }
