@@ -16,12 +16,19 @@ public class PatternFinder
                 private int player;
                 private boolean outcome;
                 private boolean map;
+                private boolean opponentRace;
+                private int order;
 
-                public Item(int player, String value, boolean outcome, boolean map)
+                public Item(int player, int order, String value, boolean outcome, boolean map, boolean opponentRace)
                 {
                         this.player = player;
-                        this.value = value;
+                        if (! (map || outcome || opponentRace))
+                                this.value = order + "_" + value;
+                        else
+                                this.value = value;
+                        this.order = order;
                         this.outcome = outcome;
+                        this.opponentRace = opponentRace;
                         this.map = map;
                 }
 
@@ -30,9 +37,21 @@ public class PatternFinder
                         return map;
                 }
 
+                public boolean isOpponentRace()
+                {
+                        return opponentRace;
+                }
+
                 public boolean isOutcome()
                 {
                         return outcome;
+                }
+
+                public boolean isOrder(int i)
+                {
+                        if (this.outcome || this.map || this.opponentRace)
+                                return true;
+                        return (order == i);
                 }
 
                 @Override
@@ -54,13 +73,13 @@ public class PatternFinder
         public static void main(String[] argv)
         {
                 String root = "matches/";
-                int minSupport = 80;
+                int minSupport = 200;
                 int length = 10;
                 Player.Race race = Player.Race.Protoss;
                 Map.Type type = null;
 
                 List<Item[]> data = new ArrayList<Item[]>();
-                MatchDecoder decoder = new MatchDecoder(root, null, race, 6400);
+                MatchDecoder decoder = new MatchDecoder(root, type, race, 12800);
 
                 Match match = null;
 
@@ -73,15 +92,16 @@ public class PatternFinder
 
                                 List<Item> items = new ArrayList<Item>();
 
-                                items.add(new Item(0, match.map.type.toString(), false, true));
+                                items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
+                                items.add(new Item(0, 0, match.players[(player + 1) % 2].race.toString(), false, false, true));
 
                                 List<Action> actions = match.players[player].selectActions(false, true, false, false);
                                 for (int action = 0; action < Math.min(actions.size(), length); action++)
-                                        items.add(new Item(player + 1, String.format("%d_%s", action, actions.get(action).actionType.toString()), false, false));
+                                        items.add(new Item(player + 1, action, actions.get(action).actionType.toString(), false, false, false));
                                 if (match.players[player].win)
-                                        items.add(new Item(player + 1, "win", true, false));
-                                else
-                                        items.add(new Item(player + 1, "lose", true, false));
+                                        items.add(new Item(player + 1, 0, "win", true, false, false));
+                                // else
+                                        // items.add(new Item(player + 1, 0, "lose", true, false, false));
 
                                 data.add(items.toArray(new Item[items.size()]));
                         }
