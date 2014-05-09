@@ -24,8 +24,8 @@ public class ID3NielsTest {
 		
 		List<Match> decodedMatches = null;
 		try {
-			MatchDecoder.folder = "D:/matches/";
-			decodedMatches = new MatchDecoder().decode(2000, Race.Protoss, null);
+			MatchDecoder.folder = "/Users/njustesen/matches";
+			decodedMatches = new MatchDecoder().decode(2, Race.Protoss, Race.Zerg, null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -39,15 +39,23 @@ public class ID3NielsTest {
 		
 		// Remove units
 		for(Player player : players){
+			List<Action> upgradesAndResearch = new ArrayList<Action>();
 			List<Action> filtered = new ArrayList<Action>();
 			for(Action action : player.actions){
 				if (action.type != Action.Type.Unit && CostMap.costs.containsKey(action.actionType)){
-					filtered.add(action);
-					System.out.print(action.actionType + "\t");
+					if (action.type == Action.Type.Research || action.type == Action.Type.Research){
+						if (!upgradesAndResearch.contains(action)){
+							upgradesAndResearch.add(action);
+							filtered.add(action);
+						}
+					} else {
+						filtered.add(action);
+					}
 				}
 			}
 			player.actions = filtered;
 			System.out.print("\n");
+			System.out.println(player.actions);
 		}
 		
 		ID3 id3 = new ID3();

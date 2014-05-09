@@ -9,14 +9,10 @@ public class DecisionTree {
 		this.root = root;
 	}
 
-//	public boolean isEdible(Mushroom mushroom) {
-//
-//		return root.isEdible(mushroom);
-//
-//	}
-	
-	public void printClean() {
-		root.printClean("", null);
+	public void trim(double minSupport){
+		
+		root.trim(root, minSupport);
+		
 	}
 
 	public void print() {
