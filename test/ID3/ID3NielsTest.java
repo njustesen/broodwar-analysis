@@ -25,11 +25,11 @@ public class ID3NielsTest {
 	@Test
     public void protoss() {
 		
-		int n = 1000000;
+		int n = 1500;
 		Race race = Race.Protoss;
 		Race enemy = Race.Zerg;
-		//Map.Type map = Map.Type.Andromeda;
-		Map.Type map = null;
+		Map.Type map = Map.Type.Destination;
+		//Map.Type map = null;
 		int maxDepth = 20;
 		
 		List<Match> decodedMatches = null;
@@ -61,18 +61,18 @@ public class ID3NielsTest {
 			for(Action action : player.actions){
 				if (action.type != Action.Type.Unit && CostMap.costs.containsKey(action.actionType)){
 					filtered.add(action);
-					System.out.print(action.actionType + "\t");
+					//System.out.print(action.actionType + "\t");
 				}
 			}
 			player.actions = filtered;
-			System.out.print("\n");
+			//System.out.print("\n");
 		}
 		
 		List<Player> trainingSet = new ArrayList<Player>();
 		List<Player> testSet = new ArrayList<Player>();
 		
 		for(int i = 0; i < players.size(); i++){
-			if (i < players.size() / 2)
+			if (i < players.size() / 10 * 5)
 				trainingSet.add(players.get(i));
 			else
 				testSet.add(players.get(i));
@@ -84,7 +84,19 @@ public class ID3NielsTest {
 			id3.generateDecisionTree(trainingSet, race);
 			
 			//id3.getTree().print();
-			id3.getTree().saveToFile("buildOrders_" + map.name() + "_" + race.name() + "_" + depth + ".xml");
+			String filename = "";
+			String races = race.name();
+			if (enemy != null)
+				races += "_vs_" + enemy.name();
+			
+			if (depth == 1){
+				if (map != null)
+					filename = "buildOrders_" + map.name() + "_" + races + "_" + trainingSet.size() + ".xml";
+				else
+					filename = "buildOrders_" + races + "_" + trainingSet.size() + ".xml";
+				
+				id3.getTree().saveToFile(filename.toLowerCase());
+			}
 			
 			// Test
 			int correct = 0;

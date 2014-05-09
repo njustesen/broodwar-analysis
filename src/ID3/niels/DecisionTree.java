@@ -25,10 +25,6 @@ public class DecisionTree {
 //		return root.isEdible(mushroom);
 //
 //	}
-	
-	public void printClean() {
-		root.printClean("", null);
-	}
 
 	public void print() {
 		root.print(0, null);
@@ -49,14 +45,14 @@ public class DecisionTree {
 		
 	}
 
-	public boolean wins(int maxDepth, Player player) {
+	public boolean predictWin(int maxDepth, Player player) {
 		
 		List<ActionType> actions = new ArrayList<ActionType>();
 		
 		for(Action action : player.actions)
 			actions.add(action.actionType);
 		
-		return root.wins(0, maxDepth, actions);
+		return root.predictWin(0, maxDepth, actions);
 		
 	}
 

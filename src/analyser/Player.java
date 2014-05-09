@@ -52,7 +52,7 @@ public class Player implements ClusterPoint
       }
     }
   }
-  
+
   public Player(String name, boolean win, Race race, int actionNumber, int actionsPerMin, List<Action> actions)
   {
     this.name = name;
@@ -113,34 +113,34 @@ public void setActionsPerMin(int actionsPerMin) {
 
 @Override
 public String toString() {
-	
+
 	return "Player [win=" + win + ", race=" + race + ", actions=" + selectActions(false, true,true,true)
 			+ "]";
 }
 
-private List<Action> selectActions(boolean units, boolean buildings, boolean research, boolean upgrades) {
+public List<Action> selectActions(boolean units, boolean buildings, boolean research, boolean upgrades) {
 	List<Action> actions = new ArrayList<Action>();
-	
+
 	for(Action action : this.actions){
 		if (action.type == Type.Building && buildings)
-			actions.add(action);	
+			actions.add(action);
 		if (action.type == Type.Unit && units)
-			actions.add(action);	
+			actions.add(action);
 		if (action.type == Type.Research && research)
-			actions.add(action);	
+			actions.add(action);
 		if (action.type == Type.Upgrade && upgrades)
-			actions.add(action);	
+			actions.add(action);
 	}
-	
+
 	return actions;
 }
 
 @Override
 public double distance(ClusterPoint other) {
-	
+
 	//return new EditDistance(true, true, true, true, false, 10).distance((Player)other,this,30);
 	return DistanceManager.distance(this, ((Player)other));
-	
+
 }
 
 }

@@ -34,17 +34,30 @@ public class ID3 {
 			return node;
 		}
 		
-		if (actions.isEmpty()){
-			boolean edible = isMajorityWinning(players);
-			node.setWon(edible);
-			return node;
+//		if (actions.isEmpty()){
+//			boolean winning = isMajorityWinning(players);
+//			node.setWon(winning);
+//			return node;
+//		}
+		
+		// Player with no more actions should stop here
+		List<Player> continued = new ArrayList<Player>();
+		for(Player p : players){
+			if (p.getActions().size() < depth){
+				if (p.win)	
+					node.wins++;
+				else
+					node.wins--;
+			} else {
+				continued.add(p);
+			}
 		}
 		
 		// Get next action
 		node.setChildren(new HashMap<ActionType, ID3Node>());
 		for(ActionType action : actions){
 			
-			List<Player> subset = createSubset(players, action, depth);
+			List<Player> subset = createSubset(continued, action, depth);
 			
 			if(!subset.isEmpty()){
 				ID3Node child = induceDecisionTree(subset, clone(actions), depth+1);
@@ -117,7 +130,7 @@ public class ID3 {
 		
 		ID3Stats.searches++;
 		
-		return tree.wins(depth, player);
+		return tree.predictWin(depth, player);
 		
 	}
 	
