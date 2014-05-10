@@ -18,15 +18,17 @@ public class ID3 {
 		
 		// Protoss actions
 		List<ActionType> actions = new ArrayList<ActionType>(CostMap.costs.keySet());
+
+		actions.add(null); // Null action = game over
 		
-		ID3Node root = induceDecisionTree(trainingTuples, actions, 0);
+		ID3Node root = induceDecisionTree(trainingTuples, actions, 0, null);
 		tree = new DecisionTree(root);
 		
 	}
 	
-	private ID3Node induceDecisionTree(List<Player> players, List<ActionType> actions, int depth) {
+	private ID3Node induceDecisionTree(List<Player> players, List<ActionType> actions, int depth, ID3Node parent) {
 		
-		ID3Node node = new ID3Node();
+		ID3Node node = new ID3Node(parent);
 		node.setPlayers(players);
 		
 		// If all won or lost, stop heres
@@ -36,26 +38,30 @@ public class ID3 {
 		}
 			
 		// Player with no more actions should stop here
-		List<Player> continued = new ArrayList<Player>();
-		for(Player p : players){
-			if (p.getActions().size() < depth){
-				if (p.win)	
-					node.wins++;
-				else
-					node.wins--;
-			} else {
-				continued.add(p);
-			}
-		}
+//		List<Player> continued = new ArrayList<Player>();
+//		for(Player p : players){
+//			if (p.getActions().size() < depth){
+//				if (p.win)	
+//					node.wins++;
+//				else
+//					node.wins--;
+//			} else {
+//				continued.add(p);
+//			}
+//		}
 		
 		// Get next action
 		node.setChildren(new HashMap<ActionType, ID3Node>());
 		for(ActionType action : actions){
 			
-			List<Player> subset = createSubset(continued, action, depth);
+			List<Player> subset = createSubset(players, action, depth);
 			
 			if(!subset.isEmpty()){
-				ID3Node child = induceDecisionTree(subset, actions, depth+1);
+				ID3Node child = null;
+				if (action == null)
+					child = new ID3Node(node, subset);
+				else
+					child = induceDecisionTree(subset, actions, depth+1, node);
 				node.getChildren().put(action, child);
 			}
 			
@@ -69,7 +75,9 @@ public class ID3 {
 		List<Player> subset = new ArrayList<Player>();
 		
 		for(Player p : players)
-			if (p.getActions().size() > depth && p.actions.get(depth).actionType == action)
+			if (action == null && p.getActions().size() <= depth)
+				subset.add(p);
+			else if (action != null && p.getActions().size() > depth && p.actions.get(depth).actionType == action)
 				subset.add(p);
 		
 		return subset;

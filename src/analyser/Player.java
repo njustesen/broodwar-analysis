@@ -114,7 +114,7 @@ public void setActionsPerMin(int actionsPerMin) {
 @Override
 public String toString() {
 
-	return "Player [win=" + win + ", race=" + race + ", actions=" + selectActions(false, true,true,true)
+	return "Player [win=" + (win ? 1 : 0) + ", race=" + race + ", actions=" + selectActions(false, true,true,true)
 			+ "]";
 }
 

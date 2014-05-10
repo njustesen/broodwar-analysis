@@ -13,11 +13,19 @@ import analyser.Player;
 
 public class DecisionTree {
 
-	ID3Node root;
+	private ID3Node root;
 
 	public DecisionTree(ID3Node root) {
 		super();
 		this.root = root;
+	}
+	
+	public List<List<ActionType>> common(double minSupport){
+		
+		double minPlayers = minSupport * root.getPlayers().size();
+		
+		return root.common(minPlayers, null);
+		
 	}
 
 	public void trim(double minSupport){
@@ -54,6 +62,14 @@ public class DecisionTree {
 		
 		return root.predictWin(0, maxDepth, actions);
 		
+	}
+
+	public ID3Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(ID3Node root) {
+		this.root = root;
 	}
 
 }

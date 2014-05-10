@@ -2,6 +2,7 @@ package ID3.niels;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,26 +15,46 @@ public class ID3Node {
 	private Map<ActionType, ID3Node> children;
 	private Boolean won;
 	public int wins;
+	private boolean trimmed;
+	public ID3Node parent;
 
 	public ID3Node() {
 		super();
-		wins = 0;
+		this.wins = 0;
+		this.trimmed = false;
+		this.players = new ArrayList<Player>();
+		this.children = new HashMap<ActionType, ID3Node>();
+		this.parent = null;
+	}
+	
+	public ID3Node(ID3Node parent, List<Player> players) {
+		super();
+		this.wins = 0;
+		this.trimmed = false;
+		this.players = players;
+		this.children = new HashMap<ActionType, ID3Node>();
+		this.parent = parent;
 	}
 
-	public ID3Node(List<Player> players) {
+	public ID3Node(ID3Node parent) {
 		super();
-		this.players = players;
-		this.won = null;
+		this.wins = 0;
+		this.trimmed = false;
+		this.players = new ArrayList<Player>();
+		this.children = new HashMap<ActionType, ID3Node>();
+		this.parent = parent;
 	}
 
 	public double value() {
 		
 		if (won != null)
-			return won ? players.size() : 0;
+			return players.get(0).win ? 1 : 0;
 		
 		int wins = 0;
+		
 		for(ID3Node node : children.values())
-			wins += node.recursiveWins();
+			if (!node.trimmed)
+				wins += node.recursiveWins();
 		
 		if (wins==0)
 			return 0;
@@ -48,7 +69,8 @@ public class ID3Node {
 		
 		int w = wins;
 		for(ID3Node node : children.values())
-			w += node.recursiveWins();
+			if (!node.trimmed)
+				w += node.recursiveWins();
 		
 		if (w==0)
 			return w;
@@ -60,23 +82,35 @@ public class ID3Node {
 	
 	public void trim(ID3Node root, double minSupport) {
 		
-		List<ID3Node> removed = new ArrayList<ID3Node>();
+		if(children == null || children.isEmpty())
+			return;
 		
 		for(ID3Node child : children.values()){
-			double support = (double)players.size() / (double)root.players.size();
-			if(support >= minSupport)
+			double support = (double)child.players.size() / (double)root.players.size();
+			if(support >= minSupport){
 				child.trim(root, minSupport);
-			else
-				removed.add(child);
+			}else{
+				child.trimmed = true;
+				removePlayers(child.players);
+			}
 		}
-		
-		for(ActionType action : children.keySet())
-			if(removed.contains(children.get(action)))
-				children.remove(action);
 		
 	}
 	
+	private void removePlayers(List<Player> playersToRemove) {
+		
+		players.removeAll(playersToRemove);
+		
+		if (parent != null)
+			parent.removePlayers(playersToRemove);
+		
+	}
+
 	public void print(int level, Object value) {
+		
+		if (trimmed)
+			return;
+		
 		String str = "";
 		for(int i = 0; i < level; i++)
 			str += "\t";
@@ -128,15 +162,23 @@ public class ID3Node {
 		this.won = won;
 	}
 	public String toString(int level, Object value) {
+		
+		if (trimmed)
+			return "";
+		
 		String str = "\n";
 		for(int i = 0; i < level; i++)
 			str += "\t";
 
 		String m = String.valueOf((players == null ? "null" : players.size()));
-		String v = value == null ? "null" : ((Enum)value).name();
+		String a = value == null ? "Game over" : ((Enum)value).name();
 		DecimalFormat df = new DecimalFormat();
 		df.setMaximumFractionDigits(3);
-		str += "<node action='" + v + "' players='" + players.size() + "' value='" + df.format(value()) + "'>";
+		if (level == 0)
+			str += "<node players='" + players.size() + "' value='" + df.format(value()) + "'>";
+		else
+			str += "<node action='" + a + "' players='" + players.size() + "' value='" + df.format(value()) + "'>";
+		
 		
 		if (children != null){
 			for(Object obj : children.keySet()){
@@ -175,6 +217,45 @@ public class ID3Node {
 		ID3Stats.depth+=depth;
 		return value() >= 0.5;
 		
+	}
+
+	public List<List<ActionType>> common(double minPlayers, ActionType action) {
+		
+		List<List<ActionType>> common = new ArrayList<List<ActionType>>();
+		
+		for(ActionType childType : children.keySet()){
+			
+			ID3Node child = children.get(childType);
+			
+			if (child.players.size() >= minPlayers){
+				
+				List<List<ActionType>> commonChild = child.common(minPlayers, childType);
+				
+				for(List<ActionType> childList : commonChild){
+					
+					List<ActionType> list = new ArrayList<ActionType>();
+					if (action != null)
+						list.add(action);
+					
+					list.addAll(childList);
+					
+					common.add(list);
+					
+				}
+			}
+		}
+		
+		if (common.isEmpty() && players.size() >= minPlayers){
+			
+			List<ActionType> list = new ArrayList<ActionType>();
+			if (action != null)
+				list.add(action);
+			
+			common.add(list);
+			
+		}
+		
+		return common;
 	}
 
 }

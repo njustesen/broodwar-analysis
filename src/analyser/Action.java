@@ -456,6 +456,6 @@ public class Action
   @Override
   public String toString()
   {
-    return frames + ": " + type.toString() + ": " + actionType.toString() + " (" + race + ")";
+    return frames + ": " + type.toString().charAt(0) + ": " + actionType.toString() + "(" + race + ")";
   }
 }
