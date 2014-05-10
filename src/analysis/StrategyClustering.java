@@ -30,7 +30,7 @@ public class StrategyClustering {
 		List<Match> decodedMatches = null;
 		try {
 			MatchDecoder.folder = "D:/matches/";
-			decodedMatches = new MatchDecoder().decode(20000000, Race.Terran, Type.Python);
+			decodedMatches = new MatchDecoder().decode(20000000, Race.Terran, null, Type.Python);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

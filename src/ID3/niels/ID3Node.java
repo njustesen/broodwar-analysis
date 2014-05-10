@@ -13,9 +13,11 @@ public class ID3Node {
 	private List<Player> players;
 	private Map<ActionType, ID3Node> children;
 	private Boolean won;
+	public int wins;
 
 	public ID3Node() {
 		super();
+		wins = 0;
 	}
 
 	public ID3Node(List<Player> players) {
@@ -24,19 +26,34 @@ public class ID3Node {
 		this.won = null;
 	}
 
-	public double recursiveValue() {
+	public double value() {
 		
 		if (won != null)
-			return won ? 1 : 0;
+			return won ? players.size() : 0;
 		
-		double wins = 0;
+		int wins = 0;
 		for(ID3Node node : children.values())
-			wins += node.recursiveValue();
+			wins += node.recursiveWins();
 		
 		if (wins==0)
-			return wins;
+			return 0;
 		
-		return wins/children.values().size();
+		return (double)wins/(double)players.size();
+	}
+
+	private int recursiveWins() {
+
+		if (won != null)
+			return won ? players.size() : 0;
+		
+		int w = wins;
+		for(ID3Node node : children.values())
+			w += node.recursiveWins();
+		
+		if (w==0)
+			return w;
+		
+		return w;
 		
 	}
 
@@ -66,13 +83,9 @@ public class ID3Node {
 
 		String m = String.valueOf((players == null ? "null" : players.size()));
 		String v = value == null ? "null" : ((Enum)value).name();
-		if (won != null){
-			str += "<node value='" + v + " players='" + players.size() + "' win='" + won + "'>";
-		} else {
-			DecimalFormat df = new DecimalFormat();
-			df.setMaximumFractionDigits(4);
-			str += "<node action='" + v + "' players='" + players.size() + "' value='" + df.format(recursiveValue()) + "'>";
-		}
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(3);
+		str += "<node action='" + v + "' players='" + players.size() + "' value='" + df.format(value()) + "'>";
 		
 		System.out.println(str);
 
@@ -113,6 +126,55 @@ public class ID3Node {
 
 	public void setWon(boolean won) {
 		this.won = won;
+	}
+	public String toString(int level, Object value) {
+		String str = "\n";
+		for(int i = 0; i < level; i++)
+			str += "\t";
+
+		String m = String.valueOf((players == null ? "null" : players.size()));
+		String v = value == null ? "null" : ((Enum)value).name();
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(3);
+		str += "<node action='" + v + "' players='" + players.size() + "' value='" + df.format(value()) + "'>";
+		
+		if (children != null){
+			for(Object obj : children.keySet()){
+				//str += "\t" + obj.getClass().getName();
+				str += children.get(obj).toString(level+1, obj);
+			}
+		}
+
+		str += "\n";
+		for(int i = 0; i < level; i++){
+			str += "\t";
+		}
+		str += "</node>";
+		
+		return str;
+		
+	}
+
+	public boolean predictWin(int depth, int maxDepth, List<ActionType> actions) {
+		
+		if (won != null){
+			ID3Stats.depth+=depth;
+			return won;
+		}
+		
+		ActionType type = null;
+		if (depth < actions.size() && depth < maxDepth)
+			type = actions.get(depth);
+		
+		// Go deeper
+		if (type != null && children.containsKey(type)){
+			return children.get(type).predictWin(depth+1, maxDepth, actions);
+		}
+		
+		// Return average
+		ID3Stats.depth+=depth;
+		return value() >= 0.5;
+		
 	}
 
 }

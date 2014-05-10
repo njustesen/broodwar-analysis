@@ -34,12 +34,25 @@ public class ID3 {
 			node.setWon(players.get(0).win);
 			return node;
 		}
+			
+		// Player with no more actions should stop here
+		List<Player> continued = new ArrayList<Player>();
+		for(Player p : players){
+			if (p.getActions().size() < depth){
+				if (p.win)	
+					node.wins++;
+				else
+					node.wins--;
+			} else {
+				continued.add(p);
+			}
+		}
 		
-		// Create child for each action with players
+		// Get next action
 		node.setChildren(new HashMap<ActionType, ID3Node>());
 		for(ActionType action : actions){
 			
-			List<Player> subset = createSubset(players, action, depth);
+			List<Player> subset = createSubset(continued, action, depth);
 			
 			if(!subset.isEmpty()){
 				ID3Node child = induceDecisionTree(subset, actions, depth+1);
@@ -79,6 +92,14 @@ public class ID3 {
 
 	public void setTree(DecisionTree tree) {
 		this.tree = tree;
+	}
+
+	public boolean wins(int depth, Player player) {
+		
+		ID3Stats.searches++;
+		
+		return tree.predictWin(depth, player);
+		
 	}
 	
 }

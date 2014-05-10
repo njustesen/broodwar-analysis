@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -124,10 +125,22 @@ public class MatchDecoder {
 
 		File folderFile = new File(folder);
 		File[] listOfFiles = folderFile.listFiles();
-
+		List<File> files = new ArrayList<File>();
+		for(File f : listOfFiles){
+			if (f.isDirectory()){
+				if (mapType == null || f.getName().equalsIgnoreCase(mapType.name())){
+					List<File> mapFiles = Arrays.asList(f.listFiles());
+					files.addAll(mapFiles);
+					System.out.println(mapFiles.size() + " files added with the map " + f.getName());
+					if (mapType != null)
+						break;
+				}
+			}
+		}
+		
 		List<Match> matches = new ArrayList<Match>();
 		int i = 0;
-		for ( File file : listOfFiles ) {
+		for ( File file : files ) {
 			String json;
 			try {
 				json = readFile(file.getCanonicalPath());
@@ -136,7 +149,7 @@ public class MatchDecoder {
 				Type matchType = new TypeToken<Match>(){}.getType();
 
 				Match match = gson.fromJson(json, matchType);
-				//System.out.print("-");
+				
 				if (mapType == null || match.map.type == mapType){
 					boolean a = (race == null);
 					boolean b = (secondRace == null);
@@ -157,7 +170,7 @@ public class MatchDecoder {
 				break;
 			i++;
 			if (i%100==0 && i != 0){
-				System.out.println(i + "/" + listOfFiles.length + " matches parsed \t " + matches.size() + " added. ");
+				System.out.println(i + "/" + files.size() + " matches parsed \t " + matches.size() + " added. ");
 			}
 		}
 
