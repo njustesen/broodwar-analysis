@@ -34,7 +34,7 @@ public class ID3NielsTest {
 		
 		List<Match> decodedMatches = null;
 		try {
-			MatchDecoder.folder = "D:/matches/";
+			MatchDecoder.folder = "/home/niels/Documents/broodwar-data/matches/";
 			decodedMatches = new MatchDecoder().decode(n, race, map);
 		} catch (IOException e) {
 			e.printStackTrace();
