@@ -1,6 +1,7 @@
 package ID3.niels;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,30 +26,6 @@ public class ID3Node {
 		this.won = null;
 	}
 
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
-
-	public Map<ActionType, ID3Node> getChildren() {
-		return children;
-	}
-
-	public void setChildren(Map<ActionType, ID3Node> children) {
-		this.children = children;
-	}
-	
-	public boolean isWon() {
-		return won;
-	}
-
-	public void setWon(boolean won) {
-		this.won = won;
-	}
-
 	public double value() {
 		
 		if (won != null)
@@ -65,7 +42,7 @@ public class ID3Node {
 	}
 
 	private int recursiveWins() {
-		
+
 		if (won != null)
 			return won ? players.size() : 0;
 		
@@ -80,6 +57,25 @@ public class ID3Node {
 		
 	}
 
+	
+	public void trim(ID3Node root, double minSupport) {
+		
+		List<ID3Node> removed = new ArrayList<ID3Node>();
+		
+		for(ID3Node child : children.values()){
+			double support = (double)players.size() / (double)root.players.size();
+			if(support >= minSupport)
+				child.trim(root, minSupport);
+			else
+				removed.add(child);
+		}
+		
+		for(ActionType action : children.keySet())
+			if(removed.contains(children.get(action)))
+				children.remove(action);
+		
+	}
+	
 	public void print(int level, Object value) {
 		String str = "";
 		for(int i = 0; i < level; i++)
@@ -108,6 +104,29 @@ public class ID3Node {
 
 	}
 
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+	public Map<ActionType, ID3Node> getChildren() {
+		return children;
+	}
+
+	public void setChildren(Map<ActionType, ID3Node> children) {
+		this.children = children;
+	}
+	
+	public boolean isWon() {
+		return won;
+	}
+
+	public void setWon(boolean won) {
+		this.won = won;
+	}
 	public String toString(int level, Object value) {
 		String str = "\n";
 		for(int i = 0; i < level; i++)

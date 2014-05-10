@@ -35,7 +35,7 @@ public class ID3NielsTest {
 		List<Match> decodedMatches = null;
 		try {
 			MatchDecoder.folder = "/home/niels/Documents/broodwar-data/matches/";
-			decodedMatches = new MatchDecoder().decode(n, race, map);
+			decodedMatches = new MatchDecoder().decode(4, Race.Protoss, Race.Zerg, Map.Type.Lost_Temple);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,22 +57,31 @@ public class ID3NielsTest {
 		
 		// Remove units
 		for(Player player : players){
+			List<Action> upgradesAndResearch = new ArrayList<Action>();
 			List<Action> filtered = new ArrayList<Action>();
 			for(Action action : player.actions){
 				if (action.type != Action.Type.Unit && CostMap.costs.containsKey(action.actionType)){
-					filtered.add(action);
-					//System.out.print(action.actionType + "\t");
+					if (action.type == Action.Type.Research || action.type == Action.Type.Research){
+						if (!upgradesAndResearch.contains(action)){
+							upgradesAndResearch.add(action);
+							filtered.add(action);
+						}
+					} else {
+						filtered.add(action);
+					}
 				}
 			}
 			player.actions = filtered;
-			//System.out.print("\n");
+			System.out.print("\n");
+			System.out.println(player.actions);
 		}
 		
 		List<Player> trainingSet = new ArrayList<Player>();
 		List<Player> testSet = new ArrayList<Player>();
+		trainingSet = players;
 		
 		for(int i = 0; i < players.size(); i++){
-			if (i < players.size() / 10 * 5)
+			if (i < ((double)players.size() / (double)10) * (double)5)
 				trainingSet.add(players.get(i));
 			else
 				testSet.add(players.get(i));

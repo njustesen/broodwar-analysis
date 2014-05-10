@@ -1,0 +1,27 @@
+
+<node action='null' players='8' value='0.25'>
+	<node action='Pylon' players='8' value='0.25'>
+		<node action='Gateway' players='6' value='0.333'>
+			<node action='Gateway' players='6' value='0.333'>
+				<node action='Pylon' players='6' value='0.333'>
+					<node action='Assimilator' players='2' value='0'>
+					</node>
+					<node action='Pylon' players='4' value='0.5'>
+						<node action='Pylon' players='4' value='0.5'>
+							<node action='Assimilator' players='4' value='0.5'>
+								<node action='Pylon' players='4' value='0.5'>
+									<node action='Nexus' players='2' value='0'>
+									</node>
+									<node action='CyberneticsCore' players='2' value='2'>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+		<node action='Pylon' players='2' value='0'>
+		</node>
+	</node>
+</node>

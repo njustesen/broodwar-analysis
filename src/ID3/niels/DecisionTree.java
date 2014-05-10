@@ -20,11 +20,11 @@ public class DecisionTree {
 		this.root = root;
 	}
 
-//	public boolean isEdible(Mushroom mushroom) {
-//
-//		return root.isEdible(mushroom);
-//
-//	}
+	public void trim(double minSupport){
+		
+		root.trim(root, minSupport);
+		
+	}
 
 	public void print() {
 		root.print(0, null);

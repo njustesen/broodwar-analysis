@@ -24,7 +24,7 @@ public class ID3Classifier {
 	public static void main(String[] args){
 		
 		try {
-			List<Match> matches = new MatchDecoder().decode(1000, Race.Terran, Type.Andromeda);
+			List<Match> matches = new MatchDecoder().decode(1000, Race.Terran, null, Type.Andromeda);
 			ID3Classifier id3c = new ID3Classifier(matches);
 		}
 		catch (IOException e) {e.printStackTrace();}

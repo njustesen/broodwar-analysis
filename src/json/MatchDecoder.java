@@ -121,8 +121,7 @@ public class MatchDecoder {
         {
         }
 
-
-	public List<Match> decode(int n, Race race, analyser.Map.Type mapType) throws IOException{
+	public List<Match> decode(int n, Race race, Race secondRace, analyser.Map.Type mapType) throws IOException{
 
 		File folderFile = new File(folder);
 		File[] listOfFiles = folderFile.listFiles();
@@ -152,13 +151,16 @@ public class MatchDecoder {
 				Match match = gson.fromJson(json, matchType);
 				
 				if (mapType == null || match.map.type == mapType){
+					boolean a = (race == null);
+					boolean b = (secondRace == null);
 					for(Player player : match.players){
-						if (player.race == race){
-							matches.add(match);
-							break;
-						}
+						if (player.race == race)
+							a = true;
+						else if (player.race == secondRace)
+							b = true;
 					}
-
+					if (a && b)
+						matches.add(match);
 				}
 
 			} catch (IOException e) {

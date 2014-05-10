@@ -29,17 +29,12 @@ public class ID3 {
 		ID3Node node = new ID3Node();
 		node.setPlayers(players);
 		
+		// If all won or lost, stop heres
 		if (sameClass(players)){
 			node.setWon(players.get(0).win);
 			return node;
 		}
-		
-//		if (actions.isEmpty()){
-//			boolean winning = isMajorityWinning(players);
-//			node.setWon(winning);
-//			return node;
-//		}
-		
+			
 		// Player with no more actions should stop here
 		List<Player> continued = new ArrayList<Player>();
 		for(Player p : players){
@@ -60,7 +55,7 @@ public class ID3 {
 			List<Player> subset = createSubset(continued, action, depth);
 			
 			if(!subset.isEmpty()){
-				ID3Node child = induceDecisionTree(subset, clone(actions), depth+1);
+				ID3Node child = induceDecisionTree(subset, actions, depth+1);
 				node.getChildren().put(action, child);
 			}
 			
@@ -69,35 +64,17 @@ public class ID3 {
 		return node;
 	}
 
-	private List<ActionType> clone(List<ActionType> actions) {
-		List<ActionType> clone = new ArrayList<ActionType>();
-		for(ActionType obj : actions){
-			clone.add(obj);
-		}
-		return clone;
-	}
-
 	private List<Player> createSubset(List<Player> players, ActionType action, int depth) {
 		
 		List<Player> subset = new ArrayList<Player>();
 		
-		for(Player p : players){
+		for(Player p : players)
 			if (p.getActions().size() > depth && p.actions.get(depth).actionType == action)
 				subset.add(p);
-		}
 		
 		return subset;
 	}
 	
-	private boolean isMajorityWinning(List<Player> players) {
-		int e = 0;
-		for (Player p : players){
-			if (p.win)
-				e++;
-		}
-		return e > players.size() / 2;
-	}
-
 	private boolean sameClass(List<Player> players) {
 		Boolean label = null;
 		for(Player p : players){
@@ -108,15 +85,6 @@ public class ID3 {
 		}
 		return true;
 	}
-
-//	public boolean isEdible(Player player){
-//		
-//		if (tree == null)
-//			throw new IllegalStateException("ID3 not set up!");
-//		
-//		return tree.isEdible(player);
-//		
-//	}
 
 	public DecisionTree getTree() {
 		return tree;
