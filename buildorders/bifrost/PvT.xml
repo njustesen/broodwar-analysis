@@ -1,0 +1,14 @@
+[Pylon, Pylon, Gateway, Assimilator, CyberneticsCore, Pylon] (5) -> 0.6
+[Pylon, Gateway, Pylon] (8) -> 0.25
+[Pylon, Gateway, Assimilator, CyberneticsCore, CyberneticsCore] (6) -> 0.5
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon] (7) -> 0.75
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Gateway] (5) -> 0.285
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Gateway] (7) -> 0.555
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway, Pylon, RoboticsFacility] (5) -> 0.428
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (5) -> 0.5
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (10) -> 0.454
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, CitadelofAdun] (8) -> 0.444
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore] (7) -> 0.571
+[Pylon, Gateway, Gateway, Assimilator, CyberneticsCore] (5) -> 0.4
+[Pylon, Gateway, Gateway, Gateway, Assimilator] (5) -> 0.4
+[Pylon, Gateway, Forge] (6) -> 0.666

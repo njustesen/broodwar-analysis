@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import domain.buildorder.BuildOrder;
 import domain.cost.CostMap;
 
 import analyser.Action.ActionType;
@@ -14,9 +15,8 @@ public class ID3 {
 	
 	DecisionTree tree;
 	
-	public void generateDecisionTree(List<Player> trainingTuples, Race race){
+	public void generateDecisionTree(List<BuildOrder> trainingTuples){
 		
-		// Protoss actions
 		List<ActionType> actions = new ArrayList<ActionType>(CostMap.costs.keySet());
 
 		actions.add(null); // Null action = game over
@@ -26,35 +26,22 @@ public class ID3 {
 		
 	}
 	
-	private ID3Node induceDecisionTree(List<Player> players, List<ActionType> actions, int depth, ID3Node parent) {
+	private ID3Node induceDecisionTree(List<BuildOrder> buildOrders, List<ActionType> actions, int depth, ID3Node parent) {
 		
 		ID3Node node = new ID3Node(parent);
-		node.setPlayers(players);
+		node.setBuildOrders(buildOrders);
 		
 		// If all won or lost, stop heres
-		if (sameClass(players)){
-			node.setWon(players.get(0).win);
+		if (sameClass(buildOrders)){
+			node.setWon(buildOrders.get(0).win);
 			return node;
 		}
 			
-		// Player with no more actions should stop here
-//		List<Player> continued = new ArrayList<Player>();
-//		for(Player p : players){
-//			if (p.getActions().size() < depth){
-//				if (p.win)	
-//					node.wins++;
-//				else
-//					node.wins--;
-//			} else {
-//				continued.add(p);
-//			}
-//		}
-		
 		// Get next action
 		node.setChildren(new HashMap<ActionType, ID3Node>());
 		for(ActionType action : actions){
 			
-			List<Player> subset = createSubset(players, action, depth);
+			List<BuildOrder> subset = createSubset(buildOrders, action, depth);
 			
 			if(!subset.isEmpty()){
 				ID3Node child = null;
@@ -70,25 +57,25 @@ public class ID3 {
 		return node;
 	}
 
-	private List<Player> createSubset(List<Player> players, ActionType action, int depth) {
+	private List<BuildOrder> createSubset(List<BuildOrder> buildOrders, ActionType action, int depth) {
 		
-		List<Player> subset = new ArrayList<Player>();
+		List<BuildOrder> subset = new ArrayList<BuildOrder>();
 		
-		for(Player p : players)
-			if (action == null && p.getActions().size() <= depth)
-				subset.add(p);
-			else if (action != null && p.getActions().size() > depth && p.actions.get(depth).actionType == action)
-				subset.add(p);
+		for(BuildOrder b : buildOrders)
+			if (action == null && b.builds.size() <= depth)
+				subset.add(b);
+			else if (action != null && b.builds.size() > depth && b.builds.get(depth).action == action)
+				subset.add(b);
 		
 		return subset;
 	}
 	
-	private boolean sameClass(List<Player> players) {
+	private boolean sameClass(List<BuildOrder> buildOrders) {
 		Boolean label = null;
-		for(Player p : players){
+		for(BuildOrder b : buildOrders){
 			if (label == null)
-				label = p.win;
-			else if (label != p.win)
+				label = b.win;
+			else if (label != b.win)
 				return false;
 		}
 		return true;
@@ -102,11 +89,11 @@ public class ID3 {
 		this.tree = tree;
 	}
 
-	public boolean wins(int depth, Player player) {
+	public boolean wins(int depth, BuildOrder buildOrder) {
 		
 		ID3Stats.searches++;
 		
-		return tree.predictWin(depth, player);
+		return tree.predictWin(depth, buildOrder);
 		
 	}
 	

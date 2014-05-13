@@ -1,0 +1,17 @@
+[Pylon, Pylon, Gateway, Pylon, Forge, PhotonCannon] (2) -> 0.5
+[Pylon, Assimilator, Forge, Pylon, ProtossGroundWeapons] (2) -> 0.5
+[Pylon, Nexus, Forge, Pylon, PhotonCannon, Gateway] (3) -> 0.333
+[Pylon, Nexus, Forge, Assimilator, PhotonCannon] (2) -> 0.5
+[Pylon, Gateway, Pylon, Pylon] (2) -> 0.25
+[Pylon, Gateway, Pylon, ShieldBattery, Pylon] (2) -> 0.25
+[Pylon, Gateway, Pylon, Assimilator, CyberneticsCore] (3) -> 0.6
+[Pylon, Gateway, Pylon, Assimilator, Pylon, CyberneticsCore] (3) -> 0.4
+[Pylon, Gateway, Pylon, Assimilator, Forge] (2) -> 0.0
+[Pylon, Gateway, Pylon, Gateway] (2) -> 0.25
+[Pylon, Gateway, Pylon, Forge, PhotonCannon, PhotonCannon] (3) -> 0.2
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon] (2) -> 0.333
+[Pylon, Gateway, Gateway, Pylon] (2) -> 0.333
+[Pylon, Gateway, Gateway, Gateway] (2) -> 0.333
+[Pylon, Gateway, Forge, Pylon, PhotonCannon] (2) -> 0.666
+[Pylon, Forge, Pylon, PhotonCannon] (2) -> 1.0
+[Pylon, Forge, PhotonCannon, Pylon, PhotonCannon] (2) -> 0.5

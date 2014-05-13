@@ -26,5 +26,9 @@ public class Cost {
 	public void setGas(int gas) {
 		this.gas = gas;
 	}
+
+	public int getTotal() {
+		return minerals + gas;
+	}
 	
 }

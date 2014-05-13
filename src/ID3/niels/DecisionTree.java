@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.buildorder.Build;
+import domain.buildorder.BuildOrder;
 import domain.cost.CostMap;
 
 import analyser.Action;
@@ -20,17 +22,11 @@ public class DecisionTree {
 		this.root = root;
 	}
 	
-	public List<List<ActionType>> common(double minSupport){
+	public List<BuildOrder> common(double minSupport){
 		
-		double minPlayers = minSupport * root.getPlayers().size();
+		double minBuildOrders = minSupport * root.getBuildOrders().size();
 		
-		return root.common(minPlayers, null);
-		
-	}
-
-	public void trim(double minSupport){
-		
-		root.trim(root, minSupport);
+		return root.common(minBuildOrders, null);
 		
 	}
 
@@ -44,7 +40,8 @@ public class DecisionTree {
 			// Create file 
 			FileWriter fstream = new FileWriter(filename);
 			BufferedWriter out = new BufferedWriter(fstream);
-			out.write(root.toString(0, null));
+			//out.write(root.toString(0, null));
+			root.toFile(out, 0, null);
 			//Close the output stream
 			out.close();
 		} catch (Exception e){//Catch exception if any
@@ -53,12 +50,12 @@ public class DecisionTree {
 		
 	}
 
-	public boolean predictWin(int maxDepth, Player player) {
+	public boolean predictWin(int maxDepth, BuildOrder buildOrder) {
 		
 		List<ActionType> actions = new ArrayList<ActionType>();
 		
-		for(Action action : player.actions)
-			actions.add(action.actionType);
+		for(Build build : buildOrder.builds)
+			actions.add(build.action);
 		
 		return root.predictWin(0, maxDepth, actions);
 		

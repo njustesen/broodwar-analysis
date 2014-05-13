@@ -131,7 +131,7 @@ public class MatchDecoder {
 				if (mapType == null || f.getName().equalsIgnoreCase(mapType.name())){
 					List<File> mapFiles = Arrays.asList(f.listFiles());
 					files.addAll(mapFiles);
-					System.out.println(mapFiles.size() + " files added with the map " + f.getName());
+					System.out.println(mapFiles.size() + " matches found with the map " + f.getName());
 					if (mapType != null)
 						break;
 				}
