@@ -1,0 +1,11 @@
+[Barracks, SupplyDepot, Barracks] (3) {2951} -> 1
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, Academy, SupplyDepot, StimPack] (2) {6723.5} -> 0.5
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, SupplyDepot] (3) {2800.333} -> 1
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, EngineeringBay, SupplyDepot, TerranInfantryWeapons, Academy] (2) {1787.5} -> 0.5
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, EngineeringBay, SupplyDepot, TerranInfantryArmor] (2) {1803.5} -> 0
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Bunker] (3) {3014} -> 0
+[SupplyDepot, Barracks, Barracks, Refinery, SupplyDepot, Academy] (3) {3980.667} -> 1
+[SupplyDepot, Barracks, Barracks, Refinery, SupplyDepot, Refinery] (2) {2845} -> 1
+[SupplyDepot, Barracks, Refinery, Academy] (2) {2145.5} -> 0
+[SupplyDepot, Barracks, Refinery, Barracks] (2) {3841.5} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory] (2) {2106} -> 1

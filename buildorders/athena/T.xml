@@ -1,0 +1,10 @@
+[SupplyDepot, Barracks, Barracks] (5) {3034.8} -> 0.4
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, Barracks, Refinery, Academy] (4) {4679.25} -> 0.75
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, SupplyDepot, Barracks] (3) {2336} -> 1
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, SupplyDepot, Refinery] (4) {5338.75} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot] (5) {5085.167} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop, SupplyDepot] (4) {3478} -> 0.6
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, MachineShop, CommandCenter] (3) {4816.25} -> 0.25
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, MachineShop, Factory, SupplyDepot, SpiderMines] (3) {2792.25} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, MachineShop, CommandCenter, SupplyDepot, SiegeTankMode, EngineeringBay] (3) {3024} -> 0.25
+[SupplyDepot, Refinery, Barracks, SupplyDepot] (3) {4202.333} -> 0

@@ -1,0 +1,81 @@
+
+<node players='22' value='0.545'>
+	<node action='Assimilator' players='1' value='0'>
+	</node>
+	<node action='Pylon' players='21' value='0.571'>
+		<node action='Gateway' players='9' value='0.444'>
+			<node action='Assimilator' players='9' value='0.444'>
+				<node action='CyberneticsCore' players='9' value='0.444'>
+					<node action='Pylon' players='9' value='0.444'>
+						<node action='RoboticsFacility' players='2' value='0'>
+						</node>
+						<node action='Stargate' players='7' value='0.571'>
+							<node action='Pylon' players='7' value='0.571'>
+								<node action='RoboticsFacility' players='5' value='0.8'>
+									<node action='Pylon' players='5' value='0.8'>
+										<node action='Forge' players='3' value='0.667'>
+											<node action='PhotonCannon' players='2' value='0.5'>
+												<node action='ProtossAirWeapons' players='1' value='1'>
+												</node>
+												<node action='RoboticsSupportBay' players='1' value='0'>
+												</node>
+											</node>
+											<node action='Pylon' players='1' value='1'>
+											</node>
+										</node>
+										<node action='RoboticsSupportBay' players='2' value='1'>
+										</node>
+									</node>
+								</node>
+								<node action='Pylon' players='2' value='0'>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+		<node action='Assimilator' players='12' value='0.667'>
+			<node action='Gateway' players='12' value='0.667'>
+				<node action='CyberneticsCore' players='8' value='0.75'>
+					<node action='Pylon' players='8' value='0.75'>
+						<node action='RoboticsFacility' players='1' value='0'>
+						</node>
+						<node action='Stargate' players='7' value='0.857'>
+							<node action='ProtossAirWeapons' players='1' value='0'>
+							</node>
+							<node action='RoboticsFacility' players='4' value='1'>
+							</node>
+							<node action='Pylon' players='2' value='1'>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='Pylon' players='4' value='0.5'>
+					<node action='CyberneticsCore' players='4' value='0.5'>
+						<node action='Stargate' players='3' value='0.667'>
+							<node action='ProtossAirWeapons' players='3' value='0.667'>
+								<node action='RoboticsFacility' players='1' value='1'>
+								</node>
+								<node action='Pylon' players='2' value='0.5'>
+									<node action='RoboticsFacility' players='2' value='0.5'>
+										<node action='Pylon' players='2' value='0.5'>
+											<node action='Forge' players='2' value='0.5'>
+												<node action='RoboticsSupportBay' players='1' value='0'>
+												</node>
+												<node action='Pylon' players='1' value='1'>
+												</node>
+											</node>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node action='Pylon' players='1' value='0'>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

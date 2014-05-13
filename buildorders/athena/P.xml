@@ -1,0 +1,14 @@
+[Pylon, Nexus, Gateway, Forge, Pylon] (3) {4418.333} -> 0.667
+[Pylon, Gateway, Gateway, Pylon] (4) {1704.25} -> 0.75
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, RoboticsSupportBay, Pylon] (3) {3732.333} -> 0.667
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, RoboticsFacility, Pylon] (3) {3119.667} -> 0.667
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Pylon, Observatory] (3) {3041.667} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (3) {3373} -> 0.333
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon] (5) {3742.4} -> 0.4
+[Pylon, Gateway, Pylon, Assimilator, CyberneticsCore, Pylon] (3) {3181.333} -> 0.667
+[Pylon, Forge, Nexus, Gateway] (4) {5103} -> 0.5
+[Pylon, Forge, Nexus, PhotonCannon] (4) {3782} -> 0.5
+[Pylon, Forge, PhotonCannon, Nexus, Gateway, Pylon, Assimilator, CyberneticsCore] (4) {3472} -> 0.5
+[Pylon, Forge, PhotonCannon, PhotonCannon, Nexus] (5) {3952.2} -> 0
+[Pylon, Forge, PhotonCannon, PhotonCannon, Pylon] (3) {1332.333} -> 0.667
+[Pylon, Forge, Pylon] (3) {3393.667} -> 0

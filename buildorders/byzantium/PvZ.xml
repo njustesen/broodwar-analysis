@@ -1,0 +1,23 @@
+[Pylon, Gateway, Gateway, Forge] (1) {1689} -> 0
+[Pylon, Gateway, Gateway, Pylon, Forge] (1) {298} -> 0
+[Pylon, Gateway, Gateway, Pylon, Pylon, Nexus] (1) {2130} -> 0
+[Pylon, Gateway, Gateway, Pylon, Pylon, Pylon] (2) {2649.5} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon, Stargate, CitadelofAdun] (1) {2784} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon, Stargate, Pylon] (1) {1364} -> 0
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon, CitadelofAdun] (1) {2844} -> 1
+[Pylon, Gateway, Pylon] (2) {1751} -> 1
+[Pylon, Assimilator] (1) {2626} -> 1
+[Pylon, Forge, Nexus] (3) {4734.667} -> 1
+[Pylon, Forge, PhotonCannon, Nexus, Gateway] (1) {4239} -> 1
+[Pylon, Forge, PhotonCannon, Nexus, PhotonCannon, Gateway, Pylon, Assimilator, CyberneticsCore, Assimilator, Stargate, PhotonCannon] (1) {2493} -> 0
+[Pylon, Forge, PhotonCannon, Nexus, PhotonCannon, Gateway, Pylon, Assimilator, CyberneticsCore, Assimilator, Stargate, Pylon] (1) {4934} -> 1
+[Pylon, Forge, PhotonCannon, Nexus, Pylon] (2) {1235.5} -> 0
+[Pylon, Forge, PhotonCannon, PhotonCannon, Nexus, Gateway] (1) {5752} -> 0
+[Pylon, Forge, PhotonCannon, PhotonCannon, Nexus, PhotonCannon] (1) {923} -> 0
+[Pylon, Forge, PhotonCannon, PhotonCannon, Nexus, Pylon] (2) {3821} -> 1
+[Pylon, Forge, PhotonCannon, PhotonCannon, PhotonCannon] (1) {9650} -> 0
+[Pylon, Forge, PhotonCannon, PhotonCannon, Pylon] (1) {4053} -> 1
+[Pylon, Forge, PhotonCannon, Pylon] (1) {3020} -> 1
+[Pylon, Forge, Pylon] (1) {3698} -> 1
+[Pylon, Pylon, Nexus] (2) {3209} -> 1
+[Pylon, Pylon, Forge] (1) {2885} -> 0

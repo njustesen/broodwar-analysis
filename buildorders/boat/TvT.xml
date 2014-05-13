@@ -1,0 +1,12 @@
+[SupplyDepot, Barracks] (2) {3521} -> 0
+[SupplyDepot, CommandCenter, Barracks, Refinery, SupplyDepot, Factory, CommandCenter] (1) {1534} -> 0
+[SupplyDepot, CommandCenter, Barracks, Refinery, SupplyDepot, Factory, EngineeringBay] (1) {2507} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Academy] (3) {3723.333} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory] (5) {4556.6} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Starport, SupplyDepot, SupplyDepot, SupplyDepot] (1) {4958} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Starport, SupplyDepot, SupplyDepot, ControlTower] (1) {3958} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Starport, MachineShop] (1) {2462} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Academy, Factory, Armory, Starport, ComSat, SupplyDepot, SupplyDepot, ControlTower, SupplyDepot, MachineShop, Barracks] (1) {2014} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Academy, Factory, Armory, Starport, ComSat, SupplyDepot, SupplyDepot, ControlTower, SupplyDepot, MachineShop, SupplyDepot] (1) {2181} -> 1
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Factory] (4) {4721} -> 1
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Starport] (1) {1354} -> 1

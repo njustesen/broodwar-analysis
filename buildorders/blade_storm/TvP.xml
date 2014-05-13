@@ -1,0 +1,14 @@
+[SupplyDepot, Barracks, Barracks] (25) {2625.24} -> 0.48
+[SupplyDepot, Barracks, SupplyDepot] (24) {3316.833} -> 0.292
+[SupplyDepot, Barracks, Refinery, Barracks] (38) {3141.289} -> 0.368
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Barracks] (29) {3599.138} -> 0.552
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, MachineShop, SupplyDepot, MachineShop] (25) {2830.32} -> 0.6
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, MachineShop, SupplyDepot] (40) {3544.75} -> 0.325
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Barracks, Factory] (27) {3052.741} -> 0.296
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Barracks, Factory] (30) {3435.167} -> 0.367
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, SupplyDepot, MachineShop] (33) {3115.545} -> 0.394
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop, SupplyDepot, SpiderMines] (24) {3737.833} -> 0.417
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop, SupplyDepot, MachineShop] (36) {3420.083} -> 0.333
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, MachineShop] (51) {3651.765} -> 0.451
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, MachineShop] (45) {3515.978} -> 0.311
+[SupplyDepot, Refinery, Barracks] (27) {3263.333} -> 0.481

@@ -1,0 +1,31 @@
+
+<node players='5' value='0.4'>
+	<node action='Barracks' players='1' value='1'>
+	</node>
+	<node action='SupplyDepot' players='4' value='0.25'>
+		<node action='Barracks' players='4' value='0.25'>
+			<node action='Refinery' players='4' value='0.25'>
+				<node action='SupplyDepot' players='4' value='0.25'>
+					<node action='Factory' players='3' value='0.333'>
+						<node action='Factory' players='3' value='0.333'>
+							<node action='MachineShop' players='3' value='0.333'>
+								<node action='SupplyDepot' players='3' value='0.333'>
+									<node action='SpiderMines' players='3' value='0.333'>
+										<node action='Barracks' players='1' value='0'>
+										</node>
+										<node action='SiegeTankMode' players='1' value='0'>
+										</node>
+										<node action='SupplyDepot' players='1' value='1'>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node action='EngineeringBay' players='1' value='0'>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

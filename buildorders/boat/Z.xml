@@ -1,0 +1,25 @@
+[Extractor, SpawningPool, Hatchery, PneumatizedCarapace] (2) {2654} -> 1
+[Extractor, SpawningPool, Hatchery, HydraliskDen, Spire] (1) {4531} -> 0
+[Extractor, SpawningPool, Hatchery, HydraliskDen, VentralSacs, GroovedSpines] (1) {2076} -> 0
+[Extractor, SpawningPool, Hatchery, HydraliskDen, VentralSacs, MuscularAugments, GroovedSpines, PneumatizedCarapace, Hatchery, Spire] (1) {2364} -> 0
+[Extractor, SpawningPool, Hatchery, HydraliskDen, VentralSacs, MuscularAugments, GroovedSpines, PneumatizedCarapace, Hatchery, EvolutionChamber] (1) {2084} -> 1
+[Extractor, SpawningPool, Hatchery, HydraliskDen, VentralSacs, MuscularAugments, GroovedSpines, Hatchery] (1) {5882} -> 1
+[Extractor, SpawningPool, Hatchery, Spire] (12) {3132.083} -> 0.333
+[Extractor, SpawningPool, Hatchery, Spire, HydraliskDen] (1) {2337.5} -> 1
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, PneumatizedCarapace] (1) {3312} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, HydraliskDen, GroovedSpines] (1) {1813} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, HydraliskDen, Hatchery, PneumatizedCarapace] (1) {3026.5} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, HydraliskDen, Hatchery, MuscularAugments] (1) {2057.5} -> 1
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, ZergFlyerCarapace] (1) {1381.5} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, EvolutionChamber] (2) {2094.333} -> 0.333
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, MetabolicBoost] (1) {2007.5} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, Hatchery, EvolutionChamber] (1) {2832} -> 0.5
+[Extractor, SpawningPool, Hatchery, Spire, VentralSacs, Hatchery, Hatchery] (1) {2634.5} -> 1
+[Extractor, SpawningPool, Hatchery, VentralSacs, HydraliskDen, MuscularAugments, PneumatizedCarapace, GroovedSpines, Hatchery, Spire] (1) {3556} -> 0
+[Extractor, SpawningPool, Hatchery, VentralSacs, HydraliskDen, MuscularAugments, PneumatizedCarapace, GroovedSpines, Hatchery, Hatchery] (1) {7812} -> 1
+[Extractor, SpawningPool, Hatchery, VentralSacs, Spire] (2) {2193} -> 0
+[Extractor, SpawningPool, Hatchery, Hatchery] (1) {2015} -> 0
+[Extractor, Hatchery, SpawningPool, HydraliskDen] (1) {3295} -> 1
+[Extractor, Hatchery, SpawningPool, CreepColony] (1) {1498} -> 0
+[Extractor, Hatchery, SpawningPool, EvolutionChamber] (1) {2065} -> 0
+[SpawningPool] (4) {3906} -> 1

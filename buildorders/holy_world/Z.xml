@@ -1,0 +1,21 @@
+[Extractor, SpawningPool, Extractor, EvolutionChamber] (1) {1202} -> 1
+[Extractor, SpawningPool, Extractor, Hatchery, Extractor] (1) {1877} -> 0
+[Extractor, SpawningPool, Extractor, Hatchery, MetabolicBoost] (1) {1117} -> 1
+[Extractor, Hatchery] (1) {2060} -> 1
+[SpawningPool] (7) {1696.143} -> 0.571
+[SpawningPool, Extractor, MetabolicBoost] (1) {912.5} -> 0.5
+[SpawningPool, Extractor, Hatchery, Spire] (1) {1824} -> 0
+[SpawningPool, Extractor, Hatchery, MetabolicBoost] (2) {1576} -> 0.667
+[SpawningPool, Hatchery, Extractor] (1) {849.5} -> 0
+[SpawningPool, Hatchery, Hatchery] (1) {2142.5} -> 0.5
+[Hatchery, SpawningPool, Extractor, Extractor] (1) {4081} -> 1
+[Hatchery, SpawningPool, Extractor, MetabolicBoost] (5) {1862.4} -> 0.4
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Spire, Extractor] (1) {1319} -> 0.5
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Spire, CreepColony] (1) {1884} -> 0
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, CreepColony] (1) {1415.5} -> 0.5
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Hatchery] (1) {1326} -> 0
+[Hatchery, SpawningPool, Extractor, Hatchery, Extractor] (1) {6065} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery, HydraliskDen] (1) {1636} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery, CreepColony] (1) {11573} -> 0
+[Hatchery, SpawningPool, Extractor, Hatchery, Hatchery] (1) {1703} -> 1
+[Hatchery, SpawningPool, SpawningPool] (1) {256} -> 0

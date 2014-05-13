@@ -1,0 +1,13 @@
+[Pylon, Nexus, Gateway, Assimilator] (2) {2823.5} -> 0.5
+[Pylon, Gateway, Gateway] (5) {4931.2} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Gateway] (2) {4198.5} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Pylon, Observatory] (2) {5658.5} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, CitadelofAdun] (3) {3339.667} -> 0.333
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, Pylon, RoboticsFacility, Gateway] (4) {4138.5} -> 0.75
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, Pylon, Gateway, RoboticsFacility] (2) {5262.5} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, Pylon, Gateway, Gateway] (2) {4824} -> 0.5
+[Pylon, Gateway, Assimilator, Pylon, Nexus] (2) {9640} -> 1
+[Pylon, Gateway, Assimilator, Pylon, Gateway, Pylon] (2) {5635} -> 0.5
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon] (2) {4241.5} -> 0
+[Pylon, Gateway, Pylon, Assimilator, CyberneticsCore, Pylon, SingularityCharge] (2) {2839.5} -> 1
+[Pylon, Assimilator] (2) {2094} -> 0.5

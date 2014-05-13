@@ -1,0 +1,8 @@
+[Pylon, Nexus, Gateway] (1) {3500} -> 0
+[Pylon, Nexus, Assimilator] (1) {546} -> 1
+[Pylon, Gateway, Gateway, Gateway] (1) {1157} -> 1
+[Pylon, Gateway, Gateway, Assimilator] (2) {1836} -> 0
+[Pylon, Gateway, Assimilator, Gateway] (1) {2487} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge] (1) {2843} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (1) {4652} -> 0
+[Pylon, Gateway, Assimilator, Pylon] (1) {1919} -> 0

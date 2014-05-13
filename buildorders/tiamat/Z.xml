@@ -1,0 +1,6 @@
+[SpawningPool, Extractor] (3) {3740} -> 1
+[SpawningPool, EvolutionChamber] (1) {1515} -> 0
+[Hatchery, SpawningPool] (4) {4551.25} -> 0.25
+[Hatchery, SpawningPool, Extractor] (1) {3668.5} -> 0
+[Hatchery, SpawningPool, Hatchery, Extractor, Extractor, CreepColony] (1) {2525} -> 0.5
+[Hatchery, SpawningPool, Hatchery, Extractor, Extractor, MetabolicBoost] (1) {4748} -> 0

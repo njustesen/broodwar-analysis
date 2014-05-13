@@ -43,12 +43,14 @@ public class BuildOrderSearch {
 	public static void main(String[] args) {
 		
 		clearFolders();
-		for(Map.Type map : Map.Type.values())
-			searchOnMap(map);
+		for(Map.Type map : Map.Type.values()){
+			if (map != Map.Type.None)
+				searchOnMap(map);
+		}
 	
-		searchOnMap(Map.Type.Lost_Temple);
+		//searchOnMap(Map.Type.Lost_Temple);
 		
-		//searchOnMap(null);
+		searchOnMap(null);
 		
 	}
 	
@@ -66,6 +68,13 @@ public class BuildOrderSearch {
 			System.out.println("Analysing matches on all maps");
 		
 		List<Match> matches = getMatches(map);
+		if (matches.isEmpty()){
+			if (map != null)
+				System.out.println("No matches on " + map.name());
+			else
+				System.out.println("No matches");
+			return;
+		}
 		
 		for(Race race : races){
 			if (race==null)
@@ -77,6 +86,15 @@ public class BuildOrderSearch {
 				
 					System.out.println("Analysing " + matchupString(race, enemy) + " on " + map.name());
 					ID3 id3 = generateTree(race, enemy, map, matches, Integer.MAX_VALUE);
+					
+					if(id3 == null || id3.getTree() == null || id3.getTree().getRoot() == null){
+						if (map != null)
+							System.out.println("No matches on " + map.name());
+						else
+							System.out.println("No matches");
+						continue;
+					}
+					
 					if (id3.getTree().getRoot() == null)
 						System.out.println("No build orders found on map " + map.name() + " with matchup " + race.name() + " vs " + enemy.name());
 					

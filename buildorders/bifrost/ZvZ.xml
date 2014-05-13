@@ -1,13 +1,15 @@
-[Hatchery, SpawningPool, Extractor, MetabolicBoost] (4) -> 0.5
-[Hatchery, Extractor, SpawningPool] (3) -> 0.666
-[SpawningPool, Hatchery, Extractor] (4) -> 0.25
-[SpawningPool, Extractor, Hatchery, MetabolicBoost, Spire] (6) -> 0.166
-[SpawningPool, Extractor, MetabolicBoost, Hatchery, MetabolicBoost, Spire] (3) -> 0.333
-[SpawningPool, Extractor, MetabolicBoost, Hatchery, CreepColony] (3) -> 0.333
-[SpawningPool, Extractor, MetabolicBoost, CreepColony] (4) -> 0.25
-[Extractor, Hatchery] (5) -> 0.4
-[Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire, Hatchery, Extractor] (5) -> 0.0
-[Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire, Spire] (3) -> 0.5
-[Extractor, SpawningPool, MetabolicBoost, Hatchery, Spire] (4) -> 0.0
-[Extractor, SpawningPool, Extractor] (4) -> 0.75
-[Extractor, SpawningPool, CreepColony, MetabolicBoost] (3) -> 0.333
+[Extractor, Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire] (3) {1163.667} -> 0.333
+[Extractor, SpawningPool, Extractor] (4) {1535.25} -> 0.75
+[Extractor, SpawningPool, CreepColony, CreepColony] (3) {1676.667} -> 0
+[Extractor, SpawningPool, CreepColony, MetabolicBoost, Hatchery] (3) {1728} -> 0.667
+[Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire, Hatchery] (13) {2830.6} -> 0.533
+[Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire, Hatchery, Extractor] (7) {2741.083} -> 0.583
+[Extractor, SpawningPool, Hatchery, MetabolicBoost, CreepColony, Spire] (3) {1223.5} -> 0.5
+[Extractor, Hatchery] (3) {1033} -> 0.667
+[SpawningPool, Extractor, MetabolicBoost, CreepColony] (4) {1444.75} -> 0.5
+[SpawningPool, Extractor, MetabolicBoost, Hatchery, CreepColony] (3) {1945.667} -> 0.333
+[SpawningPool, Extractor, MetabolicBoost, Hatchery, MetabolicBoost, Spire] (3) {4078.667} -> 0.667
+[SpawningPool, Extractor, Hatchery, MetabolicBoost, Spire] (6) {1232.5} -> 0.667
+[SpawningPool, Hatchery, Extractor] (4) {2811.25} -> 0.5
+[Hatchery, Extractor, SpawningPool] (3) {1241.333} -> 0.667
+[Hatchery, SpawningPool, Extractor, MetabolicBoost] (4) {1350.5} -> 0.5

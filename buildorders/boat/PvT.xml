@@ -1,0 +1,23 @@
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, SingularityCharge, Gateway] (1) {2114} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, SingularityCharge, Observatory] (1) {1592} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, SingularityCharge, RoboticsSupportBay] (1) {5390} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, CitadelofAdun] (1) {2457} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Observatory, RoboticsSupportBay] (2) {3453} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Observatory, Pylon] (4) {3429.25} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, RoboticsSupportBay, Pylon, GraviticDrive] (1) {2159} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, RoboticsSupportBay, Pylon, SingularityCharge] (1) {2853} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Pylon] (2) {4622} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Stargate] (1) {1768} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge] (1) {3905} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, CitadelofAdun, RoboticsFacility] (1) {1921} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, CitadelofAdun, Pylon] (1) {3763} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (1) {2722} -> 1
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, RoboticsFacility, Pylon, SingularityCharge] (1) {3999} -> 1
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Gateway] (1) {5152} -> 0
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, RoboticsFacility, Pylon, RoboticsSupportBay] (1) {2238} -> 0
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Pylon, Observatory, SingularityCharge, Pylon, RoboticsSupportBay, Gateway, Gateway] (1) {3107} -> 0
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, RoboticsFacility, Pylon, Pylon, Observatory, SingularityCharge, Pylon, RoboticsSupportBay, Gateway, Pylon] (1) {2887} -> 1
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, Stargate] (1) {3388} -> 1
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, CitadelofAdun, RoboticsFacility, TemplarArchives] (1) {1790} -> 0
+[Pylon, Assimilator, Gateway, CyberneticsCore, Pylon, CitadelofAdun, RoboticsFacility, Pylon] (1) {2017} -> 1
+[Pylon, Assimilator, Gateway, Pylon] (3) {2059.667} -> 0

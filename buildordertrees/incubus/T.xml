@@ -1,0 +1,757 @@
+
+<node players='286' value='0.49'>
+	<node action='Barracks' players='10' value='0.8'>
+		<node action='Barracks' players='1' value='1'>
+		</node>
+		<node action='SupplyDepot' players='9' value='0.778'>
+			<node action='Barracks' players='8' value='0.75'>
+				<node action='SupplyDepot' players='8' value='0.75'>
+					<node action='Refinery' players='5' value='0.6'>
+						<node action='Academy' players='2' value='1'>
+						</node>
+						<node action='SupplyDepot' players='3' value='0.333'>
+							<node action='Academy' players='1' value='1'>
+							</node>
+							<node action='Factory' players='1' value='0'>
+							</node>
+							<node action='SupplyDepot' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+					<node action='Bunker' players='3' value='1'>
+					</node>
+				</node>
+			</node>
+			<node action='Refinery' players='1' value='1'>
+			</node>
+		</node>
+	</node>
+	<node action='SupplyDepot' players='276' value='0.478'>
+		<node action='Barracks' players='272' value='0.478'>
+			<node action='Barracks' players='88' value='0.568'>
+				<node action='Barracks' players='2' value='1'>
+				</node>
+				<node action='SupplyDepot' players='69' value='0.58'>
+					<node action='Academy' players='2' value='0'>
+					</node>
+					<node action='Barracks' players='4' value='0.75'>
+						<node action='Barracks' players='1' value='1'>
+						</node>
+						<node action='Refinery' players='3' value='0.667'>
+							<node action='Academy' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='2' value='0.5'>
+								<node action='Academy' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node action='CommandCenter' players='1' value='0'>
+					</node>
+					<node action='SupplyDepot' players='12' value='0.5'>
+						<node action='Academy' players='1' value='0'>
+						</node>
+						<node action='Barracks' players='2' value='1'>
+						</node>
+						<node action='SupplyDepot' players='1' value='0'>
+						</node>
+						<node action='Refinery' players='8' value='0.5'>
+							<node action='Academy' players='4' value='0.25'>
+								<node action='Game over' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='3' value='0'>
+								</node>
+							</node>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='3' value='0.667'>
+								<node action='Academy' players='3' value='0.667'>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='0'>
+									</node>
+									<node action='EngineeringBay' players='1' value='1'>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node action='Refinery' players='37' value='0.595'>
+						<node action='Academy' players='16' value='0.562'>
+							<node action='Game over' players='1' value='0'>
+							</node>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='Factory' players='2' value='0'>
+							</node>
+							<node action='SupplyDepot' players='12' value='0.75'>
+								<node action='Barracks' players='1' value='0'>
+								</node>
+								<node action='Factory' players='4' value='1'>
+								</node>
+								<node action='StimPack' players='6' value='0.833'>
+									<node action='Factory' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='1'>
+									</node>
+									<node action='ComSat' players='4' value='0.75'>
+										<node action='SupplyDepot' players='4' value='0.75'>
+											<node action='Game over' players='1' value='1'>
+											</node>
+											<node action='Factory' players='2' value='0.5'>
+												<node action='SupplyDepot' players='1' value='1'>
+												</node>
+												<node action='Bunker' players='1' value='0'>
+												</node>
+											</node>
+											<node action='U238Shells' players='1' value='1'>
+											</node>
+										</node>
+									</node>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+							</node>
+						</node>
+						<node action='Barracks' players='3' value='0.667'>
+							<node action='Academy' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='1' value='0'>
+							</node>
+							<node action='Bunker' players='1' value='1'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='15' value='0.6'>
+							<node action='Academy' players='9' value='0.778'>
+								<node action='Barracks' players='2' value='1'>
+								</node>
+								<node action='Factory' players='1' value='0'>
+								</node>
+								<node action='SupplyDepot' players='4' value='0.75'>
+									<node action='Factory' players='1' value='1'>
+									</node>
+									<node action='StimPack' players='3' value='0.667'>
+										<node action='Barracks' players='1' value='1'>
+										</node>
+										<node action='Bunker' players='1' value='0'>
+										</node>
+										<node action='ComSat' players='1' value='1'>
+										</node>
+									</node>
+								</node>
+								<node action='EngineeringBay' players='1' value='1'>
+								</node>
+								<node action='Bunker' players='1' value='1'>
+								</node>
+							</node>
+							<node action='Factory' players='5' value='0.4'>
+								<node action='Academy' players='3' value='0.667'>
+									<node action='SupplyDepot' players='3' value='0.667'>
+										<node action='MachineShop' players='3' value='0.667'>
+											<node action='Barracks' players='1' value='1'>
+											</node>
+											<node action='StimPack' players='2' value='0.5'>
+												<node action='SiegeTankMode' players='1' value='0'>
+												</node>
+												<node action='SupplyDepot' players='1' value='1'>
+												</node>
+											</node>
+										</node>
+									</node>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+								<node action='Bunker' players='1' value='0'>
+								</node>
+							</node>
+							<node action='EngineeringBay' players='1' value='0'>
+							</node>
+						</node>
+						<node action='EngineeringBay' players='1' value='1'>
+						</node>
+						<node action='Bunker' players='2' value='0.5'>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+							<node action='Bunker' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+					<node action='Bunker' players='13' value='0.692'>
+						<node action='Game over' players='1' value='1'>
+						</node>
+						<node action='Barracks' players='1' value='1'>
+						</node>
+						<node action='SupplyDepot' players='3' value='1'>
+						</node>
+						<node action='Refinery' players='5' value='0.6'>
+							<node action='Academy' players='3' value='0.333'>
+								<node action='SupplyDepot' players='3' value='0.333'>
+									<node action='Factory' players='2' value='0.5'>
+										<node action='Barracks' players='1' value='0'>
+										</node>
+										<node action='ComSat' players='1' value='1'>
+										</node>
+									</node>
+									<node action='StimPack' players='1' value='0'>
+									</node>
+								</node>
+							</node>
+							<node action='SupplyDepot' players='2' value='1'>
+							</node>
+						</node>
+						<node action='EngineeringBay' players='1' value='0'>
+						</node>
+						<node action='Bunker' players='2' value='0.5'>
+							<node action='SupplyDepot' players='2' value='0.5'>
+								<node action='Refinery' players='2' value='0.5'>
+									<node action='Academy' players='2' value='0.5'>
+										<node action='Barracks' players='1' value='1'>
+										</node>
+										<node action='SupplyDepot' players='1' value='0'>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='Refinery' players='11' value='0.455'>
+					<node action='Barracks' players='1' value='1'>
+					</node>
+					<node action='SupplyDepot' players='9' value='0.444'>
+						<node action='Academy' players='1' value='0'>
+						</node>
+						<node action='Barracks' players='1' value='1'>
+						</node>
+						<node action='Factory' players='3' value='0.333'>
+							<node action='Academy' players='2' value='0'>
+							</node>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='3' value='0.333'>
+							<node action='Factory' players='3' value='0.333'>
+								<node action='Academy' players='3' value='0.333'>
+									<node action='MachineShop' players='1' value='1'>
+									</node>
+									<node action='Bunker' players='2' value='0'>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node action='Refinery' players='1' value='1'>
+						</node>
+					</node>
+					<node action='Refinery' players='1' value='0'>
+					</node>
+				</node>
+				<node action='Bunker' players='6' value='0.5'>
+					<node action='SupplyDepot' players='6' value='0.5'>
+						<node action='Barracks' players='2' value='0.5'>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+							<node action='Refinery' players='1' value='0'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='1' value='0'>
+						</node>
+						<node action='Refinery' players='3' value='0.667'>
+							<node action='Academy' players='1' value='1'>
+							</node>
+							<node action='Barracks' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+			<node action='SupplyDepot' players='2' value='0.5'>
+				<node action='Barracks' players='2' value='0.5'>
+					<node action='Barracks' players='1' value='1'>
+					</node>
+					<node action='SupplyDepot' players='1' value='0'>
+					</node>
+				</node>
+			</node>
+			<node action='Refinery' players='182' value='0.434'>
+				<node action='Academy' players='2' value='0'>
+				</node>
+				<node action='Barracks' players='30' value='0.433'>
+					<node action='Academy' players='1' value='0'>
+					</node>
+					<node action='Barracks' players='1' value='0'>
+					</node>
+					<node action='Factory' players='19' value='0.263'>
+						<node action='Barracks' players='2' value='0'>
+						</node>
+						<node action='SupplyDepot' players='17' value='0.294'>
+							<node action='Factory' players='9' value='0.222'>
+								<node action='Barracks' players='2' value='0.5'>
+									<node action='MachineShop' players='2' value='0.5'>
+										<node action='SupplyDepot' players='2' value='0.5'>
+											<node action='SpiderMines' players='1' value='0'>
+											</node>
+											<node action='SiegeTankMode' players='1' value='1'>
+											</node>
+										</node>
+									</node>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+								<node action='MachineShop' players='6' value='0.167'>
+									<node action='SpiderMines' players='3' value='0.333'>
+										<node action='SupplyDepot' players='3' value='0.333'>
+											<node action='SupplyDepot' players='1' value='0'>
+											</node>
+											<node action='MachineShop' players='2' value='0.5'>
+												<node action='IonThrusters' players='1' value='1'>
+												</node>
+												<node action='SupplyDepot' players='1' value='0'>
+												</node>
+											</node>
+										</node>
+									</node>
+									<node action='SiegeTankMode' players='1' value='0'>
+									</node>
+									<node action='SupplyDepot' players='2' value='0'>
+									</node>
+								</node>
+							</node>
+							<node action='Starport' players='4' value='0.25'>
+								<node action='SupplyDepot' players='1' value='1'>
+								</node>
+								<node action='MachineShop' players='3' value='0'>
+								</node>
+							</node>
+							<node action='SupplyDepot' players='3' value='0.667'>
+								<node action='MachineShop' players='3' value='0.667'>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='Factory' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='0'>
+									</node>
+								</node>
+							</node>
+							<node action='MachineShop' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+					<node action='SupplyDepot' players='8' value='0.875'>
+						<node action='Academy' players='1' value='1'>
+						</node>
+						<node action='Barracks' players='1' value='1'>
+						</node>
+						<node action='Factory' players='4' value='0.75'>
+							<node action='Barracks' players='2' value='1'>
+							</node>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='Starport' players='1' value='0'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='1' value='1'>
+						</node>
+						<node action='Bunker' players='1' value='1'>
+						</node>
+					</node>
+					<node action='Bunker' players='1' value='1'>
+					</node>
+				</node>
+				<node action='Factory' players='53' value='0.415'>
+					<node action='Barracks' players='6' value='0.5'>
+						<node action='Factory' players='1' value='0'>
+						</node>
+						<node action='SupplyDepot' players='5' value='0.6'>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='Factory' players='2' value='0.5'>
+								<node action='Barracks' players='1' value='1'>
+								</node>
+								<node action='MachineShop' players='1' value='0'>
+								</node>
+							</node>
+							<node action='MachineShop' players='1' value='1'>
+							</node>
+							<node action='EngineeringBay' players='1' value='1'>
+							</node>
+						</node>
+					</node>
+					<node action='Factory' players='4' value='0.25'>
+						<node action='SupplyDepot' players='4' value='0.25'>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='MachineShop' players='3' value='0.333'>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+								<node action='MachineShop' players='2' value='0.5'>
+									<node action='SpiderMines' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='0'>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+					<node action='SupplyDepot' players='43' value='0.419'>
+						<node action='Barracks' players='11' value='0.727'>
+							<node action='Academy' players='1' value='1'>
+							</node>
+							<node action='Factory' players='6' value='0.667'>
+								<node action='Barracks' players='1' value='0'>
+								</node>
+								<node action='MachineShop' players='5' value='0.8'>
+									<node action='Barracks' players='1' value='0'>
+									</node>
+									<node action='SiegeTankMode' players='1' value='1'>
+									</node>
+									<node action='IonThrusters' players='2' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='1'>
+									</node>
+								</node>
+							</node>
+							<node action='Starport' players='1' value='1'>
+							</node>
+							<node action='MachineShop' players='3' value='0.667'>
+								<node action='Factory' players='1' value='0'>
+								</node>
+								<node action='CommandCenter' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='1' value='1'>
+								</node>
+							</node>
+						</node>
+						<node action='Factory' players='15' value='0.333'>
+							<node action='Game over' players='1' value='0'>
+							</node>
+							<node action='Armory' players='1' value='1'>
+							</node>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='SupplyDepot' players='3' value='0.333'>
+								<node action='MachineShop' players='2' value='0.5'>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='Starport' players='1' value='0'>
+									</node>
+								</node>
+								<node action='Bunker' players='1' value='0'>
+								</node>
+							</node>
+							<node action='MachineShop' players='9' value='0.333'>
+								<node action='Barracks' players='1' value='1'>
+								</node>
+								<node action='SpiderMines' players='3' value='0.333'>
+									<node action='IonThrusters' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='1' value='0'>
+									</node>
+									<node action='MachineShop' players='1' value='0'>
+									</node>
+								</node>
+								<node action='SiegeTankMode' players='1' value='0'>
+								</node>
+								<node action='IonThrusters' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='3' value='0'>
+								</node>
+							</node>
+						</node>
+						<node action='Starport' players='2' value='0.5'>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='4' value='0.75'>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='MachineShop' players='3' value='0.667'>
+								<node action='Barracks' players='1' value='1'>
+								</node>
+								<node action='Factory' players='2' value='0.5'>
+									<node action='Barracks' players='1' value='0'>
+									</node>
+									<node action='IonThrusters' players='1' value='1'>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node action='MachineShop' players='10' value='0.1'>
+							<node action='Barracks' players='1' value='1'>
+							</node>
+							<node action='SiegeTankMode' players='2' value='0'>
+							</node>
+							<node action='Factory' players='5' value='0'>
+							</node>
+							<node action='SupplyDepot' players='2' value='0'>
+							</node>
+						</node>
+						<node action='EngineeringBay' players='1' value='0'>
+						</node>
+					</node>
+				</node>
+				<node action='SupplyDepot' players='88' value='0.489'>
+					<node action='Barracks' players='19' value='0.474'>
+						<node action='Academy' players='1' value='1'>
+						</node>
+						<node action='Factory' players='16' value='0.438'>
+							<node action='Barracks' players='3' value='0.333'>
+								<node action='Factory' players='3' value='0.333'>
+									<node action='Factory' players='1' value='0'>
+									</node>
+									<node action='SupplyDepot' players='1' value='0'>
+									</node>
+									<node action='MachineShop' players='1' value='1'>
+									</node>
+								</node>
+							</node>
+							<node action='Factory' players='10' value='0.6'>
+								<node action='Barracks' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='5' value='1'>
+								</node>
+								<node action='MachineShop' players='3' value='0'>
+								</node>
+								<node action='Bunker' players='1' value='0'>
+								</node>
+							</node>
+							<node action='SupplyDepot' players='1' value='0'>
+							</node>
+							<node action='Bunker' players='2' value='0'>
+							</node>
+						</node>
+						<node action='CommandCenter' players='1' value='0'>
+						</node>
+						<node action='Bunker' players='1' value='1'>
+						</node>
+					</node>
+					<node action='Factory' players='60' value='0.483'>
+						<node action='Game over' players='1' value='0'>
+						</node>
+						<node action='Barracks' players='14' value='0.5'>
+							<node action='Barracks' players='2' value='1'>
+							</node>
+							<node action='Factory' players='10' value='0.5'>
+								<node action='SupplyDepot' players='5' value='0.6'>
+									<node action='MachineShop' players='5' value='0.6'>
+										<node action='Barracks' players='2' value='1'>
+										</node>
+										<node action='SpiderMines' players='1' value='1'>
+										</node>
+										<node action='SiegeTankMode' players='1' value='0'>
+										</node>
+										<node action='SupplyDepot' players='1' value='0'>
+										</node>
+									</node>
+								</node>
+								<node action='MachineShop' players='5' value='0.4'>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='SupplyDepot' players='4' value='0.25'>
+										<node action='SpiderMines' players='3' value='0.333'>
+											<node action='Barracks' players='1' value='0'>
+											</node>
+											<node action='SiegeTankMode' players='1' value='1'>
+											</node>
+											<node action='SupplyDepot' players='1' value='0'>
+											</node>
+										</node>
+										<node action='IonThrusters' players='1' value='0'>
+										</node>
+									</node>
+								</node>
+							</node>
+							<node action='SupplyDepot' players='1' value='0'>
+							</node>
+							<node action='MachineShop' players='1' value='0'>
+							</node>
+						</node>
+						<node action='Factory' players='28' value='0.464'>
+							<node action='Armory' players='3' value='0'>
+							</node>
+							<node action='Barracks' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='13' value='0.615'>
+								<node action='SupplyDepot' players='2' value='0.5'>
+									<node action='MachineShop' players='2' value='0.5'>
+										<node action='Academy' players='1' value='0'>
+										</node>
+										<node action='MachineShop' players='1' value='1'>
+										</node>
+									</node>
+								</node>
+								<node action='MachineShop' players='11' value='0.636'>
+									<node action='Armory' players='2' value='1'>
+									</node>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='SpiderMines' players='3' value='0'>
+									</node>
+									<node action='IonThrusters' players='1' value='0'>
+									</node>
+									<node action='SupplyDepot' players='1' value='1'>
+									</node>
+									<node action='MachineShop' players='3' value='1'>
+									</node>
+								</node>
+							</node>
+							<node action='MachineShop' players='10' value='0.4'>
+								<node action='Barracks' players='1' value='1'>
+								</node>
+								<node action='SpiderMines' players='1' value='0'>
+								</node>
+								<node action='SiegeTankMode' players='1' value='0'>
+								</node>
+								<node action='Factory' players='1' value='0'>
+								</node>
+								<node action='SupplyDepot' players='6' value='0.5'>
+									<node action='SiegeTankMode' players='3' value='0.667'>
+										<node action='SupplyDepot' players='1' value='1'>
+										</node>
+										<node action='MachineShop' players='2' value='0.5'>
+											<node action='SiegeTankMode' players='1' value='1'>
+											</node>
+											<node action='SupplyDepot' players='1' value='0'>
+											</node>
+										</node>
+									</node>
+									<node action='MachineShop' players='2' value='0.5'>
+										<node action='SpiderMines' players='1' value='1'>
+										</node>
+										<node action='IonThrusters' players='1' value='0'>
+										</node>
+									</node>
+									<node action='EngineeringBay' players='1' value='0'>
+									</node>
+								</node>
+							</node>
+							<node action='Bunker' players='1' value='0'>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='9' value='0.444'>
+							<node action='Factory' players='2' value='0.5'>
+								<node action='MachineShop' players='2' value='0.5'>
+									<node action='SupplyDepot' players='2' value='0.5'>
+										<node action='SiegeTankMode' players='1' value='1'>
+										</node>
+										<node action='SupplyDepot' players='1' value='0'>
+										</node>
+									</node>
+								</node>
+							</node>
+							<node action='Starport' players='3' value='0.667'>
+								<node action='Academy' players='1' value='1'>
+								</node>
+								<node action='Factory' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+							</node>
+							<node action='MachineShop' players='3' value='0.333'>
+								<node action='SpiderMines' players='1' value='0'>
+								</node>
+								<node action='SiegeTankMode' players='1' value='0'>
+								</node>
+								<node action='Factory' players='1' value='1'>
+								</node>
+							</node>
+							<node action='Bunker' players='1' value='0'>
+							</node>
+						</node>
+						<node action='MachineShop' players='3' value='0.333'>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='CommandCenter' players='1' value='0'>
+							</node>
+							<node action='Starport' players='1' value='0'>
+							</node>
+						</node>
+						<node action='EngineeringBay' players='2' value='1'>
+						</node>
+						<node action='Bunker' players='3' value='0.667'>
+							<node action='Barracks' players='2' value='0.5'>
+								<node action='Game over' players='1' value='0'>
+								</node>
+								<node action='MachineShop' players='1' value='1'>
+								</node>
+							</node>
+							<node action='Factory' players='1' value='1'>
+							</node>
+						</node>
+					</node>
+					<node action='SupplyDepot' players='3' value='0.667'>
+						<node action='Factory' players='2' value='0.5'>
+							<node action='Factory' players='2' value='0.5'>
+								<node action='MachineShop' players='2' value='0.5'>
+									<node action='Barracks' players='1' value='1'>
+									</node>
+									<node action='SpiderMines' players='1' value='0'>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node action='SupplyDepot' players='1' value='1'>
+						</node>
+					</node>
+					<node action='EngineeringBay' players='2' value='0.5'>
+						<node action='Barracks' players='2' value='0.5'>
+							<node action='TerranInfantryWeapons' players='1' value='1'>
+							</node>
+							<node action='Factory' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+					<node action='Bunker' players='4' value='0.5'>
+						<node action='Factory' players='3' value='0.333'>
+							<node action='Barracks' players='1' value='0'>
+							</node>
+							<node action='Factory' players='2' value='0.5'>
+								<node action='SupplyDepot' players='1' value='1'>
+								</node>
+								<node action='MachineShop' players='1' value='0'>
+								</node>
+							</node>
+						</node>
+						<node action='Bunker' players='1' value='1'>
+						</node>
+					</node>
+				</node>
+				<node action='Refinery' players='5' value='0'>
+				</node>
+				<node action='EngineeringBay' players='1' value='0'>
+				</node>
+				<node action='Bunker' players='3' value='0.333'>
+					<node action='Factory' players='1' value='1'>
+					</node>
+					<node action='SupplyDepot' players='2' value='0'>
+					</node>
+				</node>
+			</node>
+		</node>
+		<node action='Refinery' players='4' value='0.5'>
+			<node action='Barracks' players='4' value='0.5'>
+				<node action='Factory' players='3' value='0.667'>
+					<node action='Factory' players='1' value='1'>
+					</node>
+					<node action='SupplyDepot' players='2' value='0.5'>
+						<node action='Factory' players='2' value='0.5'>
+							<node action='MachineShop' players='2' value='0.5'>
+								<node action='IonThrusters' players='1' value='1'>
+								</node>
+								<node action='SupplyDepot' players='1' value='0'>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='Refinery' players='1' value='0'>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

@@ -1,12 +1,12 @@
-[Pylon, Assimilator] (35) {3134.343} -> 0.6
-[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon] (32) {4059} -> 0.594
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon] (33) {4354.788} -> 0.485
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (59) {3737.034} -> 0.475
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (35) {3392.943} -> 0.314
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Pylon] (41) {5338.927} -> 0.561
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Gateway] (32) {3708.719} -> 0.594
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, Pylon] (57) {4989.333} -> 0.404
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway] (36) {3758.139} -> 0.472
-[Pylon, Gateway, Pylon] (38) {3801.684} -> 0.421
-[Pylon, Nexus, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, SingularityCharge] (34) {3631.912} -> 0.559
 [Pylon, Nexus, Gateway, Assimilator, CyberneticsCore, Gateway, Pylon] (38) {4522.359} -> 0.359
+[Pylon, Nexus, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, SingularityCharge] (34) {3631.912} -> 0.559
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon] (33) {4354.788} -> 0.485
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway] (36) {3758.139} -> 0.472
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Pylon] (41) {5338.927} -> 0.561
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Nexus, Pylon] (57) {4989.333} -> 0.404
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Gateway] (32) {3708.719} -> 0.594
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (35) {3392.943} -> 0.314
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (59) {3737.034} -> 0.475
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon] (32) {4059} -> 0.594
+[Pylon, Gateway, Pylon] (38) {3801.684} -> 0.421
+[Pylon, Assimilator] (35) {3134.343} -> 0.6

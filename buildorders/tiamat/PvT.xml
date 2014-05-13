@@ -1,0 +1,4 @@
+[Pylon, Nexus, Gateway] (1) {3500} -> 0
+[Pylon, Nexus, Assimilator] (1) {546} -> 1
+[Pylon, Gateway, Gateway, Gateway] (1) {1157} -> 1
+[Pylon, Gateway, Gateway, Assimilator] (1) {2418} -> 0

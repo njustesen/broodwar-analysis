@@ -1,0 +1,9 @@
+
+<node players='3' value='0.667'>
+	<node action='Pylon' players='3' value='0.667'>
+		<node action='Nexus' players='2' value='1'>
+		</node>
+		<node action='Gateway' players='1' value='0'>
+		</node>
+	</node>
+</node>

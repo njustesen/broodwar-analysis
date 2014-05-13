@@ -1,0 +1,11 @@
+[Pylon, Gateway, Gateway] (1) {1924} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, CyberneticsCore] (1) {11730} -> 1
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, ShieldBattery] (1) {4674} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Stargate] (1) {3226} -> 0
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge] (2) {4118} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore] (1) {2081} -> 0
+[Pylon, Gateway, Assimilator, Pylon, Forge] (1) {4221} -> 1
+[Pylon, Forge, Gateway, Assimilator] (1) {3289} -> 0
+[Pylon, Forge, Gateway, Pylon] (1) {2118} -> 1
+[Pylon, Forge, PhotonCannon] (1) {2982} -> 1
+[Pylon, Forge, Pylon] (1) {3161} -> 1

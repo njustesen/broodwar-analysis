@@ -1,14 +1,14 @@
-[Pylon, Pylon, Gateway, Assimilator, CyberneticsCore, Pylon] (5) -> 0.6
-[Pylon, Gateway, Pylon] (8) -> 0.25
-[Pylon, Gateway, Assimilator, CyberneticsCore, CyberneticsCore] (6) -> 0.5
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon] (7) -> 0.75
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Gateway] (5) -> 0.285
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Gateway] (7) -> 0.555
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway, Pylon, RoboticsFacility] (5) -> 0.428
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (5) -> 0.5
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (10) -> 0.454
-[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, CitadelofAdun] (8) -> 0.444
-[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore] (7) -> 0.571
-[Pylon, Gateway, Gateway, Assimilator, CyberneticsCore] (5) -> 0.4
-[Pylon, Gateway, Gateway, Gateway, Assimilator] (5) -> 0.4
-[Pylon, Gateway, Forge] (6) -> 0.666
+[Pylon, Gateway, Gateway, Pylon] (5) {1417.2} -> 0.4
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, RoboticsFacility, Pylon] (9) {4456.1} -> 0.8
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway, Pylon, Pylon, RoboticsFacility] (5) {1943.714} -> 0.429
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Gateway, Pylon] (5) {3139} -> 0.286
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, RoboticsFacility, Pylon] (7) {3668.444} -> 0.444
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Gateway, Pylon] (5) {2816.286} -> 0.286
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Pylon, Pylon] (6) {3811.625} -> 0.375
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Gateway] (6) {2866.571} -> 0.429
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, CitadelofAdun] (5) {2954.333} -> 0.667
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, Pylon] (13) {3099.071} -> 0.429
+[Pylon, Gateway, Assimilator, Assimilator, CyberneticsCore] (5) {2958} -> 0.4
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore] (8) {2561.375} -> 0.5
+[Pylon, Gateway, Forge] (6) {1926.167} -> 0.5
+[Pylon, Pylon] (5) {3435.4} -> 0.2

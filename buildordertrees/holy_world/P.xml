@@ -1,0 +1,67 @@
+
+<node players='13' value='0.385'>
+	<node action='Pylon' players='13' value='0.385'>
+		<node action='Gateway' players='8' value='0.5'>
+			<node action='Gateway' players='1' value='1'>
+			</node>
+			<node action='Assimilator' players='7' value='0.429'>
+				<node action='Gateway' players='2' value='0.5'>
+					<node action='Pylon' players='2' value='0.5'>
+						<node action='Pylon' players='2' value='0.5'>
+							<node action='Assimilator' players='2' value='0.5'>
+								<node action='Pylon' players='2' value='0.5'>
+									<node action='Pylon' players='2' value='0.5'>
+										<node action='CyberneticsCore' players='2' value='0.5'>
+											<node action='Gateway' players='2' value='0.5'>
+												<node action='RoboticsFacility' players='2' value='0.5'>
+													<node action='Pylon' players='2' value='0.5'>
+														<node action='Observatory' players='2' value='0.5'>
+															<node action='Pylon' players='2' value='0.5'>
+																<node action='Gateway' players='2' value='0.5'>
+																	<node action='ShieldBattery' players='2' value='0.5'>
+																		<node action='Forge' players='2' value='0.5'>
+																			<node action='CitadelofAdun' players='2' value='0.5'>
+																				<node action='Game over' players='2' value='0.5'>
+																				</node>
+																			</node>
+																		</node>
+																	</node>
+																</node>
+															</node>
+														</node>
+													</node>
+												</node>
+											</node>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='CyberneticsCore' players='3' value='0.333'>
+					<node action='Pylon' players='3' value='0.333'>
+						<node action='SingularityCharge' players='2' value='0'>
+						</node>
+						<node action='Gateway' players='1' value='1'>
+						</node>
+					</node>
+				</node>
+				<node action='Assimilator' players='1' value='1'>
+				</node>
+				<node action='Pylon' players='1' value='0'>
+				</node>
+			</node>
+		</node>
+		<node action='Forge' players='5' value='0.2'>
+			<node action='Nexus' players='3' value='0'>
+			</node>
+			<node action='PhotonCannon' players='2' value='0.5'>
+				<node action='Nexus' players='1' value='0'>
+				</node>
+				<node action='Pylon' players='1' value='1'>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

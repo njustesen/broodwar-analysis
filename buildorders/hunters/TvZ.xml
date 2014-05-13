@@ -1,0 +1,11 @@
+[Barracks, SupplyDepot, Barracks] (3) {4615.667} -> 0.667
+[Barracks, SupplyDepot, Refinery] (4) {1388.75} -> 0.5
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Barracks] (3) {1505.667} -> 0.333
+[SupplyDepot, Barracks, Barracks, SupplyDepot, SupplyDepot] (4) {2996.286} -> 0.143
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, Academy, SupplyDepot, StimPack] (3) {1755.333} -> 0.167
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, Bunker] (3) {2138.667} -> 0.333
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Bunker] (5) {1768.375} -> 0.25
+[SupplyDepot, Barracks, SupplyDepot, Barracks] (3) {2866.667} -> 0.333
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot] (4) {1993.6} -> 0.6
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Barracks, Factory] (3) {1696.75} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot] (3) {2389.5} -> 0.5

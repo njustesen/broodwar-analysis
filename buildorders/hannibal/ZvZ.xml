@@ -1,0 +1,10 @@
+[Extractor] (1) {1977} -> 0
+[SpawningPool, Extractor, Spire] (1) {3980} -> 0
+[SpawningPool, Extractor, CreepColony, Hatchery, Extractor] (1) {2502} -> 1
+[SpawningPool, Extractor, CreepColony, Hatchery, Spire] (1) {1557} -> 0
+[SpawningPool, Extractor, Hatchery] (3) {3608.333} -> 1
+[Hatchery, SpawningPool, Extractor, Extractor] (1) {1610} -> 0
+[Hatchery, SpawningPool, Extractor, CreepColony, Extractor] (1) {3679} -> 1
+[Hatchery, SpawningPool, Extractor, CreepColony, CreepColony] (1) {2343} -> 0
+[Hatchery, SpawningPool, Extractor, Hatchery] (1) {1874} -> 0
+[Hatchery, SpawningPool, Hatchery] (1) {1413} -> 1

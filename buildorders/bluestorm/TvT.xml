@@ -1,0 +1,14 @@
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Barracks] (1) {12356} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, CommandCenter] (1) {3841} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, SupplyDepot] (1) {5547} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, MachineShop] (1) {3236} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, Bunker] (1) {3227} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Barracks] (1) {3673} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, SupplyDepot] (1) {3690} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, CommandCenter] (1) {2882} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, Barracks] (1) {4460} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, CommandCenter] (1) {4359} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, Starport] (1) {10725} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, SupplyDepot] (1) {6428} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, SupplyDepot] (1) {2558} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, MachineShop] (1) {2509} -> 1

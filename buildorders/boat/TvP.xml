@@ -1,0 +1,20 @@
+[SupplyDepot, Barracks, Refinery, Factory] (6) {2759.333} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Barracks] (1) {4463} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Armory] (1) {1986} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Starport, Armory] (1) {7221} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Starport, MachineShop, SupplyDepot, Armory] (1) {3638} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Starport, MachineShop, SupplyDepot, SpiderMines] (1) {3149} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, Starport, MachineShop, EngineeringBay] (1) {2422} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, EngineeringBay] (1) {2086} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Starport] (1) {4626} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot] (2) {2255} -> 0
+[SupplyDepot, CommandCenter] (5) {4382.6} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Academy, Factory, Starport, Armory, ComSat, SupplyDepot, SupplyDepot, ControlTower, SupplyDepot, Barracks] (1) {2896} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Academy, Factory, Starport, Armory, ComSat, SupplyDepot, SupplyDepot, ControlTower, SupplyDepot, MachineShop] (1) {4674} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Academy, Factory, Starport, Factory] (1) {3923} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, SupplyDepot] (1) {4150} -> 1
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Academy, Factory, Starport] (1) {2771} -> 1
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Academy, Factory, SupplyDepot] (1) {1958} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Factory, Starport, Armory] (1) {1299} -> 1
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Factory, Starport, MachineShop] (1) {2048} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, SupplyDepot] (1) {1996} -> 0

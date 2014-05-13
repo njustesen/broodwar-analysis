@@ -1,0 +1,16 @@
+[Barracks, SupplyDepot] (8) {2275.25} -> 0.5
+[SupplyDepot, Barracks, Refinery, Barracks] (9) {3342.833} -> 0.667
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, MachineShop, SupplyDepot] (7) {3101.4} -> 0.6
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, CommandCenter] (12) {2261.733} -> 0.333
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Starport] (7) {2562.3} -> 0.4
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, SupplyDepot] (8) {3535.636} -> 0.182
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, MachineShop] (11) {2774.286} -> 0.357
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Barracks] (12) {5512.267} -> 0.4
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, SupplyDepot, MachineShop] (7) {3548.8} -> 0.7
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop] (9) {2361.583} -> 0.667
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, CommandCenter] (10) {3239.615} -> 0.231
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Starport, SupplyDepot] (8) {3510.417} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot] (19) {3776.818} -> 0.455
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, MachineShop] (7) {3026.7} -> 0.7
+[SupplyDepot, CommandCenter, Barracks, Refinery] (7) {3768.25} -> 0.375
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory] (12) {3961.231} -> 0.462
