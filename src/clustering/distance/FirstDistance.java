@@ -3,6 +3,9 @@ package clustering.distance;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.buildorder.Build;
+import domain.buildorder.BuildOrder;
+
 import analyser.Action;
 import analyser.Action.Type;
 import analyser.Player;
@@ -39,6 +42,26 @@ public class FirstDistance {
 		for(int i = 0; i < buildOrderA.size(); i++){
 
 			if (buildOrderA.get(i).actionType == buildOrderB.get(i).actionType){
+				d--;
+			} else {
+				break;
+			}
+
+		}
+
+		return d;
+
+	}
+	
+	public double distance(BuildOrder a, BuildOrder b){
+
+		List<Build> buildOrderA = a.builds;
+		List<Build> buildOrderB = b.builds;
+
+		int d = base;
+		for(int i = 0; i < buildOrderA.size(); i++){
+
+			if (a.builds.get(i).action == b.builds.get(i).action){
 				d--;
 			} else {
 				break;

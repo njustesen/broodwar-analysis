@@ -23,11 +23,21 @@ public class UPGMA {
 	    if (K==0)
 	    	return;
 	    cluster = new UPCluster[2*N-1];
-	    for (int i=0; i<N; i++) 
-	    	cluster[i] = new UPCluster(i, ds[i]);
 	    
-	    while (K < 2*N-1)
+	    System.out.println("Creating single-item UP clusters.");
+	    for (int i=0; i<N; i++) {
+	    	if (i%1000==0)
+				System.out.println(i + "/" + N + " UP single-item clusters created.");
+	    	cluster[i] = new UPCluster(i, ds[i]);
+	    }
+	    
+	    System.out.println("Pairing UP clusters.");
+	    while (K < 2*N-1){
+	    	if (K%100==0)
+				System.out.println(K + "/" + (2*N-1) + " clusters created.");
 	    	findAndJoin();
+	    }
+	    System.out.println("UPGMA done!");
 	}
 	
 	public UPCluster getRoot()
@@ -83,6 +93,38 @@ public class UPGMA {
 		return result;
 	}
 	
+	public List<List<ClusterPoint>> getClustersWithSupport(double support) {
+		if (K==0)
+			return null;
+		List<UPCluster> up = cutTreeWithMinCard(this.getRoot(), (double)getRoot().card * support);
+		List<List<ClusterPoint>> result = new ArrayList<List<ClusterPoint>>();
+		for (int i=0; i < up.size(); i++){
+			List<ClusterPoint> tmp = new ArrayList<ClusterPoint>();
+			for (int p: getLeafs(up.get(i))){
+				tmp.add(this.input.get(p-1));
+			}
+			
+			result.add(tmp);
+		}
+	
+		return result;
+	}
+	
+	public List<UPCluster> cutTreeWithMinCard(UPCluster c, double min){
+		List<UPCluster> up=new ArrayList<UPCluster>();
+		
+		if (c.card >= min){
+			if (c.right != null)
+				up.addAll(cutTreeWithMinCard(c.right, min));
+			if (c.left != null)
+				up.addAll(cutTreeWithMinCard(c.left, min));
+			if (up.isEmpty())
+				up.add(c);
+		}
+		
+		return up;
+	}
+	
 	public List<Integer> getLeafs(UPCluster c){
 		List<Integer> ids = new ArrayList<Integer>();
 		if (c.left != null){
@@ -96,7 +138,6 @@ public class UPGMA {
 		}
 		return ids;
 	}
-	
 	
 	public List<UPCluster> cutTree(UPCluster c, int clusterLimit){
 		List<UPCluster> up=new ArrayList<UPCluster>();
@@ -129,17 +170,20 @@ public class UPGMA {
 	
 	public double[][] createDistanceMatrix(List<ClusterPoint> points){
 		double[][] ds = new double[points.size()][];
-		
+		System.out.println("Creating distance matrix.");
 		if (points.size() > 0){
 			ds[0] = new double[]{};
 			for (int i=1; i < points.size();i++){
 				double[] tmp = new double[i];
+				if (i%1000==0)
+					System.out.println(i + "/" + points.size() + " points added to distance matrix.");
 				for (int j=0;j<i;j++){
 					tmp[j] = points.get(i).distance(points.get(j));
 				}
 				ds[i] = tmp;
 			}
 		}
+		System.out.println("Done creating distance matrix!");
 		return ds;
 	}
 	
@@ -151,7 +195,6 @@ public class UPGMA {
 			System.out.println();
 		}
 	}
-
 
 }
 

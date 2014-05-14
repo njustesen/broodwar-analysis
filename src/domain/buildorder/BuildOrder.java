@@ -3,11 +3,14 @@ package domain.buildorder;
 import java.util.ArrayList;
 import java.util.List;
 
+import clustering.ClusterPoint;
+import clustering.distance.DistanceManager;
+
 import analyser.Action;
 import analyser.Player;
 import analyser.Player.Race;
 
-public class BuildOrder {
+public class BuildOrder implements ClusterPoint {
 
 	public Race race;
 	public List<Build> builds;
@@ -62,9 +65,19 @@ public class BuildOrder {
 		
 	}
 
+	public String toString(int maxLength) {
+		List<Build> b = new ArrayList<Build>();
+		for(int i = 0; i < Math.min(maxLength, builds.size()); i++)
+			b.add(builds.get(i));
+		
+		return b.toString();
+	}
+
 	@Override
-	public String toString() {
-		return builds.toString();
+	public double distance(ClusterPoint other) {
+		
+		return DistanceManager.distance(this, ((BuildOrder)other));
+		
 	}
 	
 }
