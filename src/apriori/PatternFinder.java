@@ -73,13 +73,13 @@ public class PatternFinder
         public static void main(String[] argv)
         {
                 String root = "matches/";
-                int minSupport = 200;
+                int minSupport = 1000;
                 int length = 10;
-                Player.Race race = Player.Race.Protoss;
-                Map.Type type = null;
+                Player.Race race = Player.Race.Zerg;
+                Map.Type type = null; //Map.Type.Lost_Temple;
 
                 List<Item[]> data = new ArrayList<Item[]>();
-                MatchDecoder decoder = new MatchDecoder(root, type, race, 12800);
+                MatchDecoder decoder = new MatchDecoder(root, type, race, 60000);
 
                 Match match = null;
 
@@ -92,7 +92,7 @@ public class PatternFinder
 
                                 List<Item> items = new ArrayList<Item>();
 
-                                items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
+                                // items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
                                 items.add(new Item(0, 0, match.players[(player + 1) % 2].race.toString(), false, false, true));
 
                                 List<Action> actions = match.players[player].selectActions(false, true, false, false);
@@ -100,8 +100,8 @@ public class PatternFinder
                                         items.add(new Item(player + 1, action, actions.get(action).actionType.toString(), false, false, false));
                                 if (match.players[player].win)
                                         items.add(new Item(player + 1, 0, "win", true, false, false));
-                                // else
-                                        // items.add(new Item(player + 1, 0, "lose", true, false, false));
+                                else
+                                        items.add(new Item(player + 1, 0, "lose", true, false, false));
 
                                 data.add(items.toArray(new Item[items.size()]));
                         }
@@ -109,7 +109,7 @@ public class PatternFinder
 
                 }
 
-                List<List<List<Item>>> output = Apriori.<Item>run(data.toArray(new Item[data.size()][]), minSupport);
+                List<List<List<Item>>> output = Apriori.<Item>run(data.toArray(new Item[data.size()][]), data.size() / 100 * 2);
                 // for (int i = 0; i < output.size(); i++)
                 // {
                 //         System.out.println("==============( " + i + " )================");

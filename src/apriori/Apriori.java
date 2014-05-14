@@ -19,7 +19,7 @@ public class Apriori
    * Here for testing.
    */
 
-  static double minConfidence = 0.55;
+  static double minConfidence = 0.50;
 
   /**
    * The ItemSet class is used to represent a set of item (candidate or
@@ -189,50 +189,56 @@ public class Apriori
       if ((outcome = (T) frequentItemSet.outcome()) != null)
       {
         ItemSet set = frequentItemSet.woOutcome();
-        outcomeConf = (double) frequentItemSet.support(data) / set.support(data);
-        System.out.println(set + " -> " + outcome + " (" + outcomeConf + ") [" + ((double) set.support(data) / data.length) +"]");
-        if (outcomeConf < minConfidence)
-          outcome = null;
+        if (set.set.size() != 0)
+        {
+          outcomeConf = (double) frequentItemSet.support(data) / set.support(data);
+          if (outcomeConf > minConfidence)
+            System.out.println(set + " -> " + outcome + " (" + outcomeConf + ") [" + ((double) set.support(data) / data.length) +"]");
+          else
+            outcome = null;
+        }
       }
 
-      T map;
-      if ((map = (T) frequentItemSet.map()) != null)
-      {
-        // ItemSet set = frequentItemSet.woMap();
-        // double conf = (double) frequentItemSet.support(data) / set.support(data);
-        // if (conf >= minConfidence)
-          // System.out.println(set + " -> " + map + " (" + conf + ")");
-        // if (conf < minConfidence)
-          // map = null;
-      }
+      // T map;
+      // if ((map = (T) frequentItemSet.map()) != null)
+      // {
+      //   // ItemSet set = frequentItemSet.woMap();
+      //   // double conf = (double) frequentItemSet.support(data) / set.support(data);
+      //   // if (conf >= minConfidence)
+      //     // System.out.println(set + " -> " + map + " (" + conf + ")");
+      //   // if (conf < minConfidence)
+      //     // map = null;
+      // }
 
-      T opponentRace;
+      T opponentRace = null;
       double opponentRaceConf = 0;
       if ((opponentRace = (T) frequentItemSet.opponentRace()) != null)
       {
         ItemSet set = frequentItemSet.woOpponentRace().woOutcome();
-        opponentRaceConf = (double) frequentItemSet.woOutcome().support(data) / set.support(data);
+        if (set.set.size() != 0)
+          opponentRaceConf = (double) frequentItemSet.woOutcome().support(data) / set.support(data);
         // if (conf >= minConfidence)
           // System.out.println(set + " -> " + opponentRace + " (" + conf + ")");
         // if (conf < minConfidence)
           // opponentRace = null;
       }
 
-      if (map != null && outcome != null)
-      {
-        ItemSet set = frequentItemSet.woOutcome().woMap();
-        double conf = (double) frequentItemSet.support(data) / set.support(data);
-        if (set.set.size() != 0)
-          System.out.println(set + " -> " + outcome + " on " + map + " (" + conf + ")");
-      }
+      // if (map != null && outcome != null)
+      // {
+      //   ItemSet set = frequentItemSet.woOutcome().woMap();
+      //   double conf = (double) frequentItemSet.support(data) / set.support(data);
+      //   if (set.set.size() != 0)
+      //     System.out.println(set + " -> " + outcome + " on " + map + " (" + conf + ")");
+      // }
 
       if (opponentRace != null && outcome != null)
       {
         ItemSet set = frequentItemSet.woOutcome().woOpponentRace();
-        double conf = (double) frequentItemSet.woOpponentRace().support(data) / set.support(data);
         if (set.set.size() != 0)
+        {
+          double conf = (double) frequentItemSet.woOpponentRace().support(data) / set.support(data);
           System.out.println(set + " -> " + outcome + " (" + conf + ") vs " + opponentRace + " (" + outcomeConf + ") [" + (opponentRaceConf) + " / " + ((double) set.support(data) / data.length) + "]");
-
+        }
         // build_order -> outcome (chance of this outcome) vs race (chance of this outcome vs this race) [ use vs race / use ]
       }
 
