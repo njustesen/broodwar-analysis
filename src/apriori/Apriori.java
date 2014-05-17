@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Set;
+import java.io.*;
+
 
 /**
  * The Apriori class is used to run the apriori algorithm on the given data set.
@@ -19,7 +21,7 @@ public class Apriori
    * Here for testing.
    */
 
-  static double minConfidence = 0.50;
+  static double minConfidence = 0.53;
 
   /**
    * The ItemSet class is used to represent a set of item (candidate or
@@ -180,69 +182,72 @@ public class Apriori
 
   private static <T extends PatternFinder.Item> void generateAssociationRules(T[][] data,
                                                                               int minSupport,
-                                                                              Set<ItemSet<T>> frequentItemSets)
+                                                                              Set<ItemSet<T>> frequentItemSets,
+                                                                              String outputFile)
   {
+    PrintWriter writer;
+    try
+    {
+      writer = new PrintWriter(new BufferedWriter(new FileWriter(outputFile, true)));
+    }
+    catch (IOException e)
+    {
+      return;
+    }
     for (ItemSet frequentItemSet : frequentItemSets)
     {
       T outcome;
-      double outcomeConf = 0;
-      if ((outcome = (T) frequentItemSet.outcome()) != null)
+      if ((outcome = (T) frequentItemSet.outcome()) != null && frequentItemSet.opponentRace() == null)
       {
         ItemSet set = frequentItemSet.woOutcome();
         if (set.set.size() != 0)
         {
-          outcomeConf = (double) frequentItemSet.support(data) / set.support(data);
+          double outcomeConf = (double) frequentItemSet.support(data) / set.support(data);
           if (outcomeConf > minConfidence)
-            System.out.println(set + " -> " + outcome + " (" + outcomeConf + ") [" + ((double) set.support(data) / data.length) +"]");
+            writer.println(set + " -> " + outcome + " (" + outcomeConf + ") [" + ((double) set.support(data) / data.length) +"]");
           else
             outcome = null;
         }
       }
 
-      // T map;
-      // if ((map = (T) frequentItemSet.map()) != null)
-      // {
-      //   // ItemSet set = frequentItemSet.woMap();
-      //   // double conf = (double) frequentItemSet.support(data) / set.support(data);
-      //   // if (conf >= minConfidence)
-      //     // System.out.println(set + " -> " + map + " (" + conf + ")");
-      //   // if (conf < minConfidence)
-      //     // map = null;
-      // }
-
       T opponentRace = null;
-      double opponentRaceConf = 0;
-      if ((opponentRace = (T) frequentItemSet.opponentRace()) != null)
+      if ((opponentRace = (T) frequentItemSet.opponentRace()) != null && frequentItemSet.outcome() == null)
       {
-        ItemSet set = frequentItemSet.woOpponentRace().woOutcome();
+        ItemSet set = frequentItemSet.woOpponentRace();
         if (set.set.size() != 0)
-          opponentRaceConf = (double) frequentItemSet.woOutcome().support(data) / set.support(data);
-        // if (conf >= minConfidence)
-          // System.out.println(set + " -> " + opponentRace + " (" + conf + ")");
-        // if (conf < minConfidence)
-          // opponentRace = null;
+        {
+          double opponentRaceConf = (double) frequentItemSet.support(data) / set.support(data);
+          if (opponentRaceConf > minConfidence)
+            writer.println(set + " -> " + opponentRace + " [" + opponentRaceConf + " / " + ((double) set.support(data) / data.length) +"]");
+          else
+            opponentRace = null;
+        }
       }
-
-      // if (map != null && outcome != null)
-      // {
-      //   ItemSet set = frequentItemSet.woOutcome().woMap();
-      //   double conf = (double) frequentItemSet.support(data) / set.support(data);
-      //   if (set.set.size() != 0)
-      //     System.out.println(set + " -> " + outcome + " on " + map + " (" + conf + ")");
-      // }
 
       if (opponentRace != null && outcome != null)
       {
         ItemSet set = frequentItemSet.woOutcome().woOpponentRace();
         if (set.set.size() != 0)
         {
+          // supp(build + win) / supp(build)
           double conf = (double) frequentItemSet.woOpponentRace().support(data) / set.support(data);
-          System.out.println(set + " -> " + outcome + " (" + conf + ") vs " + opponentRace + " (" + outcomeConf + ") [" + (opponentRaceConf) + " / " + ((double) set.support(data) / data.length) + "]");
+          if (conf > minConfidence)
+          {
+            // supp(build + race + win) / supp(build + race)
+            double outcomeConf = (double) frequentItemSet.support(data) / frequentItemSet.woOutcome().support(data);
+            // supp(build + race) / supp(build)
+            double opponentRaceConf = (double) frequentItemSet.woOutcome().support(data) / set.support(data);
+            // build_order -> outcome (chance of this outcome) vs race (chance of this outcome vs this race) [ use vs race / use ]
+            writer.println(set + " -> " + outcome + " (" + conf + ") vs " + opponentRace + " (" + outcomeConf + ") [" + opponentRaceConf + " / " + ((double) set.support(data) / data.length) + "]");
+          }
         }
-        // build_order -> outcome (chance of this outcome) vs race (chance of this outcome vs this race) [ use vs race / use ]
       }
 
+      else if (frequentItemSet.opponentRace() == null && frequentItemSet.outcome() == null)
+        writer.println(frequentItemSet + " [" + (double) frequentItemSet.support(data) / data.length + "]");
     }
+
+    writer.close();
   }
 
   /**
@@ -251,8 +256,20 @@ public class Apriori
    * @param minSupport The mininal support required to be considered as frequent.
    * @return A two dimensional list of all the frequent patterns.
    */
-  public static <T extends PatternFinder.Item> List<List<List<T>>> run(T[][] data, int minSupport)
+  public static <T extends PatternFinder.Item> List<List<List<T>>> run(T[][] data, int minSupport, String outputFile)
   {
+    try
+    {
+      PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(outputFile, false)));
+      writer.write("min. supp.: " + minSupport + " (" + ((double) minSupport / data.length) + ")\n");
+      writer.write("data set size: " + data.length + "\n");
+      writer.write("min. conf.: " + minConfidence + "\n");
+      writer.close();
+    }
+    catch (IOException e)
+    {
+    }
+
     List<List<List<T>>> itemSets = new ArrayList<List<List<T>>>();
     Map<ItemSet<T>, Integer> frequentItemSets = null;
     for (int k = 0; frequentItemSets == null || frequentItemSets.size() > 0; k++)
@@ -265,7 +282,7 @@ public class Apriori
       {
         itemSets.get(k).add(itemSet.set);
       }
-      Apriori.<T>generateAssociationRules(data, minSupport, frequentItemSets.keySet());
+      Apriori.<T>generateAssociationRules(data, minSupport, frequentItemSets.keySet(), outputFile);
     }
 
     return itemSets;
