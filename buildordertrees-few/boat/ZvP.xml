@@ -1,0 +1,83 @@
+
+<node players='22' value='0.455'>
+	<node action='SpawningPool' players='2' value='1'>
+	</node>
+	<node action='Extractor' players='20' value='0.4'>
+		<node action='SpawningPool' players='18' value='0.389'>
+			<node action='Hatchery' players='18' value='0.389'>
+				<node action='VentralSacs' players='4' value='0.25'>
+					<node action='Spire' players='2' value='0'>
+					</node>
+					<node action='HydraliskDen' players='2' value='0.5'>
+						<node action='MuscularAugments' players='2' value='0.5'>
+							<node action='PneumatizedCarapace' players='2' value='0.5'>
+								<node action='GroovedSpines' players='2' value='0.5'>
+									<node action='Hatchery' players='2' value='0.5'>
+										<node action='Spire' players='1' value='0'>
+										</node>
+										<node action='Hatchery' players='1' value='1'>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='Spire' players='8' value='0.375'>
+					<node action='Game over' players='1' value='1'>
+					</node>
+					<node action='VentralSacs' players='6' value='0.167'>
+						<node action='EvolutionChamber' players='1' value='0'>
+						</node>
+						<node action='ZergFlyerCarapace' players='1' value='0'>
+						</node>
+						<node action='PneumatizedCarapace' players='1' value='0'>
+						</node>
+						<node action='HydraliskDen' players='3' value='0.333'>
+							<node action='Hatchery' players='2' value='0.5'>
+								<node action='PneumatizedCarapace' players='1' value='0'>
+								</node>
+								<node action='MuscularAugments' players='1' value='1'>
+								</node>
+							</node>
+							<node action='GroovedSpines' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+					<node action='HydraliskDen' players='1' value='1'>
+					</node>
+				</node>
+				<node action='PneumatizedCarapace' players='2' value='1'>
+				</node>
+				<node action='HydraliskDen' players='3' value='0.333'>
+					<node action='VentralSacs' players='3' value='0.333'>
+						<node action='MuscularAugments' players='2' value='0.5'>
+							<node action='GroovedSpines' players='2' value='0.5'>
+								<node action='PneumatizedCarapace' players='2' value='0.5'>
+									<node action='Hatchery' players='2' value='0.5'>
+										<node action='EvolutionChamber' players='1' value='1'>
+										</node>
+										<node action='Spire' players='1' value='0'>
+										</node>
+									</node>
+								</node>
+							</node>
+						</node>
+						<node action='GroovedSpines' players='1' value='0'>
+						</node>
+					</node>
+				</node>
+				<node action='Hatchery' players='1' value='0'>
+				</node>
+			</node>
+		</node>
+		<node action='Hatchery' players='2' value='0.5'>
+			<node action='SpawningPool' players='2' value='0.5'>
+				<node action='CreepColony' players='1' value='0'>
+				</node>
+				<node action='HydraliskDen' players='1' value='1'>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

@@ -1,0 +1,4 @@
+[SpawningPool, Hatchery, Extractor] (2) {950.5} -> 0.5
+[SpawningPool, Extractor, Hatchery, MetabolicBoost] (2) {1452.5} -> 1
+[Hatchery, SpawningPool, Extractor, MetabolicBoost] (2) {912.5} -> 0.5
+[Hatchery, SpawningPool, Extractor, CreepColony] (2) {1469} -> 0.5

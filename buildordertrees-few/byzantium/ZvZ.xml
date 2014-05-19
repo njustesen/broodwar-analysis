@@ -1,0 +1,31 @@
+
+<node players='10' value='0.5'>
+	<node action='SpawningPool' players='5' value='0.6'>
+		<node action='Extractor' players='5' value='0.6'>
+			<node action='CreepColony' players='1' value='1'>
+			</node>
+			<node action='Spire' players='1' value='0'>
+			</node>
+			<node action='MetabolicBoost' players='1' value='1'>
+			</node>
+			<node action='Hatchery' players='1' value='0'>
+			</node>
+			<node action='Extractor' players='1' value='1'>
+			</node>
+		</node>
+	</node>
+	<node action='Hatchery' players='1' value='1'>
+	</node>
+	<node action='Extractor' players='4' value='0.25'>
+		<node action='SpawningPool' players='3' value='0.333'>
+			<node action='CreepColony' players='1' value='0'>
+			</node>
+			<node action='Hatchery' players='1' value='1'>
+			</node>
+			<node action='Extractor' players='1' value='0'>
+			</node>
+		</node>
+		<node action='Hatchery' players='1' value='0'>
+		</node>
+	</node>
+</node>

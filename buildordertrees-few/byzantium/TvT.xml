@@ -1,0 +1,9 @@
+
+<node players='2' value='0.5'>
+	<node action='SupplyDepot' players='2' value='0.5'>
+		<node action='Barracks' players='1' value='0'>
+		</node>
+		<node action='CommandCenter' players='1' value='1'>
+		</node>
+	</node>
+</node>

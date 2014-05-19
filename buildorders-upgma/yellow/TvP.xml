@@ -1,0 +1,5 @@
+[SupplyDepot, Refinery, Barracks, Factory, Bunker, SupplyDepot, Starport, MachineShop] (1) {2461} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, SupplyDepot, Factory, MachineShop] (1) {8832} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Barracks, Factory, SupplyDepot, MachineShop] (1) {5261} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, CommandCenter, MachineShop] (1) {3466} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, MachineShop, MachineShop] (1) {1941} -> 0

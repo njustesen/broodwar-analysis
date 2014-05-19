@@ -1,0 +1,9 @@
+[SpawningPool, Extractor, MetabolicBoost, HydraliskDen] (4) {1844.75} -> 0
+[SpawningPool, Extractor, HydraliskDen, LurkerAspect] (2) {1313.5} -> 0.5
+[Hatchery, SpawningPool, Extractor, CreepColony] (3) {3905.667} -> 0.333
+[Hatchery, SpawningPool, Extractor, MetabolicBoost] (6) {3809.667} -> 0.833
+[Hatchery, SpawningPool, Extractor, Extractor] (3) {3375.667} -> 0.333
+[Hatchery, Extractor, SpawningPool, MetabolicBoost] (2) {2586.5} -> 0.5
+[Extractor, SpawningPool, Extractor] (2) {4785} -> 0.5
+[Extractor, Hatchery, SpawningPool, Hatchery] (4) {1439} -> 0.75
+[Extractor, Hatchery, SpawningPool, Extractor] (2) {1531} -> 0

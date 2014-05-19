@@ -1,0 +1,10 @@
+[SpawningPool] (1) {1078} -> 0
+[Extractor, SpawningPool, Extractor, EvolutionChamber, ZergMeleeAttacks, MetabolicBoost, CreepColony, MetabolicBoost] (1) {1202} -> 1
+[SpawningPool, Extractor, MetabolicBoost, Hatchery, CreepColony, Hatchery] (1) {747} -> 1
+[SpawningPool, Extractor, Hatchery, MetabolicBoost, Spire, Extractor, ZergFlyerAttacks] (1) {2238} -> 1
+[Hatchery, SpawningPool, Extractor, Extractor, CreepColony, Spire, Extractor, Hatchery] (1) {4081} -> 1
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Spire, CreepColony, QueensNest, QueensNest] (1) {2909} -> 0
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Spire, Extractor, CreepColony, ZergFlyerAttacks] (1) {1779} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery, CreepColony, HydraliskDen, Spire, Extractor] (1) {11573} -> 0
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, Hatchery, HydraliskDen, CreepColony, Extractor] (1) {1793} -> 0
+[Hatchery, SpawningPool, Extractor, MetabolicBoost, CreepColony, Hatchery, EvolutionChamber, HydraliskDen] (1) {1972} -> 1

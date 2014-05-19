@@ -29,6 +29,14 @@ public class DecisionTree {
 		return root.common(minBuildOrders, null);
 		
 	}
+	
+	public List<BuildOrder> common(double minSupport, int maxDdepth){
+		
+		double minBuildOrders = minSupport * root.getBuildOrders().size();
+		
+		return root.common(minBuildOrders, maxDdepth, 0, null);
+		
+	}
 
 	public void print() {
 		root.print(0, null);
@@ -49,6 +57,20 @@ public class DecisionTree {
 		}
 		
 	}
+	
+	public void saveFmtToFile(String filename, int levels) {
+		try{
+			// Create file 
+			FileWriter fstream = new FileWriter(filename);
+			BufferedWriter out = new BufferedWriter(fstream);
+			//out.write(root.toString(0, null));
+			root.toFmt(out, 0, levels, null);
+			//Close the output stream
+			out.close();
+		} catch (Exception e){//Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
 
 	public boolean predictWin(int maxDepth, BuildOrder buildOrder) {
 		
@@ -68,5 +90,7 @@ public class DecisionTree {
 	public void setRoot(ID3Node root) {
 		this.root = root;
 	}
+
+	
 
 }

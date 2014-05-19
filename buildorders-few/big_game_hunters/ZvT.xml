@@ -1,0 +1,19 @@
+[CreepColony] (1) {10974} -> 0
+[SpawningPool, CreepColony] (1) {3363} -> 0
+[SpawningPool, Hatchery] (2) {3909} -> 0
+[SpawningPool, Extractor] (1) {1168} -> 1
+[Hatchery, SpawningPool, CreepColony, CreepColony] (1) {824} -> 0
+[Hatchery, SpawningPool, CreepColony, Extractor] (1) {1705} -> 1
+[Hatchery, SpawningPool, Hatchery, CreepColony] (2) {2378} -> 0.5
+[Hatchery, SpawningPool, Hatchery, Burrow] (1) {2907} -> 0
+[Hatchery, SpawningPool, Hatchery, Extractor] (4) {4383.25} -> 0.25
+[Hatchery, SpawningPool, Extractor, CreepColony] (2) {3895.5} -> 0.5
+[Hatchery, SpawningPool, Extractor, Hatchery] (3) {3486.667} -> 0.333
+[Hatchery, SpawningPool, Extractor, Extractor] (1) {6394} -> 1
+[Hatchery, Extractor] (1) {395} -> 1
+[Extractor, CreepColony] (1) {1410} -> 0
+[Extractor, SpawningPool, Extractor, Hatchery] (2) {3445} -> 0.5
+[Extractor, Hatchery, SpawningPool, Hatchery] (1) {5621} -> 0
+[Extractor, Hatchery, SpawningPool, Extractor] (1) {4015} -> 1
+[Extractor, Hatchery, Hatchery] (1) {920} -> 1
+[Extractor, Extractor] (2) {1905} -> 0

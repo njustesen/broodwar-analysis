@@ -1,0 +1,67 @@
+
+<node players='24' value='0.5'>
+	<node action='Barracks' players='4' value='0.25'>
+		<node action='SupplyDepot' players='4' value='0.25'>
+			<node action='Refinery' players='2' value='0'>
+			</node>
+			<node action='SupplyDepot' players='2' value='0.5'>
+				<node action='Refinery' players='1' value='1'>
+				</node>
+				<node action='SupplyDepot' players='1' value='0'>
+				</node>
+			</node>
+		</node>
+	</node>
+	<node action='SupplyDepot' players='20' value='0.55'>
+		<node action='Barracks' players='11' value='0.545'>
+			<node action='Refinery' players='11' value='0.545'>
+				<node action='Factory' players='2' value='1'>
+				</node>
+				<node action='SupplyDepot' players='9' value='0.444'>
+					<node action='Factory' players='9' value='0.444'>
+						<node action='MachineShop' players='1' value='1'>
+						</node>
+						<node action='Armory' players='1' value='0'>
+						</node>
+						<node action='Bunker' players='1' value='0'>
+						</node>
+						<node action='Factory' players='1' value='1'>
+						</node>
+						<node action='Barracks' players='2' value='0'>
+						</node>
+						<node action='SupplyDepot' players='3' value='0.667'>
+							<node action='MachineShop' players='1' value='0'>
+							</node>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+		<node action='Refinery' players='2' value='0'>
+		</node>
+		<node action='CommandCenter' players='7' value='0.714'>
+			<node action='Barracks' players='7' value='0.714'>
+				<node action='Refinery' players='7' value='0.714'>
+					<node action='SupplyDepot' players='7' value='0.714'>
+						<node action='Bunker' players='1' value='0'>
+						</node>
+						<node action='Factory' players='6' value='0.833'>
+							<node action='Bunker' players='3' value='1'>
+							</node>
+							<node action='Factory' players='1' value='1'>
+							</node>
+							<node action='SupplyDepot' players='1' value='1'>
+							</node>
+							<node action='Starport' players='1' value='0'>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

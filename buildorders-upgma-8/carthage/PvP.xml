@@ -1,0 +1,14 @@
+[Pylon, Gateway, Assimilator, CyberneticsCore, Pylon, SingularityCharge, Gateway, Pylon] (1) {5730} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, SingularityCharge, Pylon] (1) {1147} -> 0
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, SingularityCharge, Pylon] (1) {1147} -> 0
+[Pylon, Gateway, Assimilator, Pylon, Pylon, CyberneticsCore, Gateway, SingularityCharge] (1) {1901} -> 1
+[Pylon, Gateway, Assimilator, Pylon, Pylon, CyberneticsCore, Gateway, SingularityCharge] (1) {1901} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, Pylon, RoboticsFacility] (1) {3351} -> 0
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, RoboticsFacility, Gateway, Pylon] (1) {3808} -> 1
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Pylon, CitadelofAdun, Gateway] (1) {5301} -> 0
+[Pylon, Gateway, Assimilator, Pylon, CyberneticsCore, Gateway, Pylon, CitadelofAdun] (1) {2020} -> 1
+[Pylon, Gateway, Gateway, Pylon, Assimilator, CyberneticsCore, Pylon, Pylon] (1) {1728} -> 0
+[Pylon, Gateway, Pylon] (1) {767} -> 0
+[Pylon, Gateway, Gateway, Pylon, Pylon] (1) {1026} -> 1
+[Pylon, Gateway, Gateway, Pylon, ShieldBattery, Gateway, Assimilator, Forge] (1) {1220} -> 0
+[Pylon, Gateway, Assimilator, Assimilator, Gateway, Pylon, Pylon, Pylon] (1) {2534} -> 1

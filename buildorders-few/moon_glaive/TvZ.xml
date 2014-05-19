@@ -1,0 +1,7 @@
+[Barracks, SupplyDepot] (9) {4079.667} -> 0.444
+[SupplyDepot, Barracks, Barracks, SupplyDepot] (11) {3767.364} -> 0.636
+[SupplyDepot, Barracks, Refinery, SupplyDepot] (18) {2846.667} -> 0.167
+[SupplyDepot, Barracks, SupplyDepot, Bunker] (6) {5074.833} -> 0.833
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter] (82) {4732.427} -> 0.427
+[SupplyDepot, Barracks, CommandCenter, SupplyDepot] (33) {4674.697} -> 0.576
+[SupplyDepot, CommandCenter, Barracks, Barracks] (7) {4734.571} -> 0.571

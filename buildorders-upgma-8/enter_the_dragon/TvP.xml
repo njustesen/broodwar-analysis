@@ -1,0 +1,7 @@
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory, MachineShop, SupplyDepot] (4) {4219.5} -> 0.75
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Barracks, Factory, Factory, MachineShop] (3) {4868.333} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Barracks, SupplyDepot, MachineShop] (3) {2742.333} -> 0.667
+[SupplyDepot, Barracks, Refinery, Factory, Barracks, SupplyDepot, Barracks, MachineShop] (3) {3382.667} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, Factory, SupplyDepot, MachineShop, SupplyDepot] (3) {2736.333} -> 0.667
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop, SupplyDepot] (3) {2603.333} -> 0.333
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, MachineShop, SupplyDepot] (3) {3475.333} -> 0.667

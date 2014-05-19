@@ -1,0 +1,145 @@
+
+<node players='50' value='0.5'>
+	<node action='SpawningPool' players='15' value='0.667'>
+		<node action='CreepColony' players='6' value='0.833'>
+			<node action='Game over' players='5' value='0.8'>
+			</node>
+			<node action='Hatchery' players='1' value='1'>
+			</node>
+		</node>
+		<node action='Extractor' players='9' value='0.556'>
+			<node action='CreepColony' players='1' value='1'>
+			</node>
+			<node action='Burrow' players='1' value='0'>
+			</node>
+			<node action='MetabolicBoost' players='3' value='0.333'>
+				<node action='CreepColony' players='2' value='0.5'>
+					<node action='CreepColony' players='1' value='0'>
+					</node>
+					<node action='Hatchery' players='1' value='1'>
+					</node>
+				</node>
+				<node action='Hatchery' players='1' value='0'>
+				</node>
+			</node>
+			<node action='Hatchery' players='4' value='0.75'>
+				<node action='Game over' players='1' value='0'>
+				</node>
+				<node action='CreepColony' players='1' value='1'>
+				</node>
+				<node action='Spire' players='1' value='1'>
+				</node>
+				<node action='MetabolicBoost' players='1' value='1'>
+				</node>
+			</node>
+		</node>
+	</node>
+	<node action='Hatchery' players='7' value='0.286'>
+		<node action='SpawningPool' players='5' value='0.2'>
+			<node action='Game over' players='1' value='0'>
+			</node>
+			<node action='CreepColony' players='1' value='1'>
+			</node>
+			<node action='Extractor' players='3' value='0'>
+			</node>
+		</node>
+		<node action='Extractor' players='2' value='0.5'>
+			<node action='SpawningPool' players='2' value='0.5'>
+				<node action='Game over' players='1' value='0'>
+				</node>
+				<node action='MetabolicBoost' players='1' value='1'>
+				</node>
+			</node>
+		</node>
+	</node>
+	<node action='Extractor' players='28' value='0.464'>
+		<node action='SpawningPool' players='13' value='0.538'>
+			<node action='MetabolicBoost' players='4' value='0.5'>
+				<node action='CreepColony' players='1' value='0'>
+				</node>
+				<node action='Hatchery' players='3' value='0.667'>
+					<node action='Spire' players='3' value='0.667'>
+						<node action='EvolutionChamber' players='1' value='1'>
+						</node>
+						<node action='Hatchery' players='2' value='0.5'>
+							<node action='Game over' players='2' value='0.5'>
+							</node>
+						</node>
+					</node>
+				</node>
+			</node>
+			<node action='Hatchery' players='7' value='0.714'>
+				<node action='Spire' players='1' value='1'>
+				</node>
+				<node action='MetabolicBoost' players='5' value='0.8'>
+					<node action='Spire' players='5' value='0.8'>
+						<node action='Game over' players='1' value='1'>
+						</node>
+						<node action='EvolutionChamber' players='2' value='0.5'>
+							<node action='CreepColony' players='2' value='0.5'>
+								<node action='CreepColony' players='1' value='1'>
+								</node>
+								<node action='Hatchery' players='1' value='0'>
+								</node>
+							</node>
+						</node>
+						<node action='Hatchery' players='2' value='1'>
+						</node>
+					</node>
+				</node>
+				<node action='Extractor' players='1' value='0'>
+				</node>
+			</node>
+			<node action='Extractor' players='2' value='0'>
+			</node>
+		</node>
+		<node action='Hatchery' players='8' value='0.25'>
+			<node action='SpawningPool' players='7' value='0.286'>
+				<node action='CreepColony' players='1' value='0'>
+				</node>
+				<node action='MetabolicBoost' players='4' value='0.25'>
+					<node action='Spire' players='4' value='0.25'>
+						<node action='EvolutionChamber' players='1' value='0'>
+						</node>
+						<node action='Hatchery' players='3' value='0.333'>
+							<node action='Hatchery' players='2' value='0'>
+							</node>
+							<node action='Extractor' players='1' value='1'>
+							</node>
+						</node>
+					</node>
+				</node>
+				<node action='Hatchery' players='1' value='1'>
+				</node>
+				<node action='Extractor' players='1' value='0'>
+				</node>
+			</node>
+			<node action='EvolutionChamber' players='1' value='0'>
+			</node>
+		</node>
+		<node action='Extractor' players='7' value='0.571'>
+			<node action='SpawningPool' players='5' value='0.4'>
+				<node action='CreepColony' players='1' value='1'>
+				</node>
+				<node action='Hatchery' players='4' value='0.25'>
+					<node action='MetabolicBoost' players='4' value='0.25'>
+						<node action='Spire' players='3' value='0.333'>
+							<node action='Game over' players='1' value='0'>
+							</node>
+							<node action='EvolutionChamber' players='1' value='0'>
+							</node>
+							<node action='Hatchery' players='1' value='1'>
+							</node>
+						</node>
+						<node action='Hatchery' players='1' value='0'>
+						</node>
+					</node>
+				</node>
+			</node>
+			<node action='Hatchery' players='1' value='1'>
+			</node>
+			<node action='Extractor' players='1' value='1'>
+			</node>
+		</node>
+	</node>
+</node>

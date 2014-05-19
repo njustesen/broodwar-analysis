@@ -1,0 +1,5 @@
+[SpawningPool, Hatchery, Extractor, Hatchery] (1) {3502} -> 0
+[Extractor, SpawningPool, Hatchery, Hatchery] (1) {1827} -> 0
+[Extractor, SpawningPool, Hatchery, Hatchery] (1) {3050} -> 1
+[Hatchery, SpawningPool, Extractor, CreepColony] (1) {1532} -> 1
+[Hatchery, SpawningPool, CreepColony, CreepColony] (1) {5505} -> 0

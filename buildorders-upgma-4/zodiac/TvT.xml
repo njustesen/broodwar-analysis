@@ -1,0 +1,6 @@
+[SupplyDepot, CommandCenter, Barracks, Refinery] (1) {4444} -> 1
+[Barracks, Refinery, SupplyDepot, Barracks] (1) {2722} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot] (1) {2492} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot] (1) {6216} -> 0
+[SupplyDepot, Refinery, Barracks, Factory] (1) {2673} -> 1
+[SupplyDepot, Barracks, Refinery, Factory] (1) {1305} -> 0

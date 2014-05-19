@@ -1,0 +1,6 @@
+[SupplyDepot, CommandCenter, Barracks, Refinery, SupplyDepot, Bunker, Factory, SupplyDepot] (1) {4444} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory, MachineShop, SpiderMines] (1) {2673} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, Factory, Factory, MachineShop, SupplyDepot] (1) {1305} -> 0
+[Barracks, Refinery, SupplyDepot, Barracks, SupplyDepot, Factory, Factory, Armory] (1) {2722} -> 0
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, Starport, MachineShop] (1) {2492} -> 1
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, MachineShop, SupplyDepot] (1) {6216} -> 0

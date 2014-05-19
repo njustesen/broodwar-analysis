@@ -1,0 +1,8 @@
+[SpawningPool] (2) {5170.5} -> 1
+[Extractor, SpawningPool, Hatchery, VentralSacs] (4) {3938.5} -> 0.25
+[Extractor, SpawningPool, Hatchery, Spire] (8) {2981.625} -> 0.375
+[Extractor, SpawningPool, Hatchery, PneumatizedCarapace] (2) {2654} -> 1
+[Extractor, SpawningPool, Hatchery, HydraliskDen] (3) {2174.667} -> 0.333
+[Extractor, SpawningPool, Hatchery, Hatchery] (1) {2015} -> 0
+[Extractor, Hatchery, SpawningPool, CreepColony] (1) {1498} -> 0
+[Extractor, Hatchery, SpawningPool, HydraliskDen] (1) {3295} -> 1

@@ -1,0 +1,11 @@
+[Pylon, Nexus, Forge] (260) {3310.407} -> 0.521
+[Pylon, Forge, Nexus, PhotonCannon] (624) {3267.925} -> 0.486
+[Pylon, Forge, Nexus, Gateway] (493) {3545.822} -> 0.485
+[Pylon, Forge, PhotonCannon, Nexus] (994) {3400.812} -> 0.473
+[Pylon, Forge, PhotonCannon, PhotonCannon] (591) {3011.711} -> 0.442
+[Pylon, Forge, PhotonCannon, Pylon] (218) {3072.923} -> 0.502
+[Pylon, Forge, Pylon, PhotonCannon] (265) {3120.256} -> 0.488
+[Pylon, Gateway, Pylon] (452) {3164.694} -> 0.531
+[Pylon, Gateway, Assimilator, CyberneticsCore] (210) {3076.528} -> 0.453
+[Pylon, Gateway, Assimilator, Pylon] (534) {3123.59} -> 0.489
+[Pylon, Gateway, Gateway, Pylon] (692) {2766.76} -> 0.484

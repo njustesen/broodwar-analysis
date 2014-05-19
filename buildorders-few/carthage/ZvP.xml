@@ -1,0 +1,8 @@
+[SpawningPool, Hatchery] (2) {3084} -> 1
+[SpawningPool, Extractor, Spire] (1) {2091} -> 1
+[SpawningPool, Extractor, MetabolicBoost, Hatchery] (7) {2272} -> 0.286
+[SpawningPool, Extractor, Hatchery] (4) {2674.5} -> 1
+[Hatchery, SpawningPool, Hatchery, Hatchery] (1) {1959} -> 1
+[Hatchery, SpawningPool, Hatchery, Extractor] (3) {1530.333} -> 0.667
+[Hatchery, SpawningPool, Extractor] (1) {2753} -> 1
+[Extractor] (1) {1761} -> 1

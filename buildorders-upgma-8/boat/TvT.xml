@@ -1,0 +1,8 @@
+[SupplyDepot, CommandCenter, Barracks, Refinery, SupplyDepot, Factory, EngineeringBay, CommandCenter] (2) {2020.5} -> 0.5
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Academy, Factory, Armory] (2) {2097.5} -> 0.5
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Academy, Starport, MachineShop] (2) {3907} -> 1
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Starport, SupplyDepot, SupplyDepot] (2) {4458} -> 0.5
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory, Armory, Academy] (2) {7323} -> 0
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory, Armory, Starport] (2) {2109.5} -> 0
+[SupplyDepot, Refinery, Barracks, SupplyDepot, Factory, Factory, Armory, Starport] (2) {4057.5} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, Armory, MachineShop] (2) {3521} -> 0

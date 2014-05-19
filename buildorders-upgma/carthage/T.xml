@@ -1,0 +1,5 @@
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Barracks, Starport, SupplyDepot] (5) {2953} -> 0.2
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, MachineShop, Starport] (5) {4185.4} -> 1
+[Barracks, SupplyDepot, Refinery, EngineeringBay, Barracks, Academy, CommandCenter, CommandCenter] (5) {907} -> 0.2
+[SupplyDepot, Barracks, Barracks, SupplyDepot, CommandCenter, Refinery, Bunker, SupplyDepot] (5) {2780.2} -> 0.8
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, Barracks, Refinery, Academy, StimPack] (4) {4463.25} -> 0.75

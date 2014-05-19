@@ -1,0 +1,27 @@
+
+<node players='7' value='0.571'>
+	<node action='SpawningPool' players='2' value='1'>
+	</node>
+	<node action='Extractor' players='5' value='0.4'>
+		<node action='SpawningPool' players='5' value='0.4'>
+			<node action='Hatchery' players='5' value='0.4'>
+				<node action='Spire' players='3' value='0.333'>
+					<node action='VentralSacs' players='3' value='0.333'>
+						<node action='EvolutionChamber' players='1' value='0'>
+						</node>
+						<node action='MetabolicBoost' players='1' value='0'>
+						</node>
+						<node action='Hatchery' players='1' value='1'>
+						</node>
+					</node>
+				</node>
+				<node action='HydraliskDen' players='2' value='0.5'>
+					<node action='VentralSacs' players='1' value='1'>
+					</node>
+					<node action='Spire' players='1' value='0'>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

@@ -1,0 +1,10 @@
+[SpawningPool, Hatchery, Hatchery, Hatchery] (4) {3383.5} -> 0.25
+[SpawningPool, Hatchery, Hatchery, Extractor] (9) {4159.889} -> 0.778
+[SpawningPool, Hatchery, Extractor] (4) {2765.5} -> 0.75
+[SpawningPool, Extractor, MetabolicBoost, Hatchery] (6) {2551.286} -> 0.571
+[SpawningPool, Extractor, Hatchery, MetabolicBoost] (2) {3724.5} -> 0.5
+[SpawningPool, Extractor, Hatchery, Hatchery] (4) {4353} -> 0.75
+[SpawningPool, Extractor, Extractor] (2) {2789} -> 1
+[Hatchery, SpawningPool, Hatchery, Extractor] (5) {4434.2} -> 0.6
+[Hatchery, SpawningPool, Extractor, Hatchery] (3) {3705.333} -> 0
+[Extractor] (2) {1680.5} -> 1

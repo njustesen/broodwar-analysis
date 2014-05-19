@@ -1,0 +1,8 @@
+[Extractor, SpawningPool, Hatchery, MetabolicBoost, Spire] (1) {792} -> 0
+[SpawningPool, Extractor, Hatchery, MetabolicBoost, Spire] (1) {1279} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery, CreepColony, MetabolicBoost, CreepColony, EvolutionChamber] (1) {2159} -> 0
+[SpawningPool, Extractor, CreepColony, MetabolicBoost, CreepColony, CreepColony, Hatchery, Spire] (1) {3063} -> 0
+[SpawningPool, Extractor, MetabolicBoost, Hatchery, Hatchery] (1) {832} -> 1
+[SpawningPool, Extractor, MetabolicBoost, Hatchery] (1) {1364} -> 0
+[Hatchery, Extractor, SpawningPool, Extractor, Extractor, Burrow, MetabolicBoost, Spire] (1) {1857} -> 1
+[Hatchery, SpawningPool, CreepColony, SpawningPool, Extractor, MetabolicBoost, Hatchery, EvolutionChamber] (1) {2164} -> 1

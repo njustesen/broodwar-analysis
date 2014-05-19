@@ -1,0 +1,10 @@
+[SpawningPool, Hatchery, CreepColony] (26) {3255.407} -> 0.556
+[SpawningPool, Hatchery, Hatchery, Extractor] (82) {4398.398} -> 0.506
+[SpawningPool, Hatchery, Extractor, Hatchery] (37) {3625.474} -> 0.632
+[SpawningPool, Extractor, MetabolicBoost, Hatchery] (65) {3564.478} -> 0.493
+[SpawningPool, Extractor, Hatchery, Hatchery] (29) {4456.742} -> 0.484
+[Hatchery, SpawningPool, CreepColony] (28) {3808.821} -> 0.536
+[Hatchery, SpawningPool, Hatchery, Hatchery] (31) {4829.516} -> 0.581
+[Hatchery, SpawningPool, Hatchery, Extractor] (123) {4065.024} -> 0.472
+[Hatchery, SpawningPool, Extractor, Hatchery] (56) {3353.304} -> 0.571
+[Extractor, Hatchery] (22) {2368.318} -> 0.591

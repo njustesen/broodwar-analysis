@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,27 +35,36 @@ import analyser.Player.Race;
 
 public class StrategyClustering {
 	
-	private static final String KMEDOIDS_FOLDER = "buildorders-kmedoid/";
-	private static final String UPGMA_FOLDER = "buildorders-upgma/";
-	private static final int MAX_LENGTH = 8;
+	private static final int MAX_LENGTH = 4;
+	private static final String KMEDOIDS_FOLDER = "buildorders-kmedoids-" + MAX_LENGTH + "/";
+	private static final String UPGMA_FOLDER = "buildorders-upgma" + MAX_LENGTH + "/";
 	private static final boolean UNITS = false;
 	private static final boolean BUILDINGS = true;
 	private static final boolean RESEARCH = true;
 	private static final boolean UPGRADES = true;
-	private static final double SUPPORT = 0.10;
+	private static final double SUPPORT = 0.06;
+	private static final String PERFORMANCE_FOLDER = "performance-" + 2 + "/";
 	
 	public static void main(String[] args) {
 		
-		clearFolder();
-		/*
+		//clearFolder();
+		boolean start = false;
+		
 		for(Map.Type map : Map.Type.values()){
-			if (map != Map.Type.None)
+			/*
+			if (map != Map.Type.Destination && map != Map.Type.Andromeda && map != Map.Type.Bifrost && map != Map.Type.Blade_Storm && map != Map.Type.Python)
+				continue;
+			*/
+			if (map != Map.Type.Lost_Temple)
+				continue;
+			
+			//if (map != Map.Type.None)
 				searchOnMap(map);
 		}
-		 */
-		searchOnMap(Map.Type.Fighting_Spirit);
 		
-		searchOnMap(null);
+		//searchOnMap(Map.Type.Andromeda);
+		
+		//searchOnMap(null);
 		
 		//System.out.println(clusters);
 	}
@@ -62,10 +72,10 @@ public class StrategyClustering {
 	public static void searchOnMap(Map.Type map){
 		
 		List<Race> races = new ArrayList<Race>();
-		races.add(Race.Zerg);
 		races.add(Race.Protoss);
 		races.add(Race.Terran);
-		races.add(null);
+		races.add(Race.Zerg);
+		//races.add(null);
 		
 		if (map != null)
 			System.out.println("Analysing matches on " + map.name());
@@ -87,16 +97,30 @@ public class StrategyClustering {
 			
 			for(Race enemy : races){
 				
+				//if (race == enemy)
+					//continue;
+			
+				if (race != Race.Protoss || enemy != Race.Terran)
+					continue;
+		
+				//Race race = Race.Protoss;
+				//Race enemy = Race.Terran;
+				
 				List<BuildOrder> buildOrders = BuildOrderFactory.instantiate(matches, race, enemy);
+				
+				//buildOrders = buildOrders.subList(0, 1000);
+				
+				if (buildOrders.size() < 10)
+					return;
 				
 				System.out.println("Analysing " + matchupString(race, enemy) + " on " + map.name());
 				
-				int discount = 5;
-				int max = 5;
+				int discount = 4;
+				int max = 4;
 				int base = 10;
 				boolean cost = true;
 				
-				DistanceManager.editDistance = new EditDistance(UNITS, BUILDINGS, UPGRADES, RESEARCH, cost, discount, max);
+				DistanceManager.editDistance = new EditDistance(UNITS, BUILDINGS, UPGRADES, RESEARCH, cost, discount, MAX_LENGTH);
 				//DistanceManager.firstDistance = new FirstDistance(units, buildings, upgrades, research, base);
 				//DistanceManager.distanceFunction = DISTANCE_FUNCTION.FIRST_DISTANCE;
 				DistanceManager.distanceFunction = DISTANCE_FUNCTION.EDIT_DISTANCE;
@@ -111,14 +135,25 @@ public class StrategyClustering {
 				}
 				for(KMedoidCluster cluster : removed)
 					clusters.remove(cluster);
-				
-				saveKmedoidClusters(clusters, race, enemy, map);
 				*/
+				//saveKmedoidClusters(clusters, race, enemy, map);
+				
+				
 				List<List<ClusterPoint>> clusters = new StrategyClustering(race, enemy, map).upgma(buildOrders);
-				saveUpgmaClusters(clusters, race, enemy, map);
+				
+				if (clusters == null || clusters.isEmpty()){
+					System.out.println("No clusters found");
+					//continue;
+				}
+				
+				//saveUpgmaClusters(clusters, race, enemy, map);
+				//saveUpgmaPerformance(buildOrders.size(), map, MAX_LENGTH);
+				
+				//break;
 				
 			}
 		}
+		
 	}
 	
 	private static void saveKmedoidClusters(List<KMedoidCluster> clusters, Race race, Race enemy, Map.Type map) {
@@ -271,7 +306,13 @@ public class StrategyClustering {
 		
 		points.addAll(buildOrders);
 		
-		return new KMedoids(true).cluster(points, 18);
+		long start = System.currentTimeMillis();
+		List<KMedoidCluster> clusters = new KMedoids(true).cluster(points, 18);
+		long stop = System.currentTimeMillis();
+		long time = stop - start;
+		
+		savePerformance(buildOrders.size(), time, "kmedoids");
+		return clusters;
 		
 	}
 	
@@ -281,9 +322,30 @@ public class StrategyClustering {
 		points.addAll(buildOrders);
 		
 		UPGMA upgma = new UPGMA();
+		long start = System.currentTimeMillis();
 		upgma.init(points);
+		List<List<ClusterPoint>> clusters = upgma.getClustersWithSupport(SUPPORT);
 		
-		return upgma.getClustersWithSupport(SUPPORT);
+		long stop = System.currentTimeMillis();
+		long time = stop - start;
+		
+		savePerformance(buildOrders.size(), time, "upgma");
+		
+		return clusters;
+		
+	}
+
+	private void savePerformance(int size, long time, String label) {
+		
+		String filename = label + "_performance.dat";
+		
+		try {
+		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(PERFORMANCE_FOLDER + filename, true)));
+		    out.println(size + "\t" + ((double)time / 1000.0));
+		    out.close();
+		} catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+		}
 		
 	}
 	

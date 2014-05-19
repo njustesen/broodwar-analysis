@@ -1,0 +1,4 @@
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter] (3) {5496} -> 1
+[SupplyDepot, Barracks, Barracks, SupplyDepot] (3) {2161.667} -> 0.667
+[SupplyDepot, Barracks, Refinery, SupplyDepot] (3) {2085.667} -> 0.333
+[Barracks, SupplyDepot, Refinery, Factory] (3) {2072} -> 1

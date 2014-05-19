@@ -1,0 +1,8 @@
+[Pylon, Nexus, Forge, PhotonCannon] (5) {3785.8} -> 0.8
+[Pylon, Nexus, Forge, Gateway] (3) {4083.333} -> 0.667
+[Pylon, Pylon] (3) {3825} -> 0.667
+[Pylon, Forge, Nexus, PhotonCannon] (8) {3875.125} -> 0.375
+[Pylon, Forge, PhotonCannon, Nexus] (16) {4531.625} -> 0.375
+[Pylon, Forge, PhotonCannon, PhotonCannon] (12) {3479.083} -> 0.333
+[Pylon, Forge, Pylon] (4) {4713.25} -> 0.5
+[Pylon, Gateway, Gateway, Pylon] (5) {1682.4} -> 0.2

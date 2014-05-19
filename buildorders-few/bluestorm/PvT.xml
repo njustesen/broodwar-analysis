@@ -1,0 +1,6 @@
+[Pylon, Nexus, Gateway, Assimilator] (2) {2823.5} -> 0.5
+[Pylon, Assimilator] (2) {2094} -> 0.5
+[Pylon, Gateway, Pylon, Assimilator] (4) {3922.5} -> 0.75
+[Pylon, Gateway, Assimilator, CyberneticsCore] (25) {4107.24} -> 0.56
+[Pylon, Gateway, Assimilator, Pylon] (7) {6192} -> 0.571
+[Pylon, Gateway, Gateway] (5) {4931.2} -> 1

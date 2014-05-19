@@ -1,0 +1,7 @@
+[SupplyDepot, Refinery, Barracks, Factory, SupplyDepot, Factory, MachineShop, SiegeTankMode] (10) {2423.3} -> 0.5
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Barracks, Factory, Factory, MachineShop] (13) {4160} -> 0.308
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, SupplyDepot, MachineShop] (9) {5589.667} -> 0.667
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, MachineShop, SupplyDepot] (9) {4278.556} -> 0.667
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Barracks, Bunker, MachineShop] (11) {4127.909} -> 0.545
+[Barracks, SupplyDepot, Refinery, SupplyDepot, Refinery, Refinery, Bunker, Bunker] (9) {3448.667} -> 0.667
+[Barracks, SupplyDepot, Refinery, SupplyDepot, Factory, Bunker, Bunker, Bunker] (10) {4112.3} -> 0.3

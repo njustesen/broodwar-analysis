@@ -1,0 +1,17 @@
+
+<node players='5' value='0.8'>
+	<node action='Pylon' players='5' value='0.8'>
+		<node action='Gateway' players='5' value='0.8'>
+			<node action='Assimilator' players='5' value='0.8'>
+				<node action='CyberneticsCore' players='3' value='1'>
+				</node>
+				<node action='Pylon' players='2' value='0.5'>
+					<node action='CyberneticsCore' players='1' value='0'>
+					</node>
+					<node action='Forge' players='1' value='1'>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

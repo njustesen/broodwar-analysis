@@ -64,6 +64,14 @@ public class BuildOrder implements ClusterPoint {
 		}
 		
 	}
+	
+	public String toString() {
+		List<Build> b = new ArrayList<Build>();
+		for(int i = 0; i < builds.size(); i++)
+			b.add(builds.get(i));
+		
+		return b.toString();
+	}
 
 	public String toString(int maxLength) {
 		List<Build> b = new ArrayList<Build>();

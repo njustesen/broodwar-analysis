@@ -1,0 +1,46 @@
+digraph tree { nodesep=0.35; charset="latin1"; rankdir=LR; fixedsize=true;
+node [stype="rounded,filled", width=2, height=0, shape=box, fillcolor="#888888", concentrate=true]
+868443699 [label="1008, w: 0.501"]
+1634384081 [label="CommandCenter (1), w: 0"]
+629920590 [label="SupplyDepot (997), w: 0.505"]
+2128460067 [label="Refinery (45), w: 0.422"]
+245754343 [label="Refinery (1), w: 1"]
+782189620 [label="Barracks (44), w: 0.409"]
+2128460067 -> 245754343
+2128460067 -> 782189620
+1513540053 [label="EngineeringBay (1), w: 1"]
+1123872056 [label="CommandCenter (11), w: 0.364"]
+1798969827 [label="Barracks (11), w: 0.364"]
+1123872056 -> 1798969827
+863616276 [label="SupplyDepot (10), w: 0.5"]
+2104264306 [label="Refinery (2), w: 1"]
+1609492146 [label="Barracks (8), w: 0.375"]
+863616276 -> 2104264306
+863616276 -> 1609492146
+1030480210 [label="Barracks (930), w: 0.51"]
+1972760062 [label="Refinery (882), w: 0.511"]
+1178336001 [label="CommandCenter (5), w: 0"]
+198976173 [label="SupplyDepot (28), w: 0.607"]
+560501232 [label="Barracks (15), w: 0.4"]
+1030480210 -> 1972760062
+1030480210 -> 1178336001
+1030480210 -> 198976173
+1030480210 -> 560501232
+629920590 -> 2128460067
+629920590 -> 1513540053
+629920590 -> 1123872056
+629920590 -> 863616276
+629920590 -> 1030480210
+1480930482 [label="Barracks (10), w: 0.2"]
+663142244 [label="Refinery (1), w: 1"]
+2139050625 [label="SupplyDepot (4), w: 0"]
+119948 [label="Barracks (5), w: 0.2"]
+2015966036 [label="SupplyDepot (5), w: 0.2"]
+119948 -> 2015966036
+1480930482 -> 663142244
+1480930482 -> 2139050625
+1480930482 -> 119948
+868443699 -> 1634384081
+868443699 -> 629920590
+868443699 -> 1480930482
+}

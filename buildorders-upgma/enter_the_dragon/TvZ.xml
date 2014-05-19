@@ -1,0 +1,8 @@
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, SupplyDepot, Academy, Starport] (4) {2694.25} -> 0.75
+[Barracks, SupplyDepot, Barracks, SupplyDepot, Refinery, SupplyDepot, Factory, Academy] (4) {2477.25} -> 0.75
+[SupplyDepot, Barracks, Barracks, Refinery, SupplyDepot, Academy, SupplyDepot, ComSat] (6) {3112} -> 0.833
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, Academy, SupplyDepot, Barracks] (5) {4715.8} -> 0.4
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, EngineeringBay, SupplyDepot, TerranInfantryArmor] (4) {1795.5} -> 0.25
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Refinery, SupplyDepot, Academy, Factory] (4) {3004} -> 1
+[SupplyDepot, Barracks, Barracks, SupplyDepot, Bunker, Refinery, Academy, SupplyDepot] (4) {3107} -> 0.5
+[SupplyDepot, Barracks, Refinery, Academy, Barracks, SupplyDepot, Bunker, ComSat] (4) {2993.5} -> 0.25

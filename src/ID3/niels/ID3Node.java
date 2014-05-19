@@ -242,6 +242,37 @@ public class ID3Node {
 		
 		return common;
 	}
+	
+	public List<BuildOrder> common(double min, int maxDepth, int depth, ActionType action) {
+		
+		List<BuildOrder> common = new ArrayList<BuildOrder>();
+		
+		if (depth > maxDepth)
+			return common;
+		
+		for(ActionType childType : children.keySet()){
+			ID3Node child = children.get(childType);
+			if (child.buildOrders.size() >= min){
+				List<BuildOrder> commonBuildOrders = child.common(min, maxDepth, depth+1, childType);
+				for(BuildOrder commonBuildOrder : commonBuildOrders){
+					BuildOrder buildOrder = new BuildOrder();
+					if (action != null)
+						buildOrder.builds.add(new Build(action, null, 0));
+					buildOrder.builds.addAll(commonBuildOrder.builds);
+					common.add(buildOrder);
+				}
+			}
+		}
+		
+		if (common.isEmpty() && buildOrders.size() >= min){
+			BuildOrder buildOrder = new BuildOrder();
+			if (action != null)
+				buildOrder.builds.add(new Build(action, null, 0));
+			common.add(buildOrder);
+		}
+		
+		return common;
+	}
 
 	public void toFile(BufferedWriter out, int level, Object value) throws IOException {
 		
@@ -275,6 +306,45 @@ public class ID3Node {
 			stringBuilder.append("\t");
 		}
 		stringBuilder.append("</node>");
+		
+		out.write(stringBuilder.toString());
+		
+	}
+
+	public void toFmt(BufferedWriter out, int level, int maxLevel, Object value) throws IOException {
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		if (trimmed || level > maxLevel)
+			return;
+		
+		String m = String.valueOf((buildOrders == null ? "null" : buildOrders.size()));
+		String a = value == null ? "Game over" : ((Enum)value).name();
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(3);
+		if (level==0){
+			stringBuilder.append("digraph tree { nodesep=0.35; charset=\"latin1\"; rankdir=LR; fixedsize=true;\n");
+			stringBuilder.append("node [stype=\"rounded,filled\", width=2, height=0, shape=box, fillcolor=\"#888888\", concentrate=true]\n");
+			stringBuilder.append(this.hashCode() + " [label=\"" + buildOrders.size() + ", w: " + df.format(value()) + "\"]\n");
+		} else {
+			stringBuilder.append(this.hashCode() + " [label=\"" + a + " (" + buildOrders.size() + "), w: " + df.format(value()) + "\"]\n");
+		}
+		
+		out.write(stringBuilder.toString());
+		
+		stringBuilder = new StringBuilder();
+		
+		if (children != null){
+			for(Object obj : children.keySet()){
+				children.get(obj).toFmt(out, level+1, maxLevel, obj);
+				if (level < maxLevel)
+					stringBuilder.append(this.hashCode() + " -> " + children.get(obj).hashCode() + "\n");
+			}
+		}
+		
+		if (level == 0){
+			stringBuilder.append("}");
+		}
 		
 		out.write(stringBuilder.toString());
 		

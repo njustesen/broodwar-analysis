@@ -1,0 +1,7 @@
+[SpawningPool, Extractor, CreepColony] (1) {3063} -> 0
+[SpawningPool, Extractor, MetabolicBoost, Hatchery] (2) {1098} -> 0.5
+[SpawningPool, Extractor, Hatchery] (1) {1279} -> 1
+[Hatchery, SpawningPool, CreepColony] (1) {2164} -> 1
+[Hatchery, SpawningPool, Extractor] (1) {2159} -> 0
+[Hatchery, Extractor] (1) {1857} -> 1
+[Extractor] (1) {792} -> 0

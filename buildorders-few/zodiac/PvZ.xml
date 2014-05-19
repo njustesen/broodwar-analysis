@@ -1,0 +1,11 @@
+[Pylon, Nexus, Forge, PhotonCannon] (7) {2644.571} -> 0.286
+[Pylon, Forge, Nexus, PhotonCannon] (26) {3672.769} -> 0.615
+[Pylon, Forge, Nexus, Pylon] (7) {4177.714} -> 0.429
+[Pylon, Forge, Nexus, Gateway] (11) {3444.727} -> 0.909
+[Pylon, Forge, PhotonCannon, Nexus] (20) {3162.6} -> 0.45
+[Pylon, Forge, PhotonCannon, PhotonCannon] (18) {3545.5} -> 0.722
+[Pylon, Forge, PhotonCannon, Pylon] (6) {3591.833} -> 0.5
+[Pylon, Forge, Pylon, PhotonCannon] (5) {3743.4} -> 0.4
+[Pylon, Assimilator, Forge, ProtossGroundWeapons] (8) {2243} -> 0.5
+[Pylon, Gateway, Assimilator, Pylon] (10) {2662.9} -> 0.7
+[Pylon, Gateway, Gateway, Pylon] (8) {2980.5} -> 0.5

@@ -1,0 +1,6 @@
+[Hatchery, SpawningPool, SpawningPool, Extractor] (1) {256} -> 0
+[Hatchery, SpawningPool, Extractor, Hatchery] (1) {1636} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery] (1) {1703} -> 1
+[Hatchery, SpawningPool, Extractor, Hatchery] (1) {6065} -> 1
+[SpawningPool, Hatchery, Hatchery, Extractor] (1) {3207} -> 1
+[Extractor, SpawningPool, Extractor, Hatchery] (1) {1877} -> 0

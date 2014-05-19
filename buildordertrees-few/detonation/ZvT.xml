@@ -1,0 +1,13 @@
+
+<node players='6' value='0.667'>
+	<node action='Hatchery' players='5' value='0.8'>
+		<node action='SpawningPool' players='3' value='1'>
+		</node>
+		<node action='Hatchery' players='1' value='0'>
+		</node>
+		<node action='Extractor' players='1' value='1'>
+		</node>
+	</node>
+	<node action='Extractor' players='1' value='0'>
+	</node>
+</node>

@@ -1,0 +1,5 @@
+[SpawningPool, EvolutionChamber] (1) {1515} -> 0
+[SpawningPool, Extractor] (2) {4876} -> 1
+[Hatchery, SpawningPool] (4) {4551.25} -> 0.25
+[Hatchery, SpawningPool, Hatchery, Extractor] (2) {4235.667} -> 0.333
+[Hatchery, SpawningPool, Extractor] (1) {3668.5} -> 0

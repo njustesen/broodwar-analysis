@@ -1,0 +1,19 @@
+
+<node players='4' value='0.5'>
+	<node action='SupplyDepot' players='4' value='0.5'>
+		<node action='Barracks' players='4' value='0.5'>
+			<node action='Refinery' players='4' value='0.5'>
+				<node action='SupplyDepot' players='4' value='0.5'>
+					<node action='Factory' players='4' value='0.5'>
+						<node action='MachineShop' players='1' value='1'>
+						</node>
+						<node action='Factory' players='2' value='0'>
+						</node>
+						<node action='Barracks' players='1' value='1'>
+						</node>
+					</node>
+				</node>
+			</node>
+		</node>
+	</node>
+</node>

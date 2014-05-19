@@ -1,0 +1,6 @@
+[Barracks, SupplyDepot, Barracks, Bunker, Barracks] (2) {2069} -> 0
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, Bunker, SupplyDepot, Refinery, SupplyDepot] (2) {4546.5} -> 0.5
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, Bunker, Refinery, EngineeringBay, Academy] (2) {7318.5} -> 1
+[SupplyDepot, Barracks, SupplyDepot, CommandCenter, Refinery, SupplyDepot, Academy, Barracks] (2) {2568.5} -> 0
+[SupplyDepot, Barracks, Refinery, CommandCenter, SupplyDepot, Factory, Academy, Barracks] (2) {5505.5} -> 0.5
+[SupplyDepot, Barracks, Barracks, CommandCenter, Barracks, SupplyDepot, Barracks, Barracks] (2) {4460} -> 0.5

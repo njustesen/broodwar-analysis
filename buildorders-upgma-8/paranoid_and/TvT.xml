@@ -1,0 +1,6 @@
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Factory, SupplyDepot, MachineShop] (4) {3380} -> 0.75
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Factory, SupplyDepot, MachineShop] (5) {4632} -> 0
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Barracks, SupplyDepot, MachineShop] (4) {4173.25} -> 1
+[SupplyDepot, Refinery, Barracks, Refinery, Factory, SupplyDepot, Starport, SupplyDepot] (4) {3173.5} -> 0.25
+[SupplyDepot, Barracks, Refinery, SupplyDepot, Factory, Starport, SupplyDepot, MachineShop] (4) {3313.75} -> 1
+[SupplyDepot, Barracks, Refinery, Factory, SupplyDepot, Starport, MachineShop, SupplyDepot] (4) {3077.75} -> 0
