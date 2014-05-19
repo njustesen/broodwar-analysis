@@ -73,50 +73,87 @@ public class PatternFinder
         public static void main(String[] argv)
         {
                 String root = "matches/";
-                int minSupport = 200;
+                String outputRoot = "apriori/";
+                // int minSupport = 1000;
                 int length = 10;
-                Player.Race race = Player.Race.Protoss;
-                Map.Type type = null;
-
-                List<Item[]> data = new ArrayList<Item[]>();
-                MatchDecoder decoder = new MatchDecoder(root, type, race, 12800);
+                // Player.Race race = Player.Race.Terran;
+                // Map.Type type = Map.Type.Lost_Temple;
 
                 Match match = null;
 
-                while ((match = decoder.getMatch()) != null)
+                for (Player.Race race : Player.Race.values())
                 {
-                        for (int player = 0; player < match.players.length; player++)
+                        List<Item[]> data = new ArrayList<Item[]>();
+                        MatchDecoder decoder = new MatchDecoder(root, null, race, 300000);
+
+                        while ((match = decoder.getMatch()) != null)
                         {
-                                if (match.players[player].race != race)
-                                        continue;
+                                for (int player = 0; player < match.players.length; player++)
+                                {
+                                        if (match.players[player].race != race)
+                                                continue;
 
-                                List<Item> items = new ArrayList<Item>();
+                                        List<Item> items = new ArrayList<Item>();
 
-                                items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
-                                items.add(new Item(0, 0, match.players[(player + 1) % 2].race.toString(), false, false, true));
+                                        // items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
+                                        items.add(new Item(0, 0, match.players[(player + 1) % 2].race.toString(), false, false, true));
 
-                                List<Action> actions = match.players[player].selectActions(false, true, false, false);
-                                for (int action = 0; action < Math.min(actions.size(), length); action++)
-                                        items.add(new Item(player + 1, action, actions.get(action).actionType.toString(), false, false, false));
-                                if (match.players[player].win)
-                                        items.add(new Item(player + 1, 0, "win", true, false, false));
-                                // else
-                                        // items.add(new Item(player + 1, 0, "lose", true, false, false));
+                                        List<Action> actions = match.players[player].selectActions(false, true, false, false);
+                                        for (int action = 0; action < Math.min(actions.size(), length); action++)
+                                                items.add(new Item(player + 1, action, actions.get(action).actionType.toString(), false, false, false));
+                                        if (match.players[player].win)
+                                                items.add(new Item(player + 1, 0, "win", true, false, false));
+                                        else
+                                                items.add(new Item(player + 1, 0, "lose", true, false, false));
 
-                                data.add(items.toArray(new Item[items.size()]));
+                                        data.add(items.toArray(new Item[items.size()]));
+                                }
                         }
 
+                        if (data.size() != 0)
+                        {
+                                List<List<List<Item>>> output = Apriori.<Item>run(data.toArray(new Item[data.size()][]), (int) Math.max((double) data.size() / 100 * 5, 2), outputRoot + "Overall-" + race + "-apriori.txt");
+                                System.out.println(outputRoot + "Overall-" + race + "-apriori.txt filled!");
+                        }
 
                 }
 
-                List<List<List<Item>>> output = Apriori.<Item>run(data.toArray(new Item[data.size()][]), minSupport);
-                // for (int i = 0; i < output.size(); i++)
-                // {
-                //         System.out.println("==============( " + i + " )================");
-                //         for (int j = 0; j < output.get(i).size(); j++)
-                //                 for (int k = 0; k < output.get(i).get(j).size(); k++)
-                //                         System.out.printf("%s" + (k < output.get(i).get(j).size() - 1 ? ", " : "\n"),
-                //                                           output.get(i).get(j).get(k).toString());
-                // }
+                // for (Map.Type mapType : Map.Type.values())
+                //         if (mapType != Map.Type.None)
+                //                 for (Player.Race race : Player.Race.values())
+                //                 {
+                //                         List<Item[]> data = new ArrayList<Item[]>();
+                //                         MatchDecoder decoder = new MatchDecoder(root, mapType, race, 60000);
+
+                //                         while ((match = decoder.getMatch()) != null)
+                //                         {
+                //                                 for (int player = 0; player < match.players.length; player++)
+                //                                 {
+                //                                         if (match.players[player].race != race)
+                //                                                 continue;
+
+                //                                         List<Item> items = new ArrayList<Item>();
+
+                //                                         // items.add(new Item(0, 0, match.map.type.toString(), false, true, false));
+                //                                         items.add(new Item(0, 0, match.players[(player + 1) % 2].race.toString(), false, false, true));
+
+                //                                         List<Action> actions = match.players[player].selectActions(false, true, false, false);
+                //                                         for (int action = 0; action < Math.min(actions.size(), length); action++)
+                //                                                 items.add(new Item(player + 1, action, actions.get(action).actionType.toString(), false, false, false));
+                //                                         if (match.players[player].win)
+                //                                                 items.add(new Item(player + 1, 0, "win", true, false, false));
+                //                                         else
+                //                                                 items.add(new Item(player + 1, 0, "lose", true, false, false));
+
+                //                                         data.add(items.toArray(new Item[items.size()]));
+                //                                 }
+                //                         }
+
+                //                         if (data.size() != 0)
+                //                         {
+                //                                 List<List<List<Item>>> output = Apriori.<Item>run(data.toArray(new Item[data.size()][]), (int) Math.max((double) data.size() / 100 * 5, 2), outputRoot + mapType + "-" + race + "-apriori.txt");
+                //                                 System.out.println(outputRoot + mapType + "-" + race + "-" + length + "-apriori.txt filled!");
+                //                         }
+                //                 }
         }
 }

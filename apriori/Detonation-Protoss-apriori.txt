@@ -1,0 +1,14 @@
+min. supp.: 2 (0.5)
+data set size: 4
+min. conf.: 0.53
+0_Pylon [0.75]
+3_Gateway [0.5]
+7_CyberneticsCore [0.5]
+9_Pylon [0.5]
+0_Pylon -> Terran [0.6666666666666666 / 0.75]
+3_Gateway -> Terran [1.0 / 0.5]
+0_Pylon, 3_Gateway [0.5]
+0_Pylon, 7_CyberneticsCore [0.5]
+0_Pylon -> win (0.6666666666666666) [0.75]
+0_Pylon, 9_Pylon [0.5]
+0_Pylon, 3_Gateway -> Terran [1.0 / 0.5]
