@@ -1,9 +1,5 @@
 package ID3;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
 
 public class ID3Node {
 
@@ -13,27 +9,48 @@ public class ID3Node {
 	private Boolean win;
 	private String reasonForCutoff;
 	private String attribute;
+	private String actions;
+	private double winningChance;
 	
 	private HashMap <Object, ID3Node> children = new HashMap <Object, ID3Node>();
 	
-	public ID3Node(ID3Node n, int level){
+	//constructor
+	public ID3Node(ID3Node n, int level, String actions){
 		this.parent = n;
 		this.level = level;
+		this.actions = actions;
 	}
 
+	//Calculates winning chance (between 0 and 1) and
+	//triggers every child node
+	public void calculateWinningChance(){
+		
+		if(!leaf){
+			winningChance = 0;
+			int divider = 0;
+			for(ID3Node c : children.values()){
+				c.calculateWinningChance();
+				winningChance += c.getWinningChance();
+				divider++;
+			}
+			winningChance = winningChance/divider;
+		}
+	}
 	
+
+	//Print Node - triggers every child node
 	public void printNode(){
 		
 		for(int i = 0; i < level; i++){
 			System.out.print("  ");
 		}
 		
-//		System.out.println("node "+this+" children="+children.size()+" level="+level+" resonForCutoff="+reasonForCutoff+" edible="+edible);
 		System.out.print("node "+this);
 		System.out.print(" children="+children.size());
 		System.out.print(" level="+level);
 		System.out.print(" resonForCutoff="+reasonForCutoff);
-			
+		System.out.print(" gameAction="+actions);
+		System.out.print(" winningChance="+winningChance);
 		if(!leaf){
 			System.out.print(" att="+attribute);
 		}else{
@@ -48,6 +65,8 @@ public class ID3Node {
 
 	}
 	
+	
+	//getters and setters
 	public ID3Node getParent(){
 		return parent;
 	}
@@ -57,7 +76,6 @@ public class ID3Node {
 	}
 	
 	public void addChild(Object obj,ID3Node child){
-		System.out.println("child added");
 		children.put(obj, child);
 	}
 	
@@ -103,5 +121,21 @@ public class ID3Node {
 	
 	public ID3Node getChild(Object attributeValue){
 		return children.get(attributeValue);
+	}
+	
+	public String getActions(){
+		return this.actions;
+	}
+	
+	public void setActions(String actions){
+		this.actions = actions;
+	}
+	
+	public double getWinningChance(){
+		return winningChance;
+	}
+	
+	public void setWinningChance(double winningChance){
+		this.winningChance = winningChance;
 	}
 }

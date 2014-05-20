@@ -1,122 +1,131 @@
 package ID3;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
-import analyser.Action;
-import analyser.Action.ActionType;
-import analyser.Match;
-
-import parser.bwhf.model.Replay;
-
+//constructor
 public class ID3Tree {
 
 	private ID3Node root;
-	private final int analyzeLength = 10;
+	private long timeBuild;
+	private static int treeSize;
+
+	
 	ArrayList <String> attributes = new ArrayList<String>();
 	
-	public ID3Tree(List<String[]> examples){
-		this.root = new ID3Node(null, 0);
+	public ID3Tree(List<String[]> examples, boolean infoGain, int analyzeLength){
+		Long begin = System.currentTimeMillis();
+		this.root = new ID3Node(null, 0, null);
 		for(int i = 0; i < analyzeLength; i++){
 			attributes.add(((Integer)i).toString());
 		}
-		generateTree(examples, attributes, root);
+		generateTree(examples, attributes, root, infoGain);
+		calculateWinningChance();
+		long end = System.currentTimeMillis();
+		timeBuild = end - begin;
 	}
 
-/*
-	public boolean safeToEat(Mushroom m){
+	public static void generateTree(List<String[]> examples, List <String> attributes, ID3Node currentNode, boolean infoGain){
 		
-	}
-*/	
-	public static void generateTree(List<String[]> examples, List <String> attributes, ID3Node thisNode){
-		System.out.println("examples.size = " + examples.size());
-		//Check if all shrooms are poisonous/edible
-		//All samples for a given node belong to the same class
+		//Check if all matches belong to same class (win/lose)
 		boolean allWinners = true;
 		boolean allLosers = true;
 		for(String[] s: examples){
-			if(s[s.length] == "win"){
+			if(s[s.length-1] == "win"){
 				allLosers = false;
-			}else if(s[s.length] == "loss"){
+			}else if(s[s.length-1] == "loss"){
 				allWinners = false;
 			}else{
 				System.out.println("wrong index - s[s.length] is neither win or loss");
 			}
+			if(!allWinners && !allLosers){
+				break;
+			}
 		}
 				
 		
-		//There are no remaining attributes for further partitoning
+		//There are no remaining attributes for further partitioning
 		if(attributes.isEmpty()){
-			thisNode.setReasonForCutoff("'ATTRIBUTES EMPTY'");
+			currentNode.setReasonForCutoff("'ATTRIBUTES EMPTY'");
 			int winCount = 0;
+			int divider = 0;
 			for(String[] s: examples){
-				if(s[s.length] == "win"){
+				if(s[s.length-1] == "win"){
 					winCount++;
-				}else if(s[s.length] == "loss"){
-					winCount--;
+				}else if(s[s.length-1] == "loss"){
+				
 				}else{
 					System.out.println("wrong index - s[s.length] is neither win or loss");
 				}
-			}			
-			if(winCount < 0 ){
-				thisNode.nodeIsNotWin();
-			}else{
-				thisNode.nodeIsWin();
+				divider++;
 			}
+			double winningChance = winCount/divider;
+			currentNode.setWinningChance(winningChance);
+			
+			if(winningChance <= 0.5){
+				currentNode.nodeIsNotWin();
+			}else{
+				currentNode.nodeIsWin();
+			}
+			return;
 		}
 	
 		//all players are winners
 		if(allWinners){
-			thisNode.setReasonForCutoff("ALL WINNERS");
-			//System.out.println("all edible");
-			thisNode.nodeIsWin();
+			currentNode.setReasonForCutoff("ALL WINNERS");
+			currentNode.setWinningChance(1);
+			currentNode.nodeIsWin();
 			return;
 		}
 		
 		//all players are losers
 		if(allLosers){
-			thisNode.setReasonForCutoff("ALL LOSERS");
-			//System.out.println("all poisonous");
-			thisNode.nodeIsNotWin();
+			currentNode.setReasonForCutoff("ALL LOSERS");
+			currentNode.setWinningChance(0);
+			currentNode.nodeIsNotWin();
 			return;
 		}
-		
-		//Select Attribute (random)
-		//Random  r = new Random();
-		//int index = r.nextInt(attributes.size());
-		//Object selectedAttribute = attributes.get(index);
+
 		String selectedAttribute = null;
-		double highestGain = Integer.MIN_VALUE;
-		for(String att: attributes){
-			double gain = getInfoGain(att, examples);
-			System.out.println("GAIN="+gain);
-			if(gain > highestGain){
-				System.out.println("new highest GAIN="+gain);
-				selectedAttribute = att;
-				highestGain = gain;
+		//Select next attribute by infoGain
+		if(infoGain){
+			//System.out.println("infogain");
+			double highestGain = Integer.MIN_VALUE;
+			for(String att: attributes){
+				double gain = getInfoGain(att, examples);
+				//System.out.println("GAIN="+gain);
+				if(gain >= highestGain){
+	//				System.out.println("new highest GAIN="+gain);
+					selectedAttribute = att;
+					highestGain = gain;
+				}
 			}
+		}else{
+			//Select next attribute by sequence
+			selectedAttribute = attributes.get(0);
 		}
+		currentNode.setAttribute(selectedAttribute);
+		String[] unique = getUniqueEntries(selectedAttribute, examples);
 		
-		thisNode.setAttribute(selectedAttribute);
-		
-		for(ActionType at : ActionType.values()){
+		for(String s : unique){
 			//make sublists
-			List <String[]> subExamples = getSubset(examples, selectedAttribute, at.toString());
-			List subAttributes = getSubset(attributes, selectedAttribute);
+			List <String[]> subExamples = getSubset(examples, selectedAttribute, s);
+			
+			List<String> subAttributes = getSubset(attributes, selectedAttribute);
 			//create new node
-			ID3Node child = new ID3Node(thisNode, thisNode.getLevel()+1);
-			thisNode.addChild(at, child);
-			thisNode.notLeaf();
-			//recursive call
-			generateTree(subExamples, subAttributes, child);
+			ID3Node child = new ID3Node(currentNode, currentNode.getLevel()+1, s);
+			treeSize++;
+			currentNode.addChild(s, child);
+			currentNode.notLeaf();
+			//recursive call	
+			generateTree(subExamples, subAttributes, child, infoGain);
 		}
 		
 		return;
 	}
 	
+	//print entire tree in mxl-like format
 	public void printTree(){
 		System.out.println();
 		System.out.println("- -- --- ---- ----- ------ FINAL TREE START ------ ----- ---- --- -- -");
@@ -124,37 +133,35 @@ public class ID3Tree {
 		System.out.println("- -- --- ---- ----- ------ FINAL TREE END ------ ----- ---- --- -- -");
 	}
 	
+	//returns the information gain of a given attribute
 	public static double getInfoGain(String att, List<String[]> examples){
 		double info = getInfo(examples);
 		double infoA = getInfoA(att, examples);
 		double infoGain = info - infoA;
-		System.out.println("info="+info+" infoA="+infoA+" infoGain="+infoGain);
 		return infoGain;
 	}
 	
 	public static double getInfo(List<String[]> examples){
-		System.out.println("print TEST "+testInfo());
+
 		if(examples.isEmpty()){
 			return 1;
 		}
 		double info = 0;
-	//	System.out.println("examples="+examples);
 		double D = examples.size();
 		double DjWin = 0;
 		double DjLoss = 0;
 			
 		for(String[] s: examples){
-			if(s[s.length].equals("win")){
+			if(s[s.length-1].equals("win")){
 				DjWin++;
-			}else{
+			}else if(s[s.length-1].equals("loss")){
 				DjLoss++;
 			}	
 		}
 		
-		//(Math.log(pi)/Math.log(2)); ??
 		double infoWin = ((DjWin/D) * (Math.log(DjWin/D)/Math.log(2)));
 		double infoLoss = ((DjLoss/D) * (Math.log(DjLoss/D)/Math.log(2)));
-		
+
 		if (DjWin == 0)
 			infoWin = 0;
 		if (DjLoss == 0)
@@ -163,15 +170,6 @@ public class ID3Tree {
 		info = -infoWin-infoLoss;
 
 		return info;
-/*		
-		double pi = (Dj/D);
-		double logpi = Math.log(pi);
-		double logpilog2 = (Math.log(pi)/Math.log(2));
-		info -= pi*(Math.log(pi)/Math.log(2));
-		//System.out.println("getInfo  Dj="+Dj+"  D="+D+"  pi="+pi+"  logpi="+logpi+" logpilog2="+logpilog2+"  info="+info);
-		
-		return info;
-*/
 	}
 	
 	public static double getInfoA(String att, List<String[]> examples){
@@ -186,12 +184,12 @@ public class ID3Tree {
 		//for each (unique) attribute value
 		String[] unique = getUniqueEntries(att, examples);
 		
-		for(ActionType at : ActionType.values()){
+		for(String u : unique){
 			
 			double D = examples.size();
 			double Dj = 0;
 			for(String[] s: examples){
-				if(s[Integer.parseInt(att)].equals(at)){
+				if(s[Integer.parseInt(att)].equals(u)){
 					Dj++;
 					subExamples.add(s);
 				}
@@ -206,17 +204,19 @@ public class ID3Tree {
 		return infoA;
 	}
 
+	//Returns a String-array of unique values
 	private static String[] getUniqueEntries(String att, List<String[]> examples){
 		
 		Set<String> unique = new HashSet<String>();
 		
 		for(int i = 0; i < examples.size(); i++){
-			unique.add(examples.get(i)[Integer.parseInt(att)]);
-		}
-		
-		return (String[]) unique.toArray();
+			unique.add(examples.get(i)[Integer.parseInt(att)].toString());
+		}		
+		String[] array = unique.toArray(new String[0]);
+		return array;
 	}
 	
+	//get subset of examples
 	private static List<String[]> getSubset(List<String[]> examples, String attribute, String value) {
 
 		ArrayList<String[]> subset = new ArrayList<String[]>();
@@ -225,15 +225,11 @@ public class ID3Tree {
 			if (s[Integer.parseInt(attribute)].equals(value))
 				subset.add(s);
 		}
-
 		return subset;
 	}
 	
+	//get subset of attributes
 	private static List<String> getSubset(List<String> attributes, Object attribute){
-		
-		System.out.println("attributes="+attributes);
-		System.out.println("size="+attributes.size());
-		System.out.println("attribute="+attribute);
 		
 		List<String> subset = new ArrayList<String>(attributes);
 		
@@ -246,13 +242,16 @@ public class ID3Tree {
 		return root;
 	}
 	
-	public static double testInfo(){
-		double info = 0;
-		double Dj = 7;
-		double D = 17;
-		//return info -= pi*(Math.log(pi)/Math.log(2));
-		double tal = (Dj/D);
-		return tal;
+	public long getTimeBuild(){
+		return timeBuild;
+	}
+	
+	public void calculateWinningChance(){
+		root.calculateWinningChance();
+	}
+	
+	public int getTreeSize(){
+		return treeSize;	
 	}
 
 }
